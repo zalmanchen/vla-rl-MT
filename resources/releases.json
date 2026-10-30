@@ -1,0 +1,119 @@
+{
+  "model": {
+    "repo": "RLinf/RLinf-Pi0-NEW-RoboTwin-SFT-adjust_bottle",
+    "revision": "8975e3349d55a3bbe8c0d39f84642c27c023ecf1",
+    "files": [
+      {
+        "rfilename": ".gitattributes",
+        "blobId": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+        "size": 1519
+      },
+      {
+        "rfilename": "config.json",
+        "blobId": "8af6d739ec6a81067309432bd1075f7654ad9028",
+        "size": 234
+      },
+      {
+        "rfilename": "model.safetensors",
+        "blobId": "44c7f03bd49b1e1a515029eb0df1f3a48c4a764f",
+        "size": 12952263208,
+        "lfs": {
+          "sha256": "d4980c8370f952dcd55c6f350b62bfefd2895a45fca168866071c11a3e1e668b",
+          "size": 12952263208,
+          "pointerSize": 136
+        }
+      },
+      {
+        "rfilename": "physical-intelligence/robotwin/adjust_bottle/norm_stats.json",
+        "blobId": "93e8482de5d405211755d43cc944c86578aeb98d",
+        "size": 5151
+      }
+    ]
+  },
+  "data": {
+    "repo": "TianxingChen/RoboTwin2.0",
+    "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "files": [
+      {
+        "rfilename": "background_texture.zip",
+        "blobId": "de41583351ade5f76da6473de8463a89c08385db",
+        "size": 10970687027,
+        "lfs": {
+          "sha256": "54ede0fb5b783e0faa2bc98720d3affd6ca3bb9280b225b48c1aafaf31473070",
+          "size": 10970687027,
+          "pointerSize": 136
+        }
+      },
+      {
+        "rfilename": "dataset/adjust_bottle/demo_clean.zip",
+        "blobId": "a80d678c29e5b9e8a9cdc756cc194cfe13d03339",
+        "size": 292557643,
+        "lfs": {
+          "sha256": "74e8504ae0586467b0c03fe7b2423d01fc16ef32d2da1b279ea8a502cf748939",
+          "size": 292557643,
+          "pointerSize": 134
+        }
+      },
+      {
+        "rfilename": "dataset/beat_block_hammer/demo_clean.zip",
+        "blobId": "45f0ef680c7babb92b83c122675915fdeee653db",
+        "size": 224794582,
+        "lfs": {
+          "sha256": "12c3528b3f2318e03744bc7bab909a4a5214a7bc942ab6490af058137bebc194",
+          "size": 224794582,
+          "pointerSize": 134
+        }
+      },
+      {
+        "rfilename": "dataset/handover_block/demo_clean.zip",
+        "blobId": "8eafa9d6847ac072097662c0f8cc82ef73c42be9",
+        "size": 543129194,
+        "lfs": {
+          "sha256": "9959f4daab727215a06bad6b44821bfdd38b9c3ba9d6a4eca074fe58f4d920e3",
+          "size": 543129194,
+          "pointerSize": 134
+        }
+      },
+      {
+        "rfilename": "dataset/lift_pot/demo_clean.zip",
+        "blobId": "7a17a0d223a305a7289fcb6144da08d4e4ef7eaa",
+        "size": 275157357,
+        "lfs": {
+          "sha256": "bed96a19d291b3ba5c3031e86f73c8470ccbb7e092fadbb7f03cbb3558332d95",
+          "size": 275157357,
+          "pointerSize": 134
+        }
+      },
+      {
+        "rfilename": "dataset/stack_blocks_two/demo_clean.zip",
+        "blobId": "733308f0aee08259e446b3c51d5d2da995a2559f",
+        "size": 593584439,
+        "lfs": {
+          "sha256": "86451c3cb143bb44a6f09fa656595065893cf9729938277fbcc3d1d886e11ab0",
+          "size": 593584439,
+          "pointerSize": 134
+        }
+      },
+      {
+        "rfilename": "embodiments.zip",
+        "blobId": "eaf0c8846f50eb85a5e68fa1d5a2751c49e671c5",
+        "size": 219847741,
+        "lfs": {
+          "sha256": "85ffeff55a5066def5931224a85cfa3f8abaa1fbf779bd17789a7fb3f85bc789",
+          "size": 219847741,
+          "pointerSize": 134
+        }
+      },
+      {
+        "rfilename": "objects.zip",
+        "blobId": "97e303112a420d2cfb70aeea74fafb33da0ce9b0",
+        "size": 3737778549,
+        "lfs": {
+          "sha256": "6aa56b3cf1e1064f7c809308144da36b00815f8b137fef2d7e4de856f8becf27",
+          "size": 3737778549,
+          "pointerSize": 135
+        }
+      }
+    ]
+  }
+}
