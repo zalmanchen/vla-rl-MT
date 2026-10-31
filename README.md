@@ -8,6 +8,10 @@
 支持 Linux x86_64、NVIDIA GPU。需要管理员预先安装支持 CUDA 12.6 的驱动和 Vulkan/EGL 系统库。
 建议 80GB GPU 用于训练；小显存配置需在目标服务器验证。源码可放在任意目录。
 
+如果使用 GitHub 的源码 ZIP，主仓库 ZIP 不包含子模块。请按 [ZIP 安装步骤](docs/INSTALL.md) 下载
+固定版本的 RLinf 和 RoboTwin ZIP，并使用 `scripts/prepare_sources.py` 校验和填充目录。
+源码检查和实验版本记录支持没有 `.git` 的 ZIP；Python、依赖包、模型和数据仍需可用的下载源或预先准备。
+
 ```bash
 git clone --recurse-submodules https://github.com/zalmanchen/vla-rl-MT.git
 cd vla-rl-MT
