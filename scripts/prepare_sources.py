@@ -73,9 +73,23 @@ def prepare_sources(root, archives, manifest_path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=ROOT)
-    parser.add_argument("--rlinf", type=Path, required=True, help="Pinned RLinf ZIP from GitHub")
-    parser.add_argument("--robotwin", type=Path, required=True, help="Pinned RoboTwin ZIP from GitHub")
+    parser.add_argument("--rlinf", type=Path, help="Pinned RLinf ZIP from GitHub")
+    parser.add_argument("--robotwin", type=Path, help="Pinned RoboTwin ZIP from GitHub")
+    parser.add_argument("--bundled-if-empty", action="store_true",
+                        help="Install bundled ZIPs only if both source directories are empty")
     args = parser.parse_args()
+    if args.bundled_if_empty:
+        if args.rlinf or args.robotwin:
+            parser.error("--bundled-if-empty cannot be combined with archive paths")
+        if any((args.repo / name).is_symlink() or
+               ((args.repo / name).exists() and
+                (not (args.repo / name).is_dir() or any((args.repo / name).iterdir())))
+               for name in EXPECTED_REVISIONS):
+            return 0
+        args.rlinf = args.repo / "resources/source_archives/RLinf_e1a82ebf.zip"
+        args.robotwin = args.repo / "resources/source_archives/RoboTwin_dca9ec68.zip"
+    elif not args.rlinf or not args.robotwin:
+        parser.error("both --rlinf and --robotwin are required")
     try:
         identities = prepare_sources(
             args.repo, {"RLinf": args.rlinf, "RoboTwin": args.robotwin},

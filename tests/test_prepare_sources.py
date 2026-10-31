@@ -2,6 +2,8 @@
 import hashlib
 import json
 from pathlib import Path
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -82,6 +84,22 @@ class PrepareSourcesTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid pinned source manifest"):
             self.prepare()
         self.assert_empty_sources()
+
+    def test_bundled_mode_installs_then_preserves_nonempty_directories(self):
+        resources = self.root / "resources"
+        archives = resources / "source_archives"
+        archives.mkdir(parents=True)
+        shutil.copyfile(str(self.manifest), str(resources / "source_manifest.json"))
+        for name, filename in (("RLinf", "RLinf_e1a82ebf.zip"), ("RoboTwin", "RoboTwin_dca9ec68.zip")):
+            shutil.copyfile(str(self.archives[name]), str(archives / filename))
+        command = [sys.executable, str(ROOT / "scripts/prepare_sources.py"),
+                   "--repo", str(self.root), "--bundled-if-empty"]
+        subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        sentinel = self.root / "RLinf" / "mine"
+        sentinel.write_text("keep")
+        subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        self.assertEqual(sentinel.read_text(), "keep")
+        self.assertTrue((self.root / "RoboTwin" / "code.py").is_file())
 
 
 if __name__ == "__main__":

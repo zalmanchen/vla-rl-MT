@@ -21,6 +21,9 @@ if [[ "$VLA_DRY_RUN" == 1 ]]; then
   echo "No models, demonstrations or GPU jobs are started."
   exit 0
 fi
+if [[ -f "$VLA_ROOT/resources/source_archives/RLinf_e1a82ebf.zip" && -f "$VLA_ROOT/resources/source_archives/RoboTwin_dca9ec68.zip" ]]; then
+  python3 "$VLA_ROOT/scripts/prepare_sources.py" --bundled-if-empty
+fi
 if [[ "$VLA_SOURCES_ONLY" == 1 ]]; then
   exec python3 "$VLA_ROOT/vla_mtrl/source_identity.py" --root "$VLA_ROOT"
 fi
