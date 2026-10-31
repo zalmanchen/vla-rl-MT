@@ -22,6 +22,25 @@ cd vla-rl-MT
 ./setup.sh
 ```
 
+GitHub 默认不会在源码 ZIP 中填充子模块。此分支将固定版本的 RLinf 和 RoboTwin 源码 ZIP
+打包在 `resources/source_archives/`，因此只需下载本分支的项目 ZIP 并解压到新目录：
+
+```bash
+# 在解压后含有 setup.sh 的项目目录中运行
+bash ./setup.sh --verify-sources
+bash ./setup.sh
+```
+
+准备脚本先校验两个 ZIP 的文件清单和内容，再放入空的 `RLinf/` 和 `RoboTwin/` 目录；
+两个目录必须都为空才自动准备。已有非空目录会保留，不自动覆盖；若已有内容不匹配，请在新目录解压项目 ZIP 后重试。
+包内源码分别来自 [RLinf 固定提交](https://github.com/RLinf/RLinf/tree/e1a82ebf0c1af69da6ab9b1519f5f3692fe33566)
+和 [RoboTwin 固定提交](https://github.com/RoboTwin-Platform/RoboTwin/tree/dca9ec682688821c42944eacd7f5dd9bfb15396f)。
+
+ZIP 模式记录为 `archive_content_verified`：这表示文件内容与固定版本的受跟踪文件一致，
+并不表示已经验证 Git 提交对象或其签名。额外文件不包含在校验中。训练的 `contract.json`
+同时记录源码清单哈希和验证方式。ZIP 解决源码 Git 元数据问题；Python、uv、依赖、模型和数据
+仍需通过可用软件源、镜像或预先准备的文件获取。
+
 缺少 uv 时在 `.runtime/tools/bootstrap/` 内安装 uv 0.13.6；随后创建 Python 3.11.18 环境。
 默认安装目录 `.runtime/envs/robotwin`，安装器不会删除重建已有环境；已有环境必须是相同 Python 版本。
 安装清单固定 PyTorch 2.7.1/CUDA 12.6、OpenPI 0.1.1、Transformers fork 4.53.2、SAPIEN 3.0.1、mplib 0.2.1 等。

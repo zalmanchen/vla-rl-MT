@@ -3,12 +3,14 @@ set -euo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/env.sh"
 VLA_DRY_RUN=0
 VLA_TRAIN_ONLY=0
+VLA_SOURCES_ONLY=0
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --venv) VLA_ENV="${2:?}"; export VLA_ENV VIRTUAL_ENV="$VLA_ENV"; shift 2 ;;
     --train-only) VLA_TRAIN_ONLY=1; shift ;;
+    --verify-sources) VLA_SOURCES_ONLY=1; shift ;;
     --dry-run) VLA_DRY_RUN=1; shift ;;
-    -h|--help) echo "Usage: ./setup.sh [--venv PATH] [--train-only] [--dry-run]"; exit 0 ;;
+    -h|--help) echo "Usage: ./setup.sh [--venv PATH] [--train-only] [--verify-sources] [--dry-run]"; exit 0 ;;
     *) echo "Unknown option: $1" >&2; exit 2 ;;
   esac
 done
@@ -19,12 +21,20 @@ if [[ "$VLA_DRY_RUN" == 1 ]]; then
   echo "No models, demonstrations or GPU jobs are started."
   exit 0
 fi
+if [[ -f "$VLA_ROOT/resources/source_archives/RLinf_e1a82ebf.zip" && -f "$VLA_ROOT/resources/source_archives/RoboTwin_dca9ec68.zip" ]]; then
+  python3 "$VLA_ROOT/scripts/prepare_sources.py" --bundled-if-empty
+fi
+if [[ "$VLA_SOURCES_ONLY" == 1 ]]; then
+  exec python3 "$VLA_ROOT/vla_mtrl/source_identity.py" --root "$VLA_ROOT"
+fi
 [[ "$(uname -s)" == Linux && "$(uname -m)" == x86_64 ]] || { echo "Linux x86_64 required" >&2; exit 1; }
-command -v git >/dev/null
 command -v curl >/dev/null
-git -C "$VLA_ROOT" submodule update --init RLinf RoboTwin
-[[ "$(git -C "$VLA_ROOT/RLinf" rev-parse HEAD)" == e1a82ebf0c1af69da6ab9b1519f5f3692fe33566 ]]
-[[ "$(git -C "$VLA_ROOT/RoboTwin" rev-parse HEAD)" == dca9ec682688821c42944eacd7f5dd9bfb15396f ]]
+if [[ ! -f "$VLA_ROOT/RLinf/rlinf/__init__.py" || ! -f "$VLA_ROOT/RoboTwin/envs/__init__.py" ]]; then
+  if command -v git >/dev/null && [[ "$(git -C "$VLA_ROOT" rev-parse --show-toplevel 2>/dev/null || true)" == "$VLA_ROOT" ]]; then
+    git -C "$VLA_ROOT" submodule update --init RLinf RoboTwin
+  fi
+fi
+python3 "$VLA_ROOT/vla_mtrl/source_identity.py" --root "$VLA_ROOT"
 if ! command -v uv >/dev/null; then
   if [[ ! -x "$VLA_ROOT/.runtime/tools/bootstrap/bin/uv" ]]; then
     python3 -m venv "$VLA_ROOT/.runtime/tools/bootstrap"

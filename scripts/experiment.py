@@ -14,6 +14,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from vla_mtrl.common import ROOT, TASKS, compose, digest, environment, write_json
+from vla_mtrl.source_identity import verify_sources
 
 
 def parser():
@@ -172,8 +173,10 @@ def main():
             *sorted((ROOT / "vla_mtrl").glob("*.py")),
             ROOT / "train_bc.py",
             ROOT / "configs/robotwin_bc.yaml",
+            ROOT / "resources/source_manifest.json",
             Path(__file__).resolve(),
         ]
+        source_provenance = verify_sources(ROOT)
         contract = {
             "tasks": args.tasks,
             "mode": args.mode,
@@ -191,12 +194,8 @@ def main():
                 n: importlib.metadata.version(n)
                 for n in ["torch", "rlinf-openpi", "ray", "transformers", "h5py"]
             },
-            "submodules": {
-                name: subprocess.check_output(
-                    ["git", "-C", str(ROOT / name), "rev-parse", "HEAD"], text=True
-                ).strip()
-                for name in ["RLinf", "RoboTwin"]
-            },
+            "submodules": {name: info["revision"] for name, info in source_provenance.items()},
+            "submodule_provenance": source_provenance,
         }
         contract_path = run / "contract.json"
         if contract_path.exists() and json.loads(contract_path.read_text()) != contract:
