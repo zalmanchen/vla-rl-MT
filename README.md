@@ -12,6 +12,8 @@
 `bash ./setup.sh --verify-sources`，脚本会在两个子模块目录均为空时自动准备并校验源码。
 详见 [ZIP 安装步骤](docs/INSTALL.md)。Python、依赖包、模型和数据仍需可用的下载源或预先准备。
 
+本地离线安装和 Docker 构建、导出、传输步骤见 [离线安装与 Docker](docs/OFFLINE_DOCKER.md)。
+
 ```bash
 git clone --recurse-submodules https://github.com/zalmanchen/vla-rl-MT.git
 cd vla-rl-MT
