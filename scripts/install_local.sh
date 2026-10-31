@@ -11,6 +11,7 @@ ARGS=()
 usage() {
   cat <<'EOF'
 Usage: bash scripts/install_local.sh --bundle /path/to/robotwin-offline-linux-x86_64-py31118.tar.gz [--bundle-dir DIR] [--venv DIR] [--train-only]
+       bash scripts/install_local.sh --bundle /path/to/generated.tar.gz --sha256 SHA256 [--bundle-dir DIR] [--venv DIR]
        bash scripts/install_local.sh --online [--index URL] [--venv DIR] [--train-only]
 Offline mode verifies the known bundle SHA-256 and never downloads dependencies.
 Online mode uses the given Python package index; Python itself may use another host.
@@ -19,6 +20,7 @@ EOF
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --bundle) BUNDLE="${2:?missing bundle path}"; shift 2 ;;
+    --sha256) EXPECTED_SHA256="${2:?missing SHA-256}"; shift 2 ;;
     --bundle-dir) BUNDLE_DIR="${2:?missing bundle directory}"; shift 2 ;;
     --online) MODE=online; shift ;;
     --index) INDEX="${2:?missing index URL}"; shift 2 ;;
@@ -36,6 +38,8 @@ if [[ "$MODE" == online ]]; then
   exec bash "$ROOT/setup.sh" "${ARGS[@]}"
 fi
 [[ -f "$BUNDLE" ]] || { echo 'Provide the offline archive with --bundle; use --help for details.' >&2; exit 2; }
+[[ "$EXPECTED_SHA256" =~ ^[a-fA-F0-9]{64}$ ]] || { echo 'Invalid SHA-256.' >&2; exit 2; }
+EXPECTED_SHA256="${EXPECTED_SHA256,,}"
 command -v sha256sum >/dev/null
 command -v tar >/dev/null
 actual="$(sha256sum -- "$BUNDLE")"; actual="${actual%% *}"
@@ -65,6 +69,10 @@ export VLA_OFFLINE_ROOT="$(cd -- "$BUNDLE_DIR" && pwd -P)"
 export PATH="$VLA_OFFLINE_ROOT/tools/bin:$PATH"
 export UV_PYTHON_INSTALL_DIR="$VLA_OFFLINE_ROOT/tools/python"
 export UV_CACHE_DIR="$VLA_OFFLINE_ROOT/cache/uv"
-export UV_DEFAULT_INDEX=https://mirrors.aliyun.com/pypi/simple/
+if [[ -f "$VLA_OFFLINE_ROOT/cache-index.txt" ]]; then
+  IFS= read -r INDEX < "$VLA_OFFLINE_ROOT/cache-index.txt" || true
+  [[ "$INDEX" == https://* || "$INDEX" == http://* ]] || { echo 'Invalid cached index URL.' >&2; exit 1; }
+fi
+export UV_DEFAULT_INDEX="$INDEX"
 export UV_OFFLINE=1 PIP_NO_INDEX=1
 exec bash "$ROOT/setup.sh" "${ARGS[@]}"

@@ -12,10 +12,11 @@ RUN if [ "$INSTALL_APT" = 1 ]; then \
     else command -v python3 && command -v curl; fi
 
 FROM runtime-base AS builder
+ARG BUNDLE_SHA256=f0d3989656be8c507096c04a30b8b5ce4ffad2f9371787edac24fe76a9453054
 WORKDIR /opt/vla-code
 COPY project/ /opt/vla-code/
 COPY offline-bundle.tar.gz /tmp/offline-bundle.tar.gz
-RUN bash scripts/install_local.sh --bundle /tmp/offline-bundle.tar.gz \
+RUN bash scripts/install_local.sh --bundle /tmp/offline-bundle.tar.gz --sha256 "$BUNDLE_SHA256" \
       --bundle-dir /opt/vla-bundle --venv /opt/vla-env
 
 FROM runtime-base AS final

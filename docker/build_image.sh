@@ -7,9 +7,10 @@ BASE=ubuntu:22.04
 MIRROR=http://mirrors.aliyun.com/ubuntu/
 INSTALL_APT=1
 OUTPUT=""
+SHA=f0d3989656be8c507096c04a30b8b5ce4ffad2f9371787edac24fe76a9453054
 usage() {
   cat <<'EOF'
-Usage: bash docker/build_image.sh --bundle ARCHIVE [--tag IMAGE:TAG] [--base IMAGE] [--apt-mirror URL] [--skip-apt] [--output IMAGE.tar]
+Usage: bash docker/build_image.sh --bundle ARCHIVE [--sha256 SHA256] [--tag IMAGE:TAG] [--base IMAGE] [--apt-mirror URL] [--skip-apt] [--output IMAGE.tar]
 Build uses the offline Python bundle. The base image and Ubuntu apt packages must be available separately.
 --skip-apt is for a preloaded Ubuntu 22.04 base that already contains all documented system libraries.
 --output saves the finished image for transfer; existing output files are not overwritten.
@@ -18,6 +19,7 @@ EOF
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --bundle) BUNDLE="${2:?missing bundle path}"; shift 2 ;;
+    --sha256) SHA="${2:?missing SHA-256}"; shift 2 ;;
     --tag) TAG="${2:?missing image tag}"; shift 2 ;;
     --base) BASE="${2:?missing base image}"; shift 2 ;;
     --apt-mirror) MIRROR="${2:?missing mirror URL}"; shift 2 ;;
@@ -28,6 +30,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 [[ -f "$BUNDLE" ]] || { echo 'Provide the offline archive with --bundle.' >&2; exit 2; }
+[[ "$SHA" =~ ^[a-fA-F0-9]{64}$ ]] || { echo 'Invalid SHA-256.' >&2; exit 2; }
 if [[ -n "$OUTPUT" && ( -e "$OUTPUT" || -L "$OUTPUT" ) ]]; then
   echo "Image output already exists and will not be overwritten: $OUTPUT" >&2; exit 1
 fi
@@ -47,7 +50,7 @@ tar -C "$ROOT" --exclude='__pycache__' --exclude='*.pyc' -cf - \
   configs docs requirements resources scripts vla_mtrl docker | tar -C "$context/project" -xf -
 ln -- "$BUNDLE" "$context/offline-bundle.tar.gz" 2>/dev/null || cp -- "$BUNDLE" "$context/offline-bundle.tar.gz"
 docker build --platform linux/amd64 --build-arg "BASE_IMAGE=$BASE" \
-  --build-arg "APT_MIRROR=$MIRROR" --build-arg "INSTALL_APT=$INSTALL_APT" \
+  --build-arg "APT_MIRROR=$MIRROR" --build-arg "INSTALL_APT=$INSTALL_APT" --build-arg "BUNDLE_SHA256=$SHA" \
   -f "$context/project/docker/Dockerfile" -t "$TAG" "$context"
 if [[ -n "$OUTPUT" ]]; then
   mkdir -p -- "$(dirname -- "$OUTPUT")"

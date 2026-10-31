@@ -9,7 +9,9 @@ from pathlib import Path
 import subprocess
 import tempfile
 
-SOURCE = "https://storage.googleapis.com/big_vision/paligemma_tokenizer.model"
+SOURCE = os.environ.get(
+    "VLA_TOKENIZER_URL", "https://storage.googleapis.com/big_vision/paligemma_tokenizer.model"
+)
 EXPECTED_SHA256 = "8986bb4f423f07f8c7f70d0dbe3526fb2316056c17bae71b1ea975e77a168fc6"
 EXPECTED_BYTES = 4264023
 
