@@ -1,0 +1,37 @@
+{
+  "phase": "在线训练",
+  "job": "single-click_bell-seed0",
+  "updated_unix": 1794033877.3372564,
+  "pid": 3313420,
+  "gpu": {
+    "time_unix": 1794033877.3355381,
+    "used_gib": 44.962890625,
+    "total_gib": 95.5927734375,
+    "utilization_percent": 4.0,
+    "ram": {
+      "total_gib": 125.41332244873047,
+      "available_gib": 24.764694213867188,
+      "used_gib": 100.64862823486328,
+      "pressure_fraction": 0.8025353787753202,
+      "host_available_gib": 24.764694213867188,
+      "cgroup_current_gib": 54.10893249511719,
+      "cgroup_working_gib": 53.25310516357422
+    },
+    "phase": "在线训练",
+    "job": "single-click_bell-seed0",
+    "evaluators": 0,
+    "sampled_training_only_peak_gib": 48.09375
+  },
+  "evaluators": [],
+  "failed_evaluations": {},
+  "ram": {
+    "total_gib": 125.41332244873047,
+    "available_gib": 24.764694213867188,
+    "used_gib": 100.64862823486328,
+    "pressure_fraction": 0.8025353787753202,
+    "host_available_gib": 24.764694213867188,
+    "cgroup_current_gib": 54.10893249511719,
+    "cgroup_working_gib": 53.25310516357422
+  },
+  "runtime_policy": ".runtime/experiments/e7-five-task-curves/runtime-policy.json"
+}

@@ -1,0 +1,278 @@
+{
+  "updated": "2026-11-06T22:40:43.378233+08:00",
+  "state": {
+    "phase": "E6短诊断完成",
+    "detail": "无更新SDE、critic-only、更新一次的PPO已完成；下一步根据证据选择稳定配置。",
+    "pid": 2177966,
+    "updated_unix": 1793975950.0649834
+  },
+  "jobs": [
+    {
+      "name": "critic-only-adjust_bottle-seed0",
+      "completed_iterations": 6,
+      "target": 6,
+      "finished": true,
+      "audited_batches": 1,
+      "latest_audit": {
+        "time_unix": 1793965922.0250137,
+        "optimizer_steps": 0,
+        "rollout_batch_size": 32,
+        "logprob_gap_mean_abs": 0.0001241244754055515,
+        "logprob_gap_max_abs": 0.0047539472579956055,
+        "logprob_gap_p99_abs": 0.0015942701138556004,
+        "denominator": "original rollout logprobs retained",
+        "returns_variance": 0.08903232961893082,
+        "returns_mean": 0.5383564829826355,
+        "advantages_variance": 0.9686731100082397,
+        "advantages_mean": -4.842877388000488e-08,
+        "trainable_parameter_tensors": 8,
+        "only_value_head_trainable": true,
+        "critic_warmup_active": true
+      },
+      "ready_checkpoints": [
+        5,
+        6
+      ],
+      "pending_checkpoints": []
+    },
+    {
+      "name": "ppo-update1-adjust_bottle-seed0",
+      "completed_iterations": 10,
+      "target": 10,
+      "finished": true,
+      "audited_batches": 10,
+      "latest_audit": {
+        "time_unix": 1793972490.7347467,
+        "optimizer_steps": 9,
+        "rollout_batch_size": 32,
+        "logprob_gap_mean_abs": 4.5422453354149184e-07,
+        "logprob_gap_max_abs": 4.9114227294921875e-05,
+        "logprob_gap_p99_abs": 4.76837158203125e-06,
+        "denominator": "original rollout logprobs retained",
+        "matmul_precision": "highest",
+        "cudnn_allow_tf32": false,
+        "returns_variance": 0.07588790357112885,
+        "returns_mean": 0.49017035961151123,
+        "advantages_variance": 0.9686896800994873,
+        "advantages_mean": -3.3527612686157227e-08,
+        "trainable_parameter_tensors": 198,
+        "only_value_head_trainable": false,
+        "critic_warmup_active": false
+      },
+      "ready_checkpoints": [
+        1,
+        5,
+        10
+      ],
+      "pending_checkpoints": []
+    }
+  ],
+  "paired_results": [
+    {
+      "name": "原始参考ODE",
+      "completed": 20,
+      "successes": 9,
+      "target": 20,
+      "paired_episodes": 20,
+      "base_successes_on_same_seeds": 9,
+      "new_wins": 0,
+      "new_losses": 0
+    },
+    {
+      "name": "原始RLinf ODE",
+      "completed": 20,
+      "successes": 10,
+      "target": 20,
+      "paired_episodes": 20,
+      "base_successes_on_same_seeds": 9,
+      "new_wins": 2,
+      "new_losses": 1
+    },
+    {
+      "name": "原始RLinf SDE，无更新",
+      "completed": 20,
+      "successes": 9,
+      "target": 20,
+      "paired_episodes": 20,
+      "base_successes_on_same_seeds": 9,
+      "new_wins": 2,
+      "new_losses": 2
+    },
+    {
+      "name": "原配置PPO，5遍更新，10轮",
+      "completed": 20,
+      "successes": 7,
+      "target": 20,
+      "paired_episodes": 20,
+      "base_successes_on_same_seeds": 9,
+      "new_wins": 2,
+      "new_losses": 4
+    },
+    {
+      "name": "PPO，1遍更新，5轮",
+      "completed": 20,
+      "successes": 11,
+      "target": 20,
+      "paired_episodes": 20,
+      "base_successes_on_same_seeds": 9,
+      "new_wins": 3,
+      "new_losses": 1
+    },
+    {
+      "name": "PPO，1遍更新，10轮",
+      "completed": 20,
+      "successes": 9,
+      "target": 20,
+      "paired_episodes": 20,
+      "base_successes_on_same_seeds": 9,
+      "new_wins": 1,
+      "new_losses": 1
+    }
+  ],
+  "aborted_attempts": [
+    {
+      "path": "/storage/p1/cx/vla-rl-MT/.runtime/experiments/e6-posttraining-diagnostic/aborted-attempts/ppo-update1-patch-sync-oom",
+      "reason": "CUDA OOM in patch-sync delta_encode after completed PPO iteration1, before iteration2. No checkpoint saved.",
+      "completed_iterations": 1,
+      "nominal_actions": 1024,
+      "recovery": "Restart D2 from original Motus with official FP32 bucket sync; preserve all failed-attempt data separately. No learning hyperparameters changed.",
+      "original_sync": "patch/cpu snapshot/delta_encoding=true",
+      "new_sync": "bucket/128MiB/null dtype/cuda/load_instant=true",
+      "time_unix": 1793966839.3618944
+    },
+    {
+      "path": "/storage/p1/cx/vla-rl-MT/.runtime/experiments/e6-posttraining-diagnostic/aborted-attempts/ppo-update1-selective-bucket-audit",
+      "reason": "Selective bucket attempt stopped before first optimizer update: logprob max abs0.01088595 exceeds unchanged0.01 threshold.",
+      "completed_iterations": 0,
+      "nominal_actions": 1024,
+      "recovery": "Use official bucket transport for all state tensors, including frozen weights, matching prior patch initial full synchronization coverage. Save failing batches for further diagnosis; threshold remains0.01.",
+      "time_unix": 1793968037.105409
+    },
+    {
+      "path": "/storage/p1/cx/vla-rl-MT/.runtime/experiments/e6-posttraining-diagnostic/aborted-attempts/ppo-update1-full-bucket-tf32-audit",
+      "reason": "Stopped before fifth optimizer update: one of14336 component errors exceeded0.01 (0.0119457). Four iterations completed; five rollouts collected; no checkpoint before configured save step5.",
+      "completed_iterations": 4,
+      "nominal_actions": 5120,
+      "recovery": "Same-input/same-weight GPU control isolated reduced-precision sensitivity. Disable TF32 on actor and rollout after model construction; preserve threshold0.01. Restart from original Motus. Save an emergency checkpoint before any future audit stop.",
+      "time_unix": 1793969871.2533789
+    },
+    {
+      "path": "/storage/p1/cx/vla-rl-MT/.runtime/experiments/e6-posttraining-diagnostic/aborted-attempts/ppo-update1-strict-fp32-gpu-staging-oom",
+      "reason": "Strict FP32 live audit passed (max0.0000247955) and iteration1 completed, but next rollout model reload hit CUDA OOM. Actor still held26.48GiB at the failure.",
+      "completed_iterations": 1,
+      "nominal_actions": 1024,
+      "recovery": "Use CPU bucket staging with the official syncer, release actor cached GPU allocations after sync coroutine returns, record phase memory, and save checkpoint1 in addition to5/10. Keep strict FP32 and original audit threshold.",
+      "time_unix": 1793971061.052026
+    }
+  ],
+  "numerical_diagnostics": {
+    "default": {
+      "source": "/storage/p1/cx/vla-rl-MT/.runtime/experiments/e6-posttraining-diagnostic/aborted-attempts/ppo-update1-full-bucket-tf32-audit/failed-batch-audit.pt",
+      "failed_batch": {
+        "components": 14336,
+        "component_max_abs": 0.011945724487304688,
+        "component_mean_abs": 0.00015342079859692603,
+        "component_p99_abs": 0.0015442855656147003,
+        "components_over_001": 1,
+        "chunk_ratio_min": 0.9889530539512634,
+        "chunk_ratio_max": 1.0145704746246338,
+        "chunk_ratio_error_max": 0.014570474624633789,
+        "chunk_ratio_error_mean": 0.003716440871357918,
+        "chunks_outside_ppo_clip": 0
+      },
+      "control": "Original Motus weights, stored real inputs, no optimizer updates. This control tests numerical sensitivity; it is not a reload of the lost four-update checkpoint.",
+      "repeat4_vs_train4": {
+        "components": 14336,
+        "component_max_abs": 0.0,
+        "component_mean_abs": 0.0,
+        "component_p99_abs": 0.0,
+        "components_over_001": 0,
+        "chunk_ratio_min": 1.0,
+        "chunk_ratio_max": 1.0,
+        "chunk_ratio_error_max": 0.0,
+        "chunk_ratio_error_mean": 0.0,
+        "chunks_outside_ppo_clip": 0
+      },
+      "train2_vs_train4": {
+        "components": 14336,
+        "component_max_abs": 0.009453058242797852,
+        "component_mean_abs": 0.00014601291331928223,
+        "component_p99_abs": 0.001467410009354353,
+        "components_over_001": 0,
+        "chunk_ratio_min": 0.983655571937561,
+        "chunk_ratio_max": 1.0263419151306152,
+        "chunk_ratio_error_max": 0.026341915130615234,
+        "chunk_ratio_error_mean": 0.004503607749938965,
+        "chunks_outside_ppo_clip": 0
+      },
+      "eval4_vs_train4": {
+        "components": 14336,
+        "component_max_abs": 0.009791851043701172,
+        "component_mean_abs": 0.00015036338299978524,
+        "component_p99_abs": 0.0015312142204493284,
+        "components_over_001": 0,
+        "chunk_ratio_min": 0.9774314165115356,
+        "chunk_ratio_max": 1.0114789009094238,
+        "chunk_ratio_error_max": 0.022568583488464355,
+        "chunk_ratio_error_mean": 0.0041968245059251785,
+        "chunks_outside_ppo_clip": 0
+      },
+      "source_original_path": "/storage/p1/cx/vla-rl-MT/.runtime/experiments/e6-posttraining-diagnostic/jobs/ppo-update1-adjust_bottle-seed0/failed-batch-audit.pt"
+    },
+    "strict_fp32": {
+      "source": "/storage/p1/cx/vla-rl-MT/.runtime/experiments/e6-posttraining-diagnostic/aborted-attempts/ppo-update1-full-bucket-tf32-audit/failed-batch-audit.pt",
+      "failed_batch": {
+        "components": 14336,
+        "component_max_abs": 0.011945724487304688,
+        "component_mean_abs": 0.00015342079859692603,
+        "component_p99_abs": 0.0015442855656147003,
+        "components_over_001": 1,
+        "chunk_ratio_min": 0.9889530539512634,
+        "chunk_ratio_max": 1.0145704746246338,
+        "chunk_ratio_error_max": 0.014570474624633789,
+        "chunk_ratio_error_mean": 0.003716440871357918,
+        "chunks_outside_ppo_clip": 0
+      },
+      "control": "Original Motus weights, stored real inputs, no optimizer updates. This control tests numerical sensitivity; it is not a reload of the lost four-update checkpoint.",
+      "matmul_precision": "highest",
+      "cudnn_allow_tf32": false,
+      "repeat4_vs_train4": {
+        "components": 14336,
+        "component_max_abs": 0.0,
+        "component_mean_abs": 0.0,
+        "component_p99_abs": 0.0,
+        "components_over_001": 0,
+        "chunk_ratio_min": 1.0,
+        "chunk_ratio_max": 1.0,
+        "chunk_ratio_error_max": 0.0,
+        "chunk_ratio_error_mean": 0.0,
+        "chunks_outside_ppo_clip": 0
+      },
+      "train2_vs_train4": {
+        "components": 14336,
+        "component_max_abs": 3.933906555175781e-05,
+        "component_mean_abs": 4.750472726300359e-07,
+        "component_p99_abs": 5.245208740234375e-06,
+        "components_over_001": 0,
+        "chunk_ratio_min": 0.9998779296875,
+        "chunk_ratio_max": 1.0001220703125,
+        "chunk_ratio_error_max": 0.0001220703125,
+        "chunk_ratio_error_mean": 2.4318695068359375e-05,
+        "chunks_outside_ppo_clip": 0
+      },
+      "eval4_vs_train4": {
+        "components": 14336,
+        "component_max_abs": 1.2814998626708984e-05,
+        "component_mean_abs": 3.616421224705846e-07,
+        "component_p99_abs": 3.6954879760742188e-06,
+        "components_over_001": 0,
+        "chunk_ratio_min": 0.9998779296875,
+        "chunk_ratio_max": 1.00006103515625,
+        "chunk_ratio_error_max": 0.0001220703125,
+        "chunk_ratio_error_mean": 2.1219253540039062e-05,
+        "chunks_outside_ppo_clip": 0
+      },
+      "source_original_path": "/storage/p1/cx/vla-rl-MT/.runtime/experiments/e6-posttraining-diagnostic/jobs/ppo-update1-adjust_bottle-seed0/failed-batch-audit.pt"
+    }
+  }
+}

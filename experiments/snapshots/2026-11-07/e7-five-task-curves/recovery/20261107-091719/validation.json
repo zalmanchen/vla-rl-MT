@@ -1,0 +1,27 @@
+{
+  "status": "pass",
+  "unit_tests": 8,
+  "ray_resource_smoke": {
+    "time_unix": 1794014452.2038765,
+    "status": "pass",
+    "ray_version": "2.60.0",
+    "cpu_resources": 16.0,
+    "object_store_bytes": 2147483648.0,
+    "simple_remote_task": 5
+  },
+  "resume_renderer_iteration": 50,
+  "retained_nominal_actions": 256000,
+  "discarded_interactions": {
+    "nominal_actions": 46080,
+    "executed_actions": 44794
+  },
+  "evaluation_files_unchanged": 400,
+  "training_config_files_unchanged": 6,
+  "source_snapshot_files_unchanged": 9,
+  "optimizer_checkpoint_metadata": "contains step and Adam moments",
+  "time_unix": 1794014489.0561934,
+  "live_training_validation": ".runtime/experiments/e7-five-task-curves/recovery/20261107-091719/live-validation.json",
+  "final_check_unix": 1794015369.7917147,
+  "final_controller_alive": true,
+  "final_trainer_alive": true
+}

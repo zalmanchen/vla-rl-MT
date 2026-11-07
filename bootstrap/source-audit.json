@@ -1,0 +1,18 @@
+{
+  "RLinf": {
+    "revision": "e1a82ebf0c1af69da6ab9b1519f5f3692fe33566",
+    "archive_sha256": "bc5c7c6191b0f06956d492482bd6bbab2b4dab98996a1f81d0f32ea3d59a7cfc",
+    "compared_files": 2228,
+    "changed_files": [],
+    "missing_files": [],
+    "extra_python_files": []
+  },
+  "RoboTwin": {
+    "revision": "dca9ec682688821c42944eacd7f5dd9bfb15396f",
+    "archive_sha256": "71228029c168e2085d0b0e8a4526acc0610cf979bb5981d5ff4ca4be50b90397",
+    "compared_files": 735,
+    "changed_files": [],
+    "missing_files": [],
+    "extra_python_files": []
+  }
+}

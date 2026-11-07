@@ -1,0 +1,18 @@
+{
+  "method": "pickle opcode inspection only; no unpickling or execution",
+  "fields": {
+    "global_step": 40000,
+    "name": "pi05_base_finetune_on_aloha_with_robotwin_clean_randomized_mixed",
+    "exp_name": "robotwin_clean_randomized_mixed",
+    "action_horizon": 32,
+    "dtype": "bfloat16",
+    "discrete_state_input": true,
+    "norm_stats": null,
+    "use_quantile_norm": false,
+    "use_delta_joint_actions": true,
+    "adapt_to_pi": true,
+    "batch_size": 128,
+    "num_workers": 16,
+    "num_train_steps": 1000000
+  }
+}

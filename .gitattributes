@@ -1,0 +1,7 @@
+# Preserve byte-for-byte research evidence and frozen snapshot checksums.
+.research/** -text -whitespace
+experiments/snapshots/** -text -whitespace
+*.csv -text whitespace=cr-at-eol
+*.png binary
+*.jpg binary
+*.svg -diff

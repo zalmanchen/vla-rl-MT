@@ -1,0 +1,132 @@
+{
+  "as_of": "2026-11-06T22:39:39.319719+08:00",
+  "task": "adjust_bottle",
+  "training_seed": 0,
+  "target_episodes": 20,
+  "evaluation_seeds": [
+    100100000,
+    100100002,
+    100100003,
+    100100004,
+    100100005,
+    100100006,
+    100100007,
+    100100008,
+    100100009,
+    100100011,
+    100100012,
+    100100013,
+    100100015,
+    100100016,
+    100100017,
+    100100019,
+    100100020,
+    100100021,
+    100100023,
+    100100024
+  ],
+  "training_finished": true,
+  "evaluations": {
+    "base": {
+      "completed": 20,
+      "successes": 9,
+      "same_seed_base_successes": 9,
+      "new_win_seeds": [],
+      "new_loss_seeds": [],
+      "exploratory_exact_mcnemar_p_two_sided": 1.0,
+      "source": ".runtime/experiments/e1-reference-clean/clean/adjust_bottle"
+    },
+    "old_update5_step10": {
+      "completed": 20,
+      "successes": 7,
+      "same_seed_base_successes": 9,
+      "new_win_seeds": [
+        100100004,
+        100100015
+      ],
+      "new_loss_seeds": [
+        100100000,
+        100100008,
+        100100016,
+        100100023
+      ],
+      "exploratory_exact_mcnemar_p_two_sided": 0.6875,
+      "source": ".runtime/experiments/e5-pirl/jobs/single-adjust_bottle-seed0/curve-10/clean/adjust_bottle"
+    },
+    "strict_update1_step5": {
+      "completed": 20,
+      "successes": 11,
+      "same_seed_base_successes": 9,
+      "new_win_seeds": [
+        100100004,
+        100100005,
+        100100019
+      ],
+      "new_loss_seeds": [
+        100100020
+      ],
+      "exploratory_exact_mcnemar_p_two_sided": 0.625,
+      "source": ".runtime/experiments/e6-posttraining-diagnostic/jobs/ppo-update1-adjust_bottle-seed0/evaluation-5/clean/adjust_bottle"
+    },
+    "strict_update1_step10": {
+      "completed": 20,
+      "successes": 9,
+      "same_seed_base_successes": 9,
+      "new_win_seeds": [
+        100100005
+      ],
+      "new_loss_seeds": [
+        100100020
+      ],
+      "exploratory_exact_mcnemar_p_two_sided": 1.0,
+      "source": ".runtime/experiments/e6-posttraining-diagnostic/jobs/ppo-update1-adjust_bottle-seed0/evaluation-10/clean/adjust_bottle"
+    }
+  },
+  "audit": {
+    "batches": 10,
+    "max_component_gap": 4.9114227294921875e-05,
+    "threshold": 0.01,
+    "original_rollout_denominator_retained": true
+  },
+  "critic_explained_variance": [
+    -0.069,
+    0.026,
+    -0.0044,
+    0.027,
+    0.056,
+    0.13,
+    -0.116,
+    -0.3,
+    -0.043,
+    -0.537
+  ],
+  "gradient_norm_before_clipping": [
+    116.6,
+    71.364,
+    158.0,
+    160.0,
+    103.7,
+    122.6,
+    150.8,
+    126.1,
+    130.9,
+    109.1
+  ],
+  "current_attempt_interactions": {
+    "action_chunks": 320,
+    "nominal_action_points": 10240,
+    "executed_action_points": 9791
+  },
+  "evaluation_recovery": {
+    "receipt": ".runtime/experiments/e6-posttraining-diagnostic/jobs/ppo-update1-adjust_bottle-seed0/evaluation-10/recovery/20261106-223204/recovery.json",
+    "previous_six_episodes_unchanged": true,
+    "same_seed_recovered": true
+  },
+  "limits": [
+    "One task and one training seed;20 development scenes, not confirmatory testing.",
+    "Strict math precision and update count changed together; no isolated causal attribution.",
+    "Step5 and step10 were both scheduled and must both be reported.",
+    "D1 critic weights were not reused by D2.",
+    "No controlled multi-task RL degradation result established by E6."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "created_unix": 1793942040.9936423,
+  "files_sha256": {
+    "experiments/prepare_pirl_experiments.py": "223f2b2bb65ae5547d502b84c5bfcaf81fe9d15b6a5990e505ba133a8ece2dba",
+    "experiments/pirl_extension.py": "1ffec01ce9367995ae9c886addcf2f8376ccc8a073f338cced91c9c1e549489f",
+    "experiments/run_pirl_job.py": "664967fd7a8e348b895b4c30d1b05b2dffa31248a4e21869d6d78ab2500d4d4b",
+    "experiments/audit_pirl_zero_update.py": "b945515bdd3c13c1ff89f968fba43efcf7688934f81452851de714461157203f",
+    "experiments/audit_pirl_weight_roundtrip.py": "fa03317c5ce632ae2e706c091a004bb0eb98c783d96df45a871aef218fa5f20f",
+    "experiments/pirl_policy.py": "a2883964747e045eea70139c66d3b3a17ddf342bbad4bc2a1e9d6ee7edae4cc8",
+    "experiments/reference_policy.py": "0db1fdfacb3ced2190dea683f6f6245cee0cede294ec54378d6b97abc52f583d",
+    "experiments/compat.py": "8489a023c160f89a89ac36a39954faa18223ba11f6a24b574c3bfaa025d6bb42",
+    "experiments/eval_pirl.py": "5943639423cfd0332ded369bfba45ee5ce67362cd047aa0df315c78f23266cec",
+    "experiments/pirl_batch_controller.py": "9e56d1aff1b8b885c3c2cac5715e0426e43cadf824537697066266ec4df79e64",
+    "experiments/render_pirl_progress.py": "e82e1174ea1eaa4288cf0da462b232d91509caedcbd5ec6fd04d088a7c526096",
+    "experiments/train_pirl_success_replay.py": "7bd18ece12d7107903a8ffadb8d89fff0474ccf99745e6eb6c71f33c6020cf1e",
+    "bootstrap/finalize_pirl_launch.py": "a65d1e3d7596e7ff9c8b654bf6712c2f8ecc6dc813dfca7572d0e20c7b3a62f9"
+  },
+  "RLinf_revision": "e1a82ebf0c1af69da6ab9b1519f5f3692fe33566",
+  "model_revision": "effc6e1a99bd4d0edf9447e8ba313def67649cfe",
+  "archive": "source-v1"
+}

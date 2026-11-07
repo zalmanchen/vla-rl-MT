@@ -1,0 +1,20 @@
+{
+  "reason": "Finish six incomplete Clean baseline tasks; no training or policy changes",
+  "original_contract_sha256": "2619dc0f6e7cddb72d59826126f1b491c7bf3c2796ebd865da53fe9e8e726e09",
+  "resume_worker_sha256": "0b49f56206a169267e81f7237e98eb199e564936f1dd6101265f09e7ce2b13b6",
+  "tasks": [
+    "handover_mic",
+    "move_can_pot",
+    "shake_bottle",
+    "put_bottles_dustbin",
+    "place_a2b_right",
+    "place_a2b_left"
+  ],
+  "max_new_episodes_per_process": 20,
+  "setup_attempts_per_seed": 3,
+  "seed_policy": "Retry identical scene seed three times; only UnStableError during pre-policy initialization may exclude seed. Use subsequent candidates from same published task list to reach 100 valid episodes. Never replace policy failures. Record final seed manifest.",
+  "assets_path": "/storage/p1/cx/vla-rl-MT/third_party/RoboTwin",
+  "watchdog_seconds": 240,
+  "no_progress_restart_limit": 3,
+  "original_results_preserved": true
+}

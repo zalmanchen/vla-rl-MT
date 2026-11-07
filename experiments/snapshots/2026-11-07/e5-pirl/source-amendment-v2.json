@@ -1,0 +1,7 @@
+{
+  "created_unix": 1793942170.8288867,
+  "file": "experiments/pirl_policy.py",
+  "sha256": "0862c4f128526690119c61b99315358bdc5a8f17ab5cfc6ab17c2430d8991b13",
+  "reason": "state_dict strict loading needs both tied embedding names; safetensors base stores only lm_head alias. Explicitly map identical tensor to embed_tokens, retaining only unused action LM head from original model. mmap loading reduces CPU peak. Training source unchanged.",
+  "archive": "source-v2"
+}

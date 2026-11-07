@@ -1,6 +1,0 @@
-[submodule "RLinf"]
-	path = RLinf
-	url = https://github.com/RLinf/RLinf.git
-[submodule "RoboTwin"]
-	path = RoboTwin
-	url = https://github.com/RoboTwin-Platform/RoboTwin.git

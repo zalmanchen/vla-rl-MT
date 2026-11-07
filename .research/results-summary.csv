@@ -1,0 +1,114 @@
+experiment,variant,task,step,training_seed,successes,completed,target,success_rate,complete,evidence
+E1,Motus SFT,adjust_bottle,0,,47,100,100,0.47,True,.runtime/experiments/e1-reference-clean/clean/adjust_bottle/summary.json
+E1,Motus SFT,beat_block_hammer,0,,21,100,100,0.21,True,.runtime/experiments/e1-reference-clean/clean/beat_block_hammer/summary.json
+E1,Motus SFT,blocks_ranking_rgb,0,,33,100,100,0.33,True,.runtime/experiments/e1-reference-clean/clean/blocks_ranking_rgb/summary.json
+E1,Motus SFT,click_bell,0,,41,100,100,0.41,True,.runtime/experiments/e1-reference-clean/clean/click_bell/summary.json
+E1,Motus SFT,handover_block,0,,0,100,100,0.0,True,.runtime/experiments/e1-reference-clean/clean/handover_block/summary.json
+E1,Motus SFT,handover_mic,0,,8,100,100,0.08,True,.runtime/experiments/e1-reference-clean/clean/handover_mic/summary.json
+E1,Motus SFT,lift_pot,0,,2,100,100,0.02,True,.runtime/experiments/e1-reference-clean/clean/lift_pot/summary.json
+E1,Motus SFT,move_can_pot,0,,14,100,100,0.14,True,.runtime/experiments/e1-reference-clean/clean/move_can_pot/summary.json
+E1,Motus SFT,move_pillbottle_pad,0,,14,100,100,0.14,True,.runtime/experiments/e1-reference-clean/clean/move_pillbottle_pad/summary.json
+E1,Motus SFT,move_stapler_pad,0,,7,100,100,0.07,True,.runtime/experiments/e1-reference-clean/clean/move_stapler_pad/summary.json
+E1,Motus SFT,pick_dual_bottles,0,,4,100,100,0.04,True,.runtime/experiments/e1-reference-clean/clean/pick_dual_bottles/summary.json
+E1,Motus SFT,place_a2b_left,0,,30,100,100,0.3,True,.runtime/experiments/e1-reference-clean/clean/place_a2b_left/summary.json
+E1,Motus SFT,place_a2b_right,0,,31,100,100,0.31,True,.runtime/experiments/e1-reference-clean/clean/place_a2b_right/summary.json
+E1,Motus SFT,place_container_plate,0,,61,100,100,0.61,True,.runtime/experiments/e1-reference-clean/clean/place_container_plate/summary.json
+E1,Motus SFT,place_empty_cup,0,,36,100,100,0.36,True,.runtime/experiments/e1-reference-clean/clean/place_empty_cup/summary.json
+E1,Motus SFT,place_mouse_pad,0,,4,100,100,0.04,True,.runtime/experiments/e1-reference-clean/clean/place_mouse_pad/summary.json
+E1,Motus SFT,place_phone_stand,0,,18,100,100,0.18,True,.runtime/experiments/e1-reference-clean/clean/place_phone_stand/summary.json
+E1,Motus SFT,place_shoe,0,,13,100,100,0.13,True,.runtime/experiments/e1-reference-clean/clean/place_shoe/summary.json
+E1,Motus SFT,put_bottles_dustbin,0,,3,100,100,0.03,True,.runtime/experiments/e1-reference-clean/clean/put_bottles_dustbin/summary.json
+E1,Motus SFT,shake_bottle,0,,75,100,100,0.75,True,.runtime/experiments/e1-reference-clean/clean/shake_bottle/summary.json
+E1,Motus SFT,stack_blocks_two,0,,40,100,100,0.4,True,.runtime/experiments/e1-reference-clean/clean/stack_blocks_two/summary.json
+E1,Motus SFT,stack_bowls_two,0,,64,100,100,0.64,True,.runtime/experiments/e1-reference-clean/clean/stack_bowls_two/summary.json
+E2,PACE single-task SFT,adjust_bottle,0,,,0,100,,False,.research/pace-comparison.json
+E2,PACE single-task SFT,click_bell,0,,,0,100,,False,.research/pace-comparison.json
+E2,PACE single-task SFT,stack_blocks_two,0,,,0,100,,False,.research/pace-comparison.json
+E2,PACE single-task SFT,handover_block,0,,,0,100,,False,.research/pace-comparison.json
+E3,execution_horizon_8,adjust_bottle,0,,0,20,20,0.0,True,.research/results/e3/motus-window-diagnostic.json
+E3,execution_horizon_16,adjust_bottle,0,,6,20,20,0.3,True,.research/results/e3/motus-window-diagnostic.json
+E3,execution_horizon_32,adjust_bottle,0,,9,20,20,0.45,True,.research/results/e3/motus-window-diagnostic.json
+E3,execution_horizon_8,click_bell,0,,4,20,20,0.2,True,.research/results/e3/motus-window-diagnostic.json
+E3,execution_horizon_16,click_bell,0,,10,20,20,0.5,True,.research/results/e3/motus-window-diagnostic.json
+E3,execution_horizon_32,click_bell,0,,8,20,20,0.4,True,.research/results/e3/motus-window-diagnostic.json
+E3,execution_horizon_8,stack_blocks_two,0,,9,20,20,0.45,True,.research/results/e3/motus-window-diagnostic.json
+E3,execution_horizon_16,stack_blocks_two,0,,12,20,20,0.6,True,.research/results/e3/motus-window-diagnostic.json
+E3,execution_horizon_32,stack_blocks_two,0,,7,20,20,0.35,True,.research/results/e3/motus-window-diagnostic.json
+E4,original,adjust_bottle,,0,9,20,20,0.45,True,.research/results/e4/e4-analysis.json
+E4,success_replay,adjust_bottle,,0,8,20,20,0.4,True,.research/results/e4/e4-analysis.json
+E4,single_task_rl,adjust_bottle,,0,9,20,20,0.45,True,.research/results/e4/e4-analysis.json
+E4,multi_task_rl,adjust_bottle,,0,7,20,20,0.35,True,.research/results/e4/e4-analysis.json
+E4,original,click_bell,,0,8,20,20,0.4,True,.research/results/e4/e4-analysis.json
+E4,success_replay,click_bell,,0,5,20,20,0.25,True,.research/results/e4/e4-analysis.json
+E4,single_task_rl,click_bell,,0,8,20,20,0.4,True,.research/results/e4/e4-analysis.json
+E4,multi_task_rl,click_bell,,0,9,20,20,0.45,True,.research/results/e4/e4-analysis.json
+E4,original,stack_blocks_two,,0,7,20,20,0.35,True,.research/results/e4/e4-analysis.json
+E4,success_replay,stack_blocks_two,,0,3,20,20,0.15,True,.research/results/e4/e4-analysis.json
+E4,single_task_rl,stack_blocks_two,,0,4,20,20,0.2,True,.research/results/e4/e4-analysis.json
+E4,multi_task_rl,stack_blocks_two,,0,3,20,20,0.15,True,.research/results/e4/e4-analysis.json
+E4,original,place_empty_cup,,0,9,20,20,0.45,True,.research/results/e4/e4-analysis.json
+E4,success_replay,place_empty_cup,,0,3,20,20,0.15,True,.research/results/e4/e4-analysis.json
+E4,single_task_rl,place_empty_cup,,0,4,20,20,0.2,True,.research/results/e4/e4-analysis.json
+E4,multi_task_rl,place_empty_cup,,0,3,20,20,0.15,True,.research/results/e4/e4-analysis.json
+E4,original,place_container_plate,,0,14,20,20,0.7,True,.research/results/e4/e4-analysis.json
+E4,success_replay,place_container_plate,,0,6,20,20,0.3,True,.research/results/e4/e4-analysis.json
+E4,single_task_rl,place_container_plate,,0,4,20,20,0.2,True,.research/results/e4/e4-analysis.json
+E4,multi_task_rl,place_container_plate,,0,7,20,20,0.35,True,.research/results/e4/e4-analysis.json
+E5,原始多任务SFT,adjust_bottle,0,0,9,20,20,0.45,True,/storage/p1/cx/vla-rl-MT/.runtime/experiments/e1-reference-clean/clean/adjust_bottle
+E5,单任务RL · 10轮,adjust_bottle,10,0,7,20,20,0.35,True,/storage/p1/cx/vla-rl-MT/.runtime/experiments/e5-pirl/jobs/single-adjust_bottle-seed0/curve-10/clean/adjust_bottle
+E5,单任务RL · 20轮,adjust_bottle,20,0,2,20,20,0.1,True,/storage/p1/cx/vla-rl-MT/.runtime/experiments/e5-pirl/jobs/single-adjust_bottle-seed0/curve-20/clean/adjust_bottle
+E5,单任务RL · 100轮,adjust_bottle,100,0,1,20,20,0.05,True,/storage/p1/cx/vla-rl-MT/.runtime/experiments/e5-pirl/jobs/single-adjust_bottle-seed0/evaluation/clean/adjust_bottle
+E6,base,adjust_bottle,0,0,9,20,20,0.45,True,.runtime/experiments/e1-reference-clean/clean/adjust_bottle
+E6,old_update5_step10,adjust_bottle,10,0,7,20,20,0.35,True,.runtime/experiments/e5-pirl/jobs/single-adjust_bottle-seed0/curve-10/clean/adjust_bottle
+E6,strict_update1_step5,adjust_bottle,5,0,11,20,20,0.55,True,.runtime/experiments/e6-posttraining-diagnostic/jobs/ppo-update1-adjust_bottle-seed0/evaluation-5/clean/adjust_bottle
+E6,strict_update1_step10,adjust_bottle,10,0,9,20,20,0.45,True,.runtime/experiments/e6-posttraining-diagnostic/jobs/ppo-update1-adjust_bottle-seed0/evaluation-10/clean/adjust_bottle
+E7,multi-mt5-seed0,adjust_bottle,5,0,9,20,20,0.45,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-5/clean/adjust_bottle
+E7,multi-mt5-seed0,click_bell,5,0,18,20,20,0.9,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-5/clean/click_bell
+E7,multi-mt5-seed0,stack_blocks_two,5,0,4,20,20,0.2,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-5/clean/stack_blocks_two
+E7,multi-mt5-seed0,place_empty_cup,5,0,8,20,20,0.4,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-5/clean/place_empty_cup
+E7,multi-mt5-seed0,place_container_plate,5,0,9,20,20,0.45,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-5/clean/place_container_plate
+E7,multi-mt5-seed0,adjust_bottle,10,0,10,20,20,0.5,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-10/clean/adjust_bottle
+E7,multi-mt5-seed0,click_bell,10,0,17,20,20,0.85,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-10/clean/click_bell
+E7,multi-mt5-seed0,stack_blocks_two,10,0,2,20,20,0.1,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-10/clean/stack_blocks_two
+E7,multi-mt5-seed0,place_empty_cup,10,0,8,20,20,0.4,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-10/clean/place_empty_cup
+E7,multi-mt5-seed0,place_container_plate,10,0,10,20,20,0.5,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-10/clean/place_container_plate
+E7,multi-mt5-seed0,adjust_bottle,20,0,8,20,20,0.4,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-20/clean/adjust_bottle
+E7,multi-mt5-seed0,click_bell,20,0,17,20,20,0.85,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-20/clean/click_bell
+E7,multi-mt5-seed0,stack_blocks_two,20,0,0,20,20,0.0,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-20/clean/stack_blocks_two
+E7,multi-mt5-seed0,place_empty_cup,20,0,6,20,20,0.3,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-20/clean/place_empty_cup
+E7,multi-mt5-seed0,place_container_plate,20,0,10,20,20,0.5,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-20/clean/place_container_plate
+E7,multi-mt5-seed0,adjust_bottle,50,0,6,20,20,0.3,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-50/clean/adjust_bottle
+E7,multi-mt5-seed0,click_bell,50,0,13,20,20,0.65,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-50/clean/click_bell
+E7,multi-mt5-seed0,stack_blocks_two,50,0,1,20,20,0.05,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-50/clean/stack_blocks_two
+E7,multi-mt5-seed0,place_empty_cup,50,0,6,20,20,0.3,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-50/clean/place_empty_cup
+E7,multi-mt5-seed0,place_container_plate,50,0,6,20,20,0.3,True,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-50/clean/place_container_plate
+E7,multi-mt5-seed0,adjust_bottle,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-100/clean/adjust_bottle
+E7,multi-mt5-seed0,click_bell,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-100/clean/click_bell
+E7,multi-mt5-seed0,stack_blocks_two,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-100/clean/stack_blocks_two
+E7,multi-mt5-seed0,place_empty_cup,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-100/clean/place_empty_cup
+E7,multi-mt5-seed0,place_container_plate,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/multi-mt5-seed0/curve-100/clean/place_container_plate
+E7,single-adjust_bottle-seed0,adjust_bottle,5,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-adjust_bottle-seed0/curve-5/clean/adjust_bottle
+E7,single-adjust_bottle-seed0,adjust_bottle,10,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-adjust_bottle-seed0/curve-10/clean/adjust_bottle
+E7,single-adjust_bottle-seed0,adjust_bottle,20,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-adjust_bottle-seed0/curve-20/clean/adjust_bottle
+E7,single-adjust_bottle-seed0,adjust_bottle,50,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-adjust_bottle-seed0/curve-50/clean/adjust_bottle
+E7,single-adjust_bottle-seed0,adjust_bottle,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-adjust_bottle-seed0/curve-100/clean/adjust_bottle
+E7,single-click_bell-seed0,click_bell,5,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-click_bell-seed0/curve-5/clean/click_bell
+E7,single-click_bell-seed0,click_bell,10,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-click_bell-seed0/curve-10/clean/click_bell
+E7,single-click_bell-seed0,click_bell,20,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-click_bell-seed0/curve-20/clean/click_bell
+E7,single-click_bell-seed0,click_bell,50,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-click_bell-seed0/curve-50/clean/click_bell
+E7,single-click_bell-seed0,click_bell,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-click_bell-seed0/curve-100/clean/click_bell
+E7,single-stack_blocks_two-seed0,stack_blocks_two,5,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-stack_blocks_two-seed0/curve-5/clean/stack_blocks_two
+E7,single-stack_blocks_two-seed0,stack_blocks_two,10,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-stack_blocks_two-seed0/curve-10/clean/stack_blocks_two
+E7,single-stack_blocks_two-seed0,stack_blocks_two,20,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-stack_blocks_two-seed0/curve-20/clean/stack_blocks_two
+E7,single-stack_blocks_two-seed0,stack_blocks_two,50,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-stack_blocks_two-seed0/curve-50/clean/stack_blocks_two
+E7,single-stack_blocks_two-seed0,stack_blocks_two,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-stack_blocks_two-seed0/curve-100/clean/stack_blocks_two
+E7,single-place_empty_cup-seed0,place_empty_cup,5,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_empty_cup-seed0/curve-5/clean/place_empty_cup
+E7,single-place_empty_cup-seed0,place_empty_cup,10,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_empty_cup-seed0/curve-10/clean/place_empty_cup
+E7,single-place_empty_cup-seed0,place_empty_cup,20,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_empty_cup-seed0/curve-20/clean/place_empty_cup
+E7,single-place_empty_cup-seed0,place_empty_cup,50,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_empty_cup-seed0/curve-50/clean/place_empty_cup
+E7,single-place_empty_cup-seed0,place_empty_cup,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_empty_cup-seed0/curve-100/clean/place_empty_cup
+E7,single-place_container_plate-seed0,place_container_plate,5,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_container_plate-seed0/curve-5/clean/place_container_plate
+E7,single-place_container_plate-seed0,place_container_plate,10,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_container_plate-seed0/curve-10/clean/place_container_plate
+E7,single-place_container_plate-seed0,place_container_plate,20,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_container_plate-seed0/curve-20/clean/place_container_plate
+E7,single-place_container_plate-seed0,place_container_plate,50,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_container_plate-seed0/curve-50/clean/place_container_plate
+E7,single-place_container_plate-seed0,place_container_plate,100,0,,0,20,,False,.runtime/experiments/e7-five-task-curves/jobs/single-place_container_plate-seed0/curve-100/clean/place_container_plate

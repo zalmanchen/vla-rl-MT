@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "created_unix": 1794014239.3502996,
+  "recovery_archive": ".runtime/experiments/e7-five-task-curves/recovery/20261107-091719",
+  "ray_cpus": 16,
+  "ray_object_store_gib": 2,
+  "eval_ram_reserve_gib": 20,
+  "minimum_ram_headroom_gib": 24,
+  "defer_ram_headroom_gib": 18,
+  "minimum_training_ram_gib": 72,
+  "training_hard_pressure_fraction": 0.92,
+  "evaluation_only_processes": 2,
+  "overlap_eval_processes": 1,
+  "overlap_after_training_iterations": 2,
+  "job_order": [
+    "multi-mt5-seed0",
+    "single-click_bell-seed0",
+    "single-stack_blocks_two-seed0",
+    "single-place_container_plate-seed0",
+    "single-adjust_bottle-seed0",
+    "single-place_empty_cup-seed0"
+  ],
+  "scientific_changes": null,
+  "resume_continuity": "Model and optimizer restored; simulator/RNG continuity is not claimed.",
+  "memory_policy": "Keep Ray OOM protection at 95%; gate both host/container RAM and GPU; fail promptly on fatal worker logs.",
+  "orchestration_sha256": {
+    "pirl_five_task_controller.py": "d974d197cedfd2644931ab9565c1af4b98837390a80995ecc42846b63eb1f3f4",
+    "pirl_runtime_guard.py": "66cc35e6452109d524875a37ce31eb1fa7b3a94d0efcb5ea9e69e7f0d8eeb3d4",
+    "render_pirl_five_task.py": "817d2b171f60301bc8aa9a4410dd90a1b5b9b6a09daf2f36b60caf1ece499d5b",
+    "test_pirl_runtime_guard.py": "d340b8965bb370e0689c94d9b47fea1572b01efd705ed698bde8f57dd294800b"
+  }
+}

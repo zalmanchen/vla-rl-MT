@@ -1,0 +1,33 @@
+{
+  "phase": "finished",
+  "updated_unix": 1793885965.6951125,
+  "episode_counts": {
+    "adjust_bottle": 20,
+    "click_bell": 20,
+    "stack_blocks_two": 20,
+    "place_empty_cup": 20,
+    "place_container_plate": 20
+  },
+  "jobs": [
+    {
+      "task": "click_bell",
+      "exit_code": 0
+    },
+    {
+      "task": "adjust_bottle",
+      "exit_code": 0
+    },
+    {
+      "task": "place_empty_cup",
+      "exit_code": 0
+    },
+    {
+      "task": "stack_blocks_two",
+      "exit_code": 0
+    },
+    {
+      "task": "place_container_plate",
+      "exit_code": 0
+    }
+  ]
+}

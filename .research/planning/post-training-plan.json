@@ -1,0 +1,38 @@
+{
+  "created_at_beijing": "2026-11-06 15:50",
+  "focus": "multi-skill post-training, not restricted to RL",
+  "documents": [
+    "post-training-plan.html",
+    "proposal.md",
+    "paper.md"
+  ],
+  "phases": [
+    "P0 protocol",
+    "P1 route screening",
+    "P2 single versus shared",
+    "P3 mechanism",
+    "P4 scale",
+    "P5 application"
+  ],
+  "starting_checkpoint": "models/pi0.5_robotwin2",
+  "historical_e1": {
+    "tasks": 22,
+    "episodes": 2200,
+    "successes": 566
+  },
+  "frozen_pool": {
+    "episodes": 450,
+    "frames": 119294,
+    "splits": {
+      "train": 385,
+      "value_validation": 65
+    }
+  },
+  "e5_snapshot": {
+    "job": "single-adjust_bottle-seed0",
+    "step": "89/100"
+  },
+  "new_training_launched": false,
+  "running_queue_modified": false,
+  "references_source": "briefing-sources.json"
+}

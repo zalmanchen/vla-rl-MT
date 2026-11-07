@@ -1,0 +1,4299 @@
+[
+  {
+    "repo": "motus-robotics/pi0.5_robotwin2",
+    "type": "model",
+    "revision": "effc6e1a99bd4d0edf9447e8ba313def67649cfe",
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size": null
+      },
+      {
+        "path": "README.md",
+        "size": null
+      },
+      {
+        "path": "assets/pi0.5_clean_randomize_joint_training/norm_stats.json",
+        "size": null
+      },
+      {
+        "path": "metadata.pt",
+        "size": null
+      },
+      {
+        "path": "model.safetensors",
+        "size": null
+      },
+      {
+        "path": "optimizer.pt",
+        "size": null
+      }
+    ],
+    "patterns": [
+      "README.md",
+      "model.safetensors",
+      "assets/**",
+      "metadata.pt"
+    ],
+    "destination": "models/pi0.5_robotwin2"
+  },
+  {
+    "repo": "TianxingChen/RoboTwin2.0",
+    "type": "dataset",
+    "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size": null
+      },
+      {
+        "path": "README.md",
+        "size": null
+      },
+      {
+        "path": "_download.py",
+        "size": null
+      },
+      {
+        "path": "background_texture.zip",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/AHA_WAM/robotwin_ahawam_v21_20260719_212420.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/Abot_M0/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/EventVLA/robotwin_v21_eventvla.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/FastWAM/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/GalaxeaVLA/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/Pi_05/RoboTwin-lerobot_v30-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/Spatial_Forcing/robotwin_v21_offcache.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/X_VLA/RoboTwin-cotrain-aloha_agilex-ee-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/X_WAM/RoboTwin-cotrain-aloha_agilex-ee-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/Xiaomi_Robotics_0/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/starVLA/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "embodiments.zip",
+        "size": null
+      },
+      {
+        "path": "lerobot_dataset/RoboTwin_lerobot_v21.zip",
+        "size": null
+      },
+      {
+        "path": "lerobot_dataset/RoboTwin_lerobot_v30.zip",
+        "size": null
+      },
+      {
+        "path": "objects.zip",
+        "size": null
+      }
+    ],
+    "patterns": [
+      "README.md",
+      "dataset/*/demo_clean.zip",
+      "dataset/*/demo_randomized.zip",
+      "embodiments.zip",
+      "objects.zip",
+      "background_texture.zip"
+    ],
+    "destination": "datasets/RoboTwin2.0"
+  },
+  {
+    "repo": "TianxingChen/RoboTwin2.0",
+    "type": "dataset",
+    "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size": null
+      },
+      {
+        "path": "README.md",
+        "size": null
+      },
+      {
+        "path": "_download.py",
+        "size": null
+      },
+      {
+        "path": "background_texture.zip",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/AHA_WAM/robotwin_ahawam_v21_20260719_212420.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/Abot_M0/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/EventVLA/robotwin_v21_eventvla.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/FastWAM/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/GalaxeaVLA/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/Pi_05/RoboTwin-lerobot_v30-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/Spatial_Forcing/robotwin_v21_offcache.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/X_VLA/RoboTwin-cotrain-aloha_agilex-ee-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/X_WAM/RoboTwin-cotrain-aloha_agilex-ee-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/Xiaomi_Robotics_0/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "cotrain_ckpt/starVLA/RoboTwin-cotrain-aloha_agilex-joint-0.tar.gz",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/adjust_bottle/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/beat_block_hammer/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_rgb/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/blocks_ranking_size/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_alarmclock/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/click_bell/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/dump_bin_bigbin/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/grab_roller/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_block/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/handover_mic/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/hanging_mug/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/lift_pot/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_can_pot/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_pillbottle_pad/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_playingcard_away/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/move_stapler_pad/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_laptop/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/open_microwave/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_diverse_bottles/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/pick_dual_bottles/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_left/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_a2b_right/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_basket/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_bread_skillet/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_burger_fries/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_can_basket/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_cans_plasticbox/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_container_plate/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_dual_shoes/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_empty_cup/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_fan/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_mouse_pad/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_basket/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_scale/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_object_stand/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_phone_stand/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/place_shoe/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/press_stapler/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_bottles_dustbin/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/put_object_cabinet/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/rotate_qrcode/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/scan_object/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/shake_bottle_horizontally/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_three/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_blocks_two/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_three/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stack_bowls_two/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/stamp_seal/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/aloha-agilex_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/aloha-agilex_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/arx-x5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/arx-x5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/demo_clean.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/franka_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/franka_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/piper_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/piper_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/ur5_clean_50.zip",
+        "size": null
+      },
+      {
+        "path": "dataset/turn_switch/ur5_randomized_500.zip",
+        "size": null
+      },
+      {
+        "path": "embodiments.zip",
+        "size": null
+      },
+      {
+        "path": "lerobot_dataset/RoboTwin_lerobot_v21.zip",
+        "size": null
+      },
+      {
+        "path": "lerobot_dataset/RoboTwin_lerobot_v30.zip",
+        "size": null
+      },
+      {
+        "path": "objects.zip",
+        "size": null
+      }
+    ],
+    "patterns": [
+      "dataset/*/aloha-agilex_randomized_500.zip"
+    ],
+    "destination": "datasets/RoboTwin2.0-randomized"
+  }
+]

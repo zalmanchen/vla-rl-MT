@@ -1,0 +1,43 @@
+{
+  "phase": "collection complete; preparing value and policy training",
+  "updated_unix": 1793879026.843553,
+  "algorithm": "RECAP-style advantage-conditioned flow policy improvement, using RLinf CFG policy implementation",
+  "policy_training_started": false,
+  "tasks": [
+    {
+      "task": "adjust_bottle",
+      "episodes": 40,
+      "target": 40,
+      "successes": 23,
+      "failures": 17
+    },
+    {
+      "task": "click_bell",
+      "episodes": 40,
+      "target": 40,
+      "successes": 20,
+      "failures": 20
+    },
+    {
+      "task": "stack_blocks_two",
+      "episodes": 40,
+      "target": 40,
+      "successes": 13,
+      "failures": 27
+    },
+    {
+      "task": "place_empty_cup",
+      "episodes": 40,
+      "target": 40,
+      "successes": 18,
+      "failures": 22
+    },
+    {
+      "task": "place_container_plate",
+      "episodes": 40,
+      "target": 40,
+      "successes": 18,
+      "failures": 22
+    }
+  ]
+}

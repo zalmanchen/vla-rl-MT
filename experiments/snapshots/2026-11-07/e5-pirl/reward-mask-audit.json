@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "counts": [
+    10,
+    32,
+    0,
+    7
+  ],
+  "reward_sums": [
+    1.0,
+    1.0,
+    0.0,
+    0.0
+  ],
+  "all_rewards_inside_executed_action_mask": true
+}

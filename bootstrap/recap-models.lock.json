@@ -1,0 +1,91 @@
+[
+  {
+    "repo": "google/gemma-3-270m",
+    "revision": "9b0cfec892e2bc2afd938c98eabe4e4a7b1e0ca1",
+    "destination": "models/gemma-3-270m",
+    "files": [
+      {
+        "path": "added_tokens.json",
+        "bytes": 35,
+        "sha256": null
+      },
+      {
+        "path": "config.json",
+        "bytes": 1352,
+        "sha256": null
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 133,
+        "sha256": null
+      },
+      {
+        "path": "model.safetensors",
+        "bytes": 536223056,
+        "sha256": "abb58eb73aece5163624090d5383c59cbcdb9e9539ec84cb864f74386c4b21d5"
+      },
+      {
+        "path": "special_tokens_map.json",
+        "bytes": 662,
+        "sha256": null
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 33384570,
+        "sha256": "7d4046bf0505a327dd5a0abbb427ecd4fc82f99c2ceaa170bc61ecde12809b0c"
+      },
+      {
+        "path": "tokenizer.model",
+        "bytes": 4689074,
+        "sha256": "1299c11d7cf632ef3b4e11937501358ada021bbdf7c47638d13c0ee982f2e79c"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 1155375,
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "repo": "google/siglip2-so400m-patch14-224",
+    "revision": "78e403963a4f6a3640d07803284752326fdf4edf",
+    "destination": "models/siglip2-so400m-patch14-224",
+    "files": [
+      {
+        "path": "config.json",
+        "bytes": 536,
+        "sha256": null
+      },
+      {
+        "path": "model.safetensors",
+        "bytes": 4541963488,
+        "sha256": "2041e5330b3db96299b26bc3a6506c7fa8d5e61d5c94f267dd8aa4cfb12c1050"
+      },
+      {
+        "path": "preprocessor_config.json",
+        "bytes": 394,
+        "sha256": null
+      },
+      {
+        "path": "special_tokens_map.json",
+        "bytes": 636,
+        "sha256": null
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 34363039,
+        "sha256": "cb9140fae3ac5122c972d37adf83e1248471a38147ad76f8215c8872c6fd8322"
+      },
+      {
+        "path": "tokenizer.model",
+        "bytes": 4241003,
+        "sha256": "61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 47164,
+        "sha256": null
+      }
+    ]
+  }
+]

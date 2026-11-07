@@ -1,0 +1,99 @@
+{
+  "phase": "complete",
+  "updated_unix": 1793866307.8505473,
+  "episodes_per_cell": 20,
+  "scope": "diagnostic only: first 20 frozen E1 test scenes; do not use these to tune final test parameters",
+  "h32_source": "original E1 results, reused without rerunning",
+  "tasks": [
+    {
+      "task": "adjust_bottle",
+      "execution_horizon": 8,
+      "completed": 20,
+      "target": 20,
+      "successes": 0,
+      "success_rate": 0.0,
+      "new_wins_vs_h32": 0,
+      "new_losses_vs_h32": 9
+    },
+    {
+      "task": "adjust_bottle",
+      "execution_horizon": 16,
+      "completed": 20,
+      "target": 20,
+      "successes": 6,
+      "success_rate": 0.3,
+      "new_wins_vs_h32": 2,
+      "new_losses_vs_h32": 5
+    },
+    {
+      "task": "adjust_bottle",
+      "execution_horizon": 32,
+      "completed": 20,
+      "target": 20,
+      "successes": 9,
+      "success_rate": 0.45,
+      "new_wins_vs_h32": 0,
+      "new_losses_vs_h32": 0
+    },
+    {
+      "task": "click_bell",
+      "execution_horizon": 8,
+      "completed": 20,
+      "target": 20,
+      "successes": 4,
+      "success_rate": 0.2,
+      "new_wins_vs_h32": 2,
+      "new_losses_vs_h32": 6
+    },
+    {
+      "task": "click_bell",
+      "execution_horizon": 16,
+      "completed": 20,
+      "target": 20,
+      "successes": 10,
+      "success_rate": 0.5,
+      "new_wins_vs_h32": 3,
+      "new_losses_vs_h32": 1
+    },
+    {
+      "task": "click_bell",
+      "execution_horizon": 32,
+      "completed": 20,
+      "target": 20,
+      "successes": 8,
+      "success_rate": 0.4,
+      "new_wins_vs_h32": 0,
+      "new_losses_vs_h32": 0
+    },
+    {
+      "task": "stack_blocks_two",
+      "execution_horizon": 8,
+      "completed": 20,
+      "target": 20,
+      "successes": 9,
+      "success_rate": 0.45,
+      "new_wins_vs_h32": 5,
+      "new_losses_vs_h32": 3
+    },
+    {
+      "task": "stack_blocks_two",
+      "execution_horizon": 16,
+      "completed": 20,
+      "target": 20,
+      "successes": 12,
+      "success_rate": 0.6,
+      "new_wins_vs_h32": 7,
+      "new_losses_vs_h32": 2
+    },
+    {
+      "task": "stack_blocks_two",
+      "execution_horizon": 32,
+      "completed": 20,
+      "target": 20,
+      "successes": 7,
+      "success_rate": 0.35,
+      "new_wins_vs_h32": 0,
+      "new_losses_vs_h32": 0
+    }
+  ]
+}

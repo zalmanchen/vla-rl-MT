@@ -1,0 +1,109 @@
+{
+  "updated_at_beijing": "2026-11-06 15:30",
+  "review_scope": "First incremental set on dexterous manipulation: supervised imitation, fixed-data RL, online and offline-to-online RL. Not an exhaustive systematic review.",
+  "papers": [
+    {
+      "number": 15,
+      "name": "DP3",
+      "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
+      "publication": "RSS 2024",
+      "url": "https://www.roboticsproceedings.org/rss20/p067.pdf",
+      "project": "https://3d-diffusion-policy.github.io/",
+      "resource_url": "https://github.com/YanjieZe/3D-Diffusion-Policy",
+      "setting": "监督式模仿学习 / BC",
+      "embodiment": "仿真多种手型；实机 3 个 Allegro 手臂手任务及 1 个夹爪任务",
+      "use": "灵巧操作可以由监督式模仿学习取得较好结果；表示与数据质量影响效果。",
+      "limitation": "并非 π0.5 SFT 与 RL 的受控比较；实机汇总结果包含夹爪任务。",
+      "open_scope": "官方策略代码，项目页提供仿真与实机数据入口"
+    },
+    {
+      "number": 16,
+      "name": "DexMimicGen",
+      "title": "DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning",
+      "publication": "ICRA 2025",
+      "url": "https://arxiv.org/abs/2410.24185",
+      "project": "https://dexmimicgen.github.io/",
+      "resource_url": "https://github.com/NVlabs/dexmimicgen",
+      "setting": "自动生成示范 + BC",
+      "embodiment": "双臂灵巧操作；仿真与 Real2Sim2Real 验证",
+      "use": "扩展示范数据覆盖是可行的性能改善路径，不能预设 RL 是唯一选择。",
+      "limitation": "示范扩展本身有采集／生成成本；不能据此证明单个通用 VLA 联合训练一定成功。",
+      "open_scope": "官方仓库明确提供仿真环境与数据集；未认定完整生成管线均开源"
+    },
+    {
+      "number": 17,
+      "name": "IQL",
+      "title": "Offline Reinforcement Learning with Implicit Q-Learning",
+      "publication": "ICLR 2022",
+      "url": "https://arxiv.org/abs/2110.06169",
+      "project": "https://arxiv.org/pdf/2110.06169",
+      "resource_url": "https://github.com/ikostrikov/implicit_q_learning",
+      "setting": "固定数据 offline RL，另有 offline-to-online 实验",
+      "embodiment": "D4RL，包括仿真 Adroit 灵巧手与 Kitchen",
+      "use": "固定经验可用于价值学习与优势加权；原文指出其 Adroit / Kitchen 中多数 RL 方法与模仿学习接近。",
+      "limitation": "表 3 是归一化回报，不是成功率；不证明现代视觉 π0.5 在灵巧手上的 RL 增益。",
+      "open_scope": "官方算法代码"
+    },
+    {
+      "number": 18,
+      "name": "DAPG",
+      "title": "Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations",
+      "publication": "RSS 2018",
+      "url": "https://www.roboticsproceedings.org/rss14/p49.pdf",
+      "project": "https://sites.google.com/view/deeprl-dexterous-manipulation",
+      "resource_url": "https://github.com/aravindr93/hand_dapg",
+      "setting": "BC 初始化 + 示范辅助的在线策略梯度",
+      "embodiment": "仿真 24 自由度灵巧手；搬移、笔操作、锤击与开门",
+      "use": "示范可以帮助在线 RL 降低样本需求；是先模仿再交互优化的直接灵巧手证据。",
+      "limitation": "论文以仿真为主；等效机器人小时不等于真实硬件训练小时；不是 flow VLA 方法。",
+      "open_scope": "官方代码、示范及策略；训练算法与环境在关联仓库"
+    },
+    {
+      "number": 19,
+      "name": "AWAC",
+      "title": "AWAC: Accelerating Online Reinforcement Learning with Offline Datasets",
+      "publication": "2020 / 2021 · arXiv",
+      "url": "https://arxiv.org/abs/2006.09359",
+      "project": "https://awacrl.github.io/",
+      "resource_url": "https://github.com/rail-berkeley/rlkit/tree/master/examples/awac",
+      "setting": "offline-to-online RL",
+      "embodiment": "仿真与实机；包括真实多指手、机械臂抽屉与阀门",
+      "use": "先利用历史经验，再通过新增交互改善策略；连接离线数据复用与在线纠偏。",
+      "limitation": "存在在线采集，不能把最终提升算作纯 offline RL；非现成 π0.5 配方。",
+      "open_scope": "官方算法代码及环境入口"
+    }
+  ],
+  "existing_vla_references": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    14
+  ],
+  "interpretation": [
+    "The label dexterous manipulation alone does not determine the preferred learning objective.",
+    "IL/BC evidence is not automatically pretrained-VLA SFT evidence.",
+    "Simulation interaction is online interaction; deployment without updates does not make prior training offline RL.",
+    "Success/failure mixtures can be useful but are not required by the definition of offline RL.",
+    "Final offline-to-online gains must not be attributed solely to the offline phase.",
+    "Existing local RECAP degradation does not establish a general offline-RL disadvantage."
+  ],
+  "future_extraction_fields": [
+    "embodiment and sensor modality",
+    "simulation or real robot",
+    "one policy or per-task policies",
+    "policy family and pretrained checkpoint",
+    "demonstration / autonomous / human intervention data",
+    "reward source",
+    "extra interaction and reset cost",
+    "matched baselines and uncertainty",
+    "publication and exact release scope"
+  ],
+  "future_experiments": {
+    "fixed_data": "same checkpoint + frozen D: supervised expert/success replay versus offline RL",
+    "online": "same checkpoint + initial D + matched interaction budget: online RL versus online success-replay loop",
+    "paired_replay": "replay each collected dataset with different learners as a supplementary data-controlled comparison",
+    "status": "proposal only"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "baseline_full_local": {
+    "tasks": 22,
+    "episodes": 2200,
+    "successes": 566,
+    "rate": 0.25727272727272726,
+    "source": ".research/e1-results.json"
+  },
+  "baseline_paired_local": {
+    "tasks": 5,
+    "episodes": 100,
+    "successes": 47,
+    "rate": 0.47,
+    "source": ".runtime/experiments/e4-offline-rl/pilot-results.json"
+  },
+  "recommended_next_candidate": "piRL Flow-SDE + PPO (online)",
+  "available_config": "third_party/RLinf/examples/embodiment/config/robotwin_adjust_bottle_ppo_openpi_pi05.yaml",
+  "selection_reason": "现有 RLinf 具备 RoboTwin 与 pi0.5 配置及 flow_sde 概率建模，无需优势条件预训练；仍需适配本地 Motus 权重、32步动作块、单卡资源与评估协议。",
+  "alternatives": [
+    {
+      "method": "ReinFlow",
+      "setting": "online",
+      "publication": "NeurIPS 2025",
+      "source": "https://github.com/ReinFlow/ReinFlow"
+    },
+    {
+      "method": "FQL",
+      "setting": "offline / offline-to-online",
+      "publication": "ICML 2025",
+      "source": "https://github.com/seohongpark/fql",
+      "limitation": "通过额外一步策略进行 Q 优化；非现成 pi0.5 RoboTwin 配方"
+    }
+  ],
+  "sources": [
+    "https://arxiv.org/abs/2510.25889",
+    "https://rlinf.readthedocs.io/en/latest/rst_source/examples/embodied/robotwin.html"
+  ],
+  "status": "candidate selected for recommendation; no new training launched"
+}

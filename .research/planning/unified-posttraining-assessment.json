@@ -1,0 +1,114 @@
+{
+  "updated_at": "2026-11-06T19:51:32.224968+08:00",
+  "status": "research hypothesis and conditional plan, not a validated contribution",
+  "user_confirmed_hardware": "dexterous hand or dual-arm dexterous robot; exact model not yet specified",
+  "research_question": "有限示范与交互预算下，一个已有通用策略如何共同改善多项灵巧操作技能，同时控制其他技能的退化？",
+  "hypothesis": "不同任务的示范覆盖、奖励／价值估计可靠性和更新冲突不同；统一更新强度或仅按loss调比例可能错配学习信号。能否用可验证的收益与保留证据决定各任务采用监督更新、奖励更新或暂缓更新？",
+  "evidence_correction": [
+    "SFT ST/MT difference currently relies largely on cross-paper results, not controlled causal evidence.",
+    "Local E4 ST and MT RECAP both29/100; no overall multitask penalty demonstrated.",
+    "Completed E5 RL failure is single-task; it does not identify multitask interference."
+  ],
+  "prior_art": [
+    {
+      "name": "RLinf-Co",
+      "url": "https://arxiv.org/html/2602.12628v1",
+      "location": "§IV-B Eq.8；§V；附录VII-D",
+      "known": "已在π0.5等VLA上把仿真RL与实机监督损失联合优化。固定权重SFT＋RL必须作为强基线；只加一个SFT项不足以构成新方法。"
+    },
+    {
+      "name": "SOP",
+      "url": "https://arxiv.org/html/2601.03044v1",
+      "location": "§IV-C、IV-D、V-C",
+      "known": "已研究共享策略的多任务后训练；任务间均衡、任务内按近期loss调整在线／离线采样。因此，简单按任务调整数据比例也不是空白。"
+    },
+    {
+      "name": "LWD",
+      "url": "https://arxiv.org/html/2605.00416v1",
+      "location": "§IV、V",
+      "known": "已在16台双臂机器人、8个实机任务上研究同一generalist策略的offline-to-online改进。不能将“单策略、多任务、部署后改善”本身称作新问题。"
+    },
+    {
+      "name": "RECAP / π*0.6",
+      "url": "https://www.pi.website/download/pistar06.pdf",
+      "location": "§IV–VI",
+      "known": "从示范、成败经验与纠正中提取学习信号；优势条件化提供与直接策略梯度不同的后训练路径。"
+    },
+    {
+      "name": "CEL / FERT",
+      "url": "https://arxiv.org/html/2610.25736v1",
+      "location": "§3.1、实验与附录B",
+      "known": "成功片段监督训练也可改善执行；用失败上下文选择经验是重要对照。其任务分别训练，不能直接视作一个多任务策略的实验。"
+    },
+    {
+      "name": "ReinFlow",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/98d6f928497d9eaad9f320fb2db3040d-Paper-Conference.pdf",
+      "location": "§4.4、§6",
+      "known": "已讨论保持初始策略的正则与探索之间的权衡。新增保持项本身也不能替代机制创新。"
+    }
+  ],
+  "stages": [
+    [
+      "当前E6：稳定性诊断",
+      "无更新SDE；5轮critic-only，另续跑1轮核验批次审计；10轮update_epoch=1的PPO。",
+      "先确认单任务退化是否来自接入、价值估计或更新强度。队列已启动，具体状态见实时进度；不算SFT＋RL新方法结果。"
+    ],
+    [
+      "下一步：受控小矩阵",
+      "3任务、1种子：继续监督训练、稳定后的RL、固定权重SFT＋RL。补充单任务对应参照。",
+      "判断固定混合能否改善，以及是否仍存在任务间收益不均／退化。未启动。"
+    ],
+    [
+      "机制验证",
+      "在相同数据与预算下，检验信号可靠性、任务冲突与收益的关系；再比较候选方法。",
+      "固定混合、SOP式数据比例调节、PCGrad／参数隔离是竞争解释或对照；先选一个核心机制。"
+    ],
+    [
+      "仿真扩展",
+      "逐步增加任务数和训练种子，报告收益、退化、最差任务与成本。",
+      "先3／5／10任务，稳定后再20及以上；无需先完成50任务大矩阵。"
+    ],
+    [
+      "灵巧实机核心验证",
+      "同一策略完成多种接触操作；加入对象／布局变化、扰动和新任务组合。",
+      "用户已确认可使用灵巧手或双臂灵巧手实机；具体任务由手型、传感和重置条件确定。"
+    ]
+  ],
+  "baselines": [
+    [
+      "原始策略",
+      "统一的已有多任务SFT起点；不重新做RoboTwin初始SFT。"
+    ],
+    [
+      "继续SFT／成功重放",
+      "区分示范监督与加入成功自主经验的收益；后者记录额外数据成本。"
+    ],
+    [
+      "稳定后的RL",
+      "先获得有效单任务配置，再研究共享训练；当前退化PPO不能作为唯一RL基线。"
+    ],
+    [
+      "固定权重SFT＋RL",
+      "最直接且必须较强的竞争基线；可利用RLinf已有co-training实现。"
+    ],
+    [
+      "按任务调节数据比例",
+      "检验改进是否仅由重采样带来，对照SOP相关思路。"
+    ],
+    [
+      "候选机制",
+      "只有在收益、退化和预算上超越上述对照，才讨论新增方法价值。"
+    ]
+  ],
+  "journal_assessment": "Potential Science Robotics direction if it delivers a distinct mechanism and substantial, reproducible dexterous real-robot capability; simple loss addition or a RoboTwin-only gain is currently insufficient in our assessment. This is a research judgment, not a journal requirement or acceptance prediction.",
+  "journal_source_access": "Author/mission pages returned403 during review. No detailed editorial criteria are attributed to unread pages.",
+  "method_status": "Task-dependent allocation across supervised and reward-driven updates is a candidate; novelty versus SOP, RLinf-Co, LWD and related methods remains to be established.",
+  "fairness": [
+    "Same initialization and embodiment mapping for each method.",
+    "Account separately for demonstrations, autonomous episodes, corrections, resets and compute.",
+    "Use fixed-data experiments to isolate learning-rule effects; online experiments separately measure collection-policy effects.",
+    "Tasks used in retention replay are not unseen post-training tasks.",
+    "Use development scenes for decisions and independent tests for final claims; retain all scheduled checkpoints."
+  ],
+  "hardware_constraint": "Motus RoboTwin checkpoint uses the ALOHA14-dimensional robot action interface. Dexterous hand control requires a compatible embodiment/action interface and a common adapted initialization; current RoboTwin results are not dexterous-hand results."
+}

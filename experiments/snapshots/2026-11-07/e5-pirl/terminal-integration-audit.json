@@ -1,0 +1,7 @@
+{
+  "status": "pass",
+  "scope": "artificial forced-success integration test only; scene and data excluded from training/evaluation",
+  "terminal_executed_count": 1,
+  "reward_slot": 0,
+  "reward_sum": 1.0
+}

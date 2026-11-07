@@ -1,0 +1,13 @@
+{
+  "created_unix": 1793942808.266077,
+  "files_sha256": {
+    "experiments/pirl_extension.py": "167bec9c7ac8394bb10a68154e732db213222b0c1cbb827b69c922590a234d84",
+    "experiments/pirl_rewards.py": "dfa8621ac160134b81ced725df2a92534b369b315499f744d98832eb9bad279d",
+    "experiments/pirl_batch_controller.py": "1883004c4c5963bb0725cc68262c68a3927ededf0142712f7a05ccaafae12ff2",
+    "experiments/pirl_policy.py": "0862c4f128526690119c61b99315358bdc5a8f17ab5cfc6ab17c2430d8991b13",
+    "experiments/smoke_pirl_terminal.py": "fd204468638da7ef307772d1956fbf36260fba51d034300d4ec109324d26aeb7",
+    "experiments/render_pirl_progress.py": "479a80af04693d8ecb6fad441a4641f124efa3be6463f86e8dbbc142836544da"
+  },
+  "reason": "track actually completed control points through simulator collect_obs path with no intermediate RGB capture; verified 1/32 early-success reward remains inside valid mask; formal PPO restarts original weights",
+  "archive": "source-v4"
+}

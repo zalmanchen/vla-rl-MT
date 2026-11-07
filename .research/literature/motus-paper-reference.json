@@ -1,0 +1,142 @@
+{
+  "source": "https://arxiv.org/html/2512.13030v2",
+  "table": "Table 14, pi0.5 Clean column",
+  "scope": "paper-reported external reference; evaluation protocols are not matched",
+  "paper_all_50_clean_percent": 42.98,
+  "paper_matching_22_clean_percent": 46.36363636363637,
+  "local_22_clean_percent": 25.727272727272727,
+  "tasks": [
+    {
+      "task": "adjust_bottle",
+      "paper_clean_percent": 79,
+      "local_clean_percent": 47.0,
+      "local_minus_paper_pp": -32.0
+    },
+    {
+      "task": "beat_block_hammer",
+      "paper_clean_percent": 63,
+      "local_clean_percent": 21.0,
+      "local_minus_paper_pp": -42.0
+    },
+    {
+      "task": "blocks_ranking_rgb",
+      "paper_clean_percent": 43,
+      "local_clean_percent": 33.0,
+      "local_minus_paper_pp": -10.0
+    },
+    {
+      "task": "click_bell",
+      "paper_clean_percent": 75,
+      "local_clean_percent": 41.0,
+      "local_minus_paper_pp": -34.0
+    },
+    {
+      "task": "handover_block",
+      "paper_clean_percent": 18,
+      "local_clean_percent": 0.0,
+      "local_minus_paper_pp": -18.0
+    },
+    {
+      "task": "handover_mic",
+      "paper_clean_percent": 28,
+      "local_clean_percent": 8.0,
+      "local_minus_paper_pp": -20.0
+    },
+    {
+      "task": "lift_pot",
+      "paper_clean_percent": 0,
+      "local_clean_percent": 2.0,
+      "local_minus_paper_pp": 2.0
+    },
+    {
+      "task": "move_can_pot",
+      "paper_clean_percent": 29,
+      "local_clean_percent": 14.0,
+      "local_minus_paper_pp": -15.0
+    },
+    {
+      "task": "move_pillbottle_pad",
+      "paper_clean_percent": 33,
+      "local_clean_percent": 14.0,
+      "local_minus_paper_pp": -19.0
+    },
+    {
+      "task": "move_stapler_pad",
+      "paper_clean_percent": 16,
+      "local_clean_percent": 7.0,
+      "local_minus_paper_pp": -9.0
+    },
+    {
+      "task": "pick_dual_bottles",
+      "paper_clean_percent": 10,
+      "local_clean_percent": 4.0,
+      "local_minus_paper_pp": -6.0
+    },
+    {
+      "task": "place_a2b_left",
+      "paper_clean_percent": 62,
+      "local_clean_percent": 30.0,
+      "local_minus_paper_pp": -32.0
+    },
+    {
+      "task": "place_a2b_right",
+      "paper_clean_percent": 62,
+      "local_clean_percent": 31.0,
+      "local_minus_paper_pp": -31.0
+    },
+    {
+      "task": "place_container_plate",
+      "paper_clean_percent": 71,
+      "local_clean_percent": 61.0,
+      "local_minus_paper_pp": -10.0
+    },
+    {
+      "task": "place_empty_cup",
+      "paper_clean_percent": 75,
+      "local_clean_percent": 36.0,
+      "local_minus_paper_pp": -39.0
+    },
+    {
+      "task": "place_mouse_pad",
+      "paper_clean_percent": 21,
+      "local_clean_percent": 4.0,
+      "local_minus_paper_pp": -17.0
+    },
+    {
+      "task": "place_phone_stand",
+      "paper_clean_percent": 49,
+      "local_clean_percent": 18.0,
+      "local_minus_paper_pp": -31.0
+    },
+    {
+      "task": "place_shoe",
+      "paper_clean_percent": 57,
+      "local_clean_percent": 13.0,
+      "local_minus_paper_pp": -44.0
+    },
+    {
+      "task": "put_bottles_dustbin",
+      "paper_clean_percent": 12,
+      "local_clean_percent": 3.0,
+      "local_minus_paper_pp": -9.0
+    },
+    {
+      "task": "shake_bottle",
+      "paper_clean_percent": 91,
+      "local_clean_percent": 75.0,
+      "local_minus_paper_pp": -16.0
+    },
+    {
+      "task": "stack_blocks_two",
+      "paper_clean_percent": 48,
+      "local_clean_percent": 40.0,
+      "local_minus_paper_pp": -8.0
+    },
+    {
+      "task": "stack_bowls_two",
+      "paper_clean_percent": 78,
+      "local_clean_percent": 64.0,
+      "local_minus_paper_pp": -14.0
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "verified_at": "2026-11-07T00:38:32+08:00",
+  "moved_files_sha256_verified": 97,
+  "original_backups_verified": 14,
+  "generator_backups_verified": 12,
+  "python_scripts_compiled": 15,
+  "documents_link_checked": 18,
+  "local_links_valid": 231,
+  "csv_rows_by_experiment": {
+    "E1": 22,
+    "E2": 4,
+    "E3": 9,
+    "E4": 20,
+    "E5": 4,
+    "E6": 4,
+    "E7": 50
+  },
+  "pending_rates_blank": true,
+  "dry_run_moves": 0,
+  "active_hydra_skipped": [
+    {
+      "path": "outputs/2026-11-06/23-00-41",
+      "reason": "open by a running process"
+    }
+  ],
+  "e1_compatibility_alias_valid": true,
+  "live_e7_controller_pid": 2191551,
+  "live_e7_snapshot_time": "2026-11-07T00:38:20.280284+08:00",
+  "live_e7_iteration": 21,
+  "live_e7_failed_evaluations": {},
+  "no_checkpoints_or_trajectories_deleted": true
+}

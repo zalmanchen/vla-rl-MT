@@ -1,0 +1,49 @@
+{
+  "status": "pass",
+  "time_unix": 1794015317.2238355,
+  "trainer_pid": 3313498,
+  "controller_pid": 3313420,
+  "restored_start_step": 50,
+  "restored_optimizer_steps": 250,
+  "completed_updates_after_resume": 2,
+  "last_completed_iteration": 52,
+  "max_logprob_gap_after_resume": 3.147125244140625e-05,
+  "resource_snapshot": {
+    "phase": "在线训练",
+    "job": "multi-mt5-seed0",
+    "updated_unix": 1794015315.7960324,
+    "pid": 3313420,
+    "gpu": {
+      "time_unix": 1794015315.7943347,
+      "used_gib": 43.1201171875,
+      "total_gib": 95.5927734375,
+      "utilization_percent": 1.0,
+      "ram": {
+        "total_gib": 125.41332244873047,
+        "available_gib": 43.18589782714844,
+        "used_gib": 82.22742462158203,
+        "pressure_fraction": 0.6556514333251715,
+        "host_available_gib": 43.18589782714844,
+        "cgroup_current_gib": 87.0508804321289,
+        "cgroup_working_gib": 60.500709533691406
+      },
+      "phase": "在线训练",
+      "job": "multi-mt5-seed0",
+      "evaluators": 0,
+      "sampled_training_only_peak_gib": 47.2568359375
+    },
+    "evaluators": [],
+    "failed_evaluations": {},
+    "ram": {
+      "total_gib": 125.41332244873047,
+      "available_gib": 43.18589782714844,
+      "used_gib": 82.22742462158203,
+      "pressure_fraction": 0.6556514333251715,
+      "host_available_gib": 43.18589782714844,
+      "cgroup_current_gib": 87.0508804321289,
+      "cgroup_working_gib": 60.500709533691406
+    },
+    "runtime_policy": ".runtime/experiments/e7-five-task-curves/runtime-policy.json"
+  },
+  "scope": "Two real resumed training updates; not proof of long-run memory stability."
+}

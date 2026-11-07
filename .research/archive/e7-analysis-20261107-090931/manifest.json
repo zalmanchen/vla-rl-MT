@@ -1,0 +1,41 @@
+{
+  "reason": "Preserve previous reporting state before interrupted-run analysis; raw experiment files unchanged.",
+  "files": [
+    {
+      "file": "experiments/render_pirl_five_task.py",
+      "sha256": "5ba2d6aac3b892e81b5ad8683fdd15e46186000476b9a05896c47960fdf2554a"
+    },
+    {
+      "file": "experiments/render_progress.py",
+      "sha256": "6ad07d6b632bf8072255a1dbbc9b3d3390b389be4f1cffd3956ba41ebeb5d393"
+    },
+    {
+      "file": "experiments/research_artifacts.py",
+      "sha256": "8301fc01a8b3789075c98bc49c779cdc5b43c57249223601580eb57414051ce1"
+    },
+    {
+      "file": ".research/progress.html",
+      "sha256": "217f64720dad4d190dfed6eba00e340fdeb5444234901b824a227b7b0372c6e6"
+    },
+    {
+      "file": ".research/five-task-curves.html",
+      "sha256": "fbde0848d90c43c3e948624ab907e47d6cf28f41de20c793beda95694bb06de0"
+    },
+    {
+      "file": ".research/five-task-curves.json",
+      "sha256": "d397f674e75357c1dd9c8453692cca0514b263ed635b86e9cea3295954e5a1a9"
+    },
+    {
+      "file": ".research/README.md",
+      "sha256": "833f59f14b747721a2eaa504379cc17574950ea0f00927a6acb0874ce5d55fc8"
+    },
+    {
+      "file": ".research/takeaway.md",
+      "sha256": "24e21bbf807620c8ac3d23c8345ac538282a69b41a2ec1aed84db3630a5e4fd8"
+    },
+    {
+      "file": ".runtime/experiments/README.md",
+      "sha256": "8897d782bed16486e34a545c6e3e5293a832cdab7c83c02191f0217667fb43f1"
+    }
+  ]
+}
