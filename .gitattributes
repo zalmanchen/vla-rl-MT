@@ -3,6 +3,8 @@
 experiments/snapshots/** -text -whitespace
 # Unified patch context includes trailing spaces; preserve its locked bytes.
 bootstrap/patches/*.patch -text -whitespace
+# Vendored files retain the exact bytes verified against the source locks.
+third_party/** -text -whitespace
 *.csv -text whitespace=cr-at-eol
 *.png binary
 *.jpg binary

@@ -21,7 +21,7 @@ uv pip sync --python .runtime/venv-tools/bin/python bootstrap/tools.freeze.txt
 
 新机器若没有 uv，可先用 `python -m venv .runtime/venv-bootstrap`，再用该环境的 pip 安装 uv。`install.sh` 负责固定源码及 Python 依赖，不安装系统包。
 
-源码必须使用 RLinf `e1a82eb`、RoboTwin `dca9ec6`，完整提交与压缩包 SHA256 见 `bootstrap/sources.lock.json`。安装后用 `python bootstrap/prepare_sources.py --verify-only` 核验缓存归档和源码成员；RLinf 仅接受记录在案的兼容补丁。源码目录没有独立 Git 元数据，目录内的 Git HEAD 可能属于项目父仓库。
+源码必须使用 RLinf `e1a82eb`、RoboTwin `dca9ec6`，完整提交与压缩包 SHA256 见 `bootstrap/sources.lock.json`。两份源码已随仓库提供，成员清单在 `third_party/sources.manifest.json`；新 clone 可用 `python bootstrap/prepare_sources.py --verify-only` 离线核验。存在缓存 ZIP 时还会核验归档，RLinf 仅接受记录在案的兼容补丁。源码目录没有独立 Git 元数据，目录内的 Git HEAD 可能属于项目父仓库。
 
 主环境与下载工具分别位于 `.runtime/venv-rlinf`、`.runtime/venv-tools`。`env.sh` 支持从外部设置 `CUDA_HOME`、`HF_ENDPOINT`、`VK_ICD_FILENAMES`，并设置项目、RLinf、RoboTwin 与 `src/` 的导入路径。
 

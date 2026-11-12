@@ -2,6 +2,9 @@
 
 import hashlib
 import importlib.util
+import json
+import subprocess
+import sys
 import tempfile
 import unittest
 import zipfile
@@ -22,7 +25,8 @@ class SourceSnapshotTests(unittest.TestCase):
         target = root / "source"
         target.mkdir()
         (target / "module.py").write_bytes(b"original source\n")
-        source = {"revision": "revision",
+        source = {"repository": "https://example.invalid/locked-source",
+                  "path": "third_party/Example", "revision": "revision",
                   "archive_sha256": hashlib.sha256(archive.read_bytes()).hexdigest()}
         return source, archive, target
 
@@ -60,6 +64,45 @@ class SourceSnapshotTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Source mismatch"):
                 sources.verify_snapshot(source, archive, target,
                                         [{**patch, "upstream_sha256": "wrong revision"}])
+
+    def test_fresh_clone_verifies_offline_and_rejects_drift(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source, archive, target = self.fixture(directory)
+            root = Path(directory)
+            vendored = root / source["path"]
+            vendored.parent.mkdir()
+            target.rename(vendored)
+            archive.unlink()
+            manifest = {"schema_version": 1, "sources": {
+                "Example": {**source, "files": {
+                    "module.py": hashlib.sha256(b"original source\n").hexdigest()}}}}
+            (root / "third_party/sources.manifest.json").write_text(json.dumps(manifest))
+            bootstrap = root / "bootstrap"
+            bootstrap.mkdir()
+            (bootstrap / "sources.lock.json").write_text(json.dumps({"Example": source}))
+            script = bootstrap / "prepare_sources.py"
+            script.write_bytes((ROOT / "bootstrap/prepare_sources.py").read_bytes())
+            command = [sys.executable, str(script), "--verify-only", "--source", "Example"]
+            result = subprocess.run(command, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(json.loads(result.stdout)["checked_files"], 1)
+            self.assertFalse((root / ".runtime").exists())
+            (vendored / "module.py").write_text("unrecorded change\n")
+            failed = subprocess.run(command, capture_output=True, text=True)
+            self.assertNotEqual(failed.returncode, 0)
+            self.assertIn("Source mismatch", failed.stderr)
+            self.assertEqual((vendored / "module.py").read_text(), "unrecorded change\n")
+
+    def test_vendored_manifest_cannot_override_lock_or_escape_root(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source, _, target = self.fixture(directory)
+            manifest = {**source, "revision": "another revision", "files": {
+                "module.py": hashlib.sha256(b"original source\n").hexdigest()}}
+            with self.assertRaisesRegex(ValueError, "differs from source lock"):
+                sources.verify_vendored(source, manifest, target)
+            manifest.update(revision=source["revision"], files={"../outside.py": "hash"})
+            with self.assertRaisesRegex(ValueError, "Invalid source member path"):
+                sources.verify_vendored(source, manifest, target)
 
 
 if __name__ == "__main__":

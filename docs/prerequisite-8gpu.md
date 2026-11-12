@@ -6,7 +6,7 @@
 
 ## 机器准备与共同起点
 
-按[安装说明](setup.md)准备依赖、固定源码、模型、统计和 RoboTwin 资产。若从本机转移，代码之外还需准备 `models/`、所需 `datasets/`、源码缓存压缩包和冻结清单；这些内容均不在 Git 中。不要直接复制有绝对路径的 venv 当作环境已验收。
+按[安装说明](setup.md)准备依赖、固定源码、模型、统计和 RoboTwin 资产。若从本机转移，两份固定源码已在 `third_party/`；代码之外还需准备 `models/`、所需 `datasets/`、仿真资产与冻结数据清单。源码 ZIP 缓存可选，逐文件清单支持离线源码核验。不要直接复制有绝对路径的 venv 当作环境已验收。
 
 ```bash
 source bootstrap/env.sh

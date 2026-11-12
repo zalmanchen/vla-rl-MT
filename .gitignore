@@ -1,6 +1,5 @@
-# Local environments, upstream checkouts, datasets and model weights
+# Local environments, datasets and model weights
 /.runtime/
-/third_party/
 /models/
 /datasets/
 /.venv/

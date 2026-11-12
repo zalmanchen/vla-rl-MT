@@ -13,7 +13,7 @@
 | Motus π0.5 | `motus-robotics/pi0.5_robotwin2`，revision `effc6e1a99bd4d0edf9447e8ba313def67649cfe` |
 | 模型权重 SHA256 | `de8e03a445f3e0af417a9d61a903d342fca5b6a5b4fdc6f20445e14ad25692eb` |
 
-[源码锁](../bootstrap/sources.lock.json)、[补丁清单](../bootstrap/patches/recap-robotwin.json)和 [phase0.json](../configs/multitask/phase0.json)保存完整来源、统计哈希与动作设置。源码是归档快照，没有独立 `.git`；目录内的 Git HEAD 可能属于项目父仓库。用 `python bootstrap/prepare_sources.py --verify-only` 核验归档及成员，允许的 RLinf 补丁单独报告。
+[源码锁](../bootstrap/sources.lock.json)、[补丁清单](../bootstrap/patches/recap-robotwin.json)和 [phase0.json](../configs/multitask/phase0.json)保存完整来源、统计哈希与动作设置。源码是归档快照，没有独立 `.git`；目录内的 Git HEAD 可能属于项目父仓库。源码随仓库分发，用 `python bootstrap/prepare_sources.py --verify-only` 离线核验成员；有缓存 ZIP 时同时核验归档，允许的 RLinf 补丁单独报告。
 
 [固定版本模型卡](https://huggingface.co/motus-robotics/pi0.5_robotwin2/blob/effc6e1a99bd4d0edf9447e8ba313def67649cfe/README.md)描述了 50 任务 Clean／Randomized SFT；这不是本机能力验收，预训练场景重合未知。当前不重建基础模型；方法线研究的是已有 SFT 模型的继续训练。
 

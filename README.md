@@ -43,7 +43,7 @@ docs/                  任务书、共同协议与使用说明
 tests/                 入口、数据和项目扩展验证
 ```
 
-模型、数据、源码快照及运行产物分别在 Git 忽略的 `models/`、`datasets/`、`third_party/`、`.runtime/`。新实验输出分别使用 `.runtime/runs/method/<run-id>/` 和 `.runtime/runs/prerequisite/<run-id>/`。
+固定版本源码随仓库保存在 [third_party/](third_party/README.md)，成员哈希与放行规则排除额外资产／缓存；独立 LIBERO 源码副本由脚本恢复。模型、数据及运行产物仍在 Git 忽略的 `models/`、`datasets/`、`.runtime/`。新实验输出分别使用 `.runtime/runs/method/<run-id>/` 和 `.runtime/runs/prerequisite/<run-id>/`。
 
 ## 独立参考与历史
 

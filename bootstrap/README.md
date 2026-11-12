@@ -10,7 +10,7 @@
 | 工程 smoke 的独立完整 episode 子集 | `prepare_recap_smoke.py`，不得用作正式数据 |
 | 官方 LIBERO 环境变量／真实仿真测试 | `env_recap_official.sh`、`check_libero.py` |
 | 安装主环境与上游源码 | `install.sh`、`prepare_sources.py` |
-| 只读核验固定源码及缓存压缩包 | `prepare_sources.py --verify-only`；RLinf `e1a82eb`＋记录补丁、RoboTwin `dca9ec6`，不下载、不应用补丁；可用 `--source` 选择单个来源 |
+| 只读核验随仓库源码及可选 ZIP 缓存 | `prepare_sources.py --verify-only`；RLinf `e1a82eb`＋记录补丁、RoboTwin `dca9ec6`，不下载、不应用补丁；可用 `--source` 选择单个来源 |
 | PyTorch wheel 分块续传及官方 SHA-256 校验 | `download_wheel.py` |
 | 环境变量 | `source bootstrap/env.sh`（在项目根目录） |
 | 模型与基础数据下载 | `download.py`、`download_recap_models.py` |
