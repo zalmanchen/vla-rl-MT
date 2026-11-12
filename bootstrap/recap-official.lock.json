@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "scope": "RLinf published RECAP LIBERO-10 Task 0 experiment",
+  "upstream": {
+    "repository": "https://github.com/RLinf/RLinf",
+    "revision": "e1a82ebf0c1af69da6ab9b1519f5f3692fe33566",
+    "archive_sha256": "bc5c7c6191b0f06956d492482bd6bbab2b4dab98996a1f81d0f32ea3d59a7cfc",
+    "path": "third_party/RLinf-recap-official",
+    "patches": []
+  },
+  "dataset": {
+    "repo": "RLinf/RECAP-Libero10-Task0-48succ-Data",
+    "revision": "75b382d2c066bcedd8b030285b45c856913f1497",
+    "destination": "datasets/recap-official",
+    "files": 12584,
+    "bytes": 86893469555,
+    "file_manifest_sha256": "4a19e8bd748624030b72d06b3094d1e2ebc81d17026fb66b8b50180e5f524748",
+    "splits": {
+      "sft": "libero10_task0_sft",
+      "rollout": "libero10_task0_train",
+      "value_validation": "libero10_task0_eval"
+    }
+  },
+  "references": {
+    "tutorial": "https://github.com/RLinf/RLinf/blob/e1a82ebf0c1af69da6ab9b1519f5f3692fe33566/docs/source-en/rst_source/examples/embodied/recap.rst",
+    "initial_checkpoint_unreleased": "https://github.com/RLinf/RLinf/issues/1200"
+  },
+  "unresolved": {
+    "published_training_recipe": "Public templates are not a frozen run config. Value max_epochs=30000/max_steps=-1 differs from the scheduler horizon and documentation example checkpoint 18000. Exact published stopping/checkpoint selection and dataset mixing must be confirmed.",
+    "evaluation_protocol": "The exact seeds, number of episodes, baseline checkpoint and inference settings for 48.8%/66.5% are not specified by the RECAP tutorial."
+  },
+  "reproduction_mode": "Public workflow reproduction with a self-trained few-shot pi0.5 initialization, explicitly authorized by the user; not an exact reproduction of 48.8% -> 66.5%.",
+  "initial_policy": {
+    "status": "self_train_required",
+    "source": "gs://openpi-assets/checkpoints/pi05_base",
+    "sft_data": "libero10_task0_sft (official 30 episodes, 10 tasks)",
+    "checkpoint_selection": "Predeclare a training checkpoint; do not select against final evaluation scores.",
+    "original_report_checkpoint": "Not released by the authors; https://github.com/RLinf/RLinf/issues/1200",
+    "norm_stats": {
+      "path": ".runtime/recap-official/assets/physical-intelligence/libero/norm_stats.json",
+      "sha256": "648544116391b4dc8f2280444a7f848f71f1d1549367720573cdfa5f97848c68",
+      "source": "official pi05_libero calculate_norm_stats over released SFT split (31 full batches of 256)"
+    }
+  },
+  "public_template_configs": {
+    "recap_compute_returns.yaml": {
+      "sha256": "4e7bacdd968daa4c6da1c8027ba75c60f16b1c14a6fc32df1d8182d8f3bb8051",
+      "path": "examples/offline_rl/config/recap_compute_returns.yaml"
+    },
+    "recap_value_model_sft.yaml": {
+      "sha256": "e183ae0eacc1bf48f94b0c22cb9eb2ef90c667303f4557c7de946dfdac887535",
+      "path": "examples/offline_rl/config/recap_value_model_sft.yaml"
+    },
+    "recap_compute_advantages.yaml": {
+      "sha256": "2dbd4b3eb8fe8c5e4e478f0b0c0248a8ede2c2ecb63840a04ba32f09a0eb71a8",
+      "path": "examples/offline_rl/config/recap_compute_advantages.yaml"
+    },
+    "cfg_rl_openpi.yaml": {
+      "sha256": "4ed6d9915585f9f5807916ea9c10af02b174a090af1b166244a3f124e7c40566",
+      "path": "examples/offline_rl/config/cfg_rl_openpi.yaml"
+    }
+  }
+}

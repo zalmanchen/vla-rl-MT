@@ -1,0 +1,13 @@
+{
+  "base_image": "nvidia/cuda:12.8.1-base-ubuntu22.04",
+  "base_digest": "sha256:e869de8a68e95272e51c4c7071b1d39941aaab707f9bc051a99062a3791448b1",
+  "platform": "linux/amd64",
+  "crane": {
+    "version": "v0.22.1",
+    "release": "https://github.com/google/go-containerregistry/releases/tag/v0.22.1",
+    "archive_sha256": "0ab7a1d6932a213aed964ce97666c3077fe691c8606413674a8b3e0b9ec4cda0"
+  },
+  "rlinf_revision": "e1a82ebf0c1af69da6ab9b1519f5f3692fe33566",
+  "environment_freeze_sha256": "8594416fa532e2ba42c22b9d1dcc91b29bfeb6fdcddbb78ae0aaf9d96950c5aa",
+  "packaging": "installed environment snapshot; no dependency re-resolution or source algorithm patch"
+}

@@ -1,0 +1,10 @@
+{
+  "dataset": {
+    "repo": "RLinf/LIBERO-assets",
+    "revision": "3ba78404b48e8c70fa4ac9782d5aac8e5b46d55f",
+    "destination": "datasets/LIBERO-assets",
+    "files": 586,
+    "bytes": 422320979,
+    "file_manifest_sha256": "130e32f2431577bd27c30b1524f5c7d6fb68274d44ba204e07a6b5bda12d8b24"
+  }
+}

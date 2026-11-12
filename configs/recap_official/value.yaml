@@ -1,0 +1,26 @@
+# Public template, with resources bound to the official released dataset.
+# Its max_epochs=30000/max_steps=-1 is not a confirmed experiment stopping rule.
+# Overrides merged into generated primary configs by prepare_recap_official.py configs.
+data:
+  tag: self-fewshot-v1
+  train_data_paths:
+  - dataset_path: ${oc.env:PROJECT_ROOT}/.runtime/recap-official/data/libero10_task0_sft
+    type: sft
+    weight: 1.0
+    robot_type: libero
+    model_type: pi05
+  - dataset_path: ${oc.env:PROJECT_ROOT}/.runtime/recap-official/data/libero10_task0_train
+    type: rollout
+    weight: 1.0
+    robot_type: libero
+    model_type: pi05
+  eval_data_paths:
+  - dataset_path: ${oc.env:PROJECT_ROOT}/.runtime/recap-official/data/libero10_task0_eval
+    max_samples: 10000
+    robot_type: libero
+    model_type: pi05
+actor:
+  model:
+    siglip_path: ${oc.env:PROJECT_ROOT}/models/siglip2-so400m-patch14-224
+    gemma3_path: ${oc.env:PROJECT_ROOT}/models/gemma-3-270m
+    tokenizer_path: ${oc.env:PROJECT_ROOT}/models/gemma-3-270m

@@ -1,0 +1,41 @@
+{
+  "upstream_revision": "e1a82ebf0c1af69da6ab9b1519f5f3692fe33566",
+  "patch_sha256": "502333422e3e8c35feec4e173f1fd0f102545499882a333f97b328c5c481d5d7",
+  "files": [
+    {
+      "path": "rlinf/data/datasets/recap/value_dataset.py",
+      "upstream_sha256": "ff978e8ee3a5203bdd9e42f5450617f38c5b2ad96c87482a23a1895520cd1b61",
+      "patched_sha256": "a76b841495e46a7dd429e656268b849f124406c89e3f0f0b8f39d76ee6ca24bd"
+    },
+    {
+      "path": "rlinf/models/embodiment/value_model/recap/checkpoint_utils.py",
+      "upstream_sha256": "1e089900a55dfe2d726fbea91f0138704aebc7d0528e57a6cea72256f1d7a97b",
+      "patched_sha256": "3f66a8b64eeade7174439bb81fa35ff83e797eaf753167287e6abaedbaeeb896"
+    },
+    {
+      "path": "examples/offline_rl/advantage_labeling/recap/process/compute_advantages.py",
+      "upstream_sha256": "4f482b7bd16f2c3d16be06e83b9e5d4eb70d2e67fc79d1ee6ff16b6354ea511d",
+      "patched_sha256": "714e1415d153f702d63e27fb0103d3f871f0ba6ee2f7ca74eadaa43ecbddb8fc"
+    },
+    {
+      "path": "rlinf/models/embodiment/openpi_cfg/__init__.py",
+      "upstream_sha256": "258a0967f7e80135676df8e1088ff3f6dee10fa1d953990faeba7725b4dd1ba1",
+      "patched_sha256": "fef8b538c6d22949387eb8d51720a4b6e5f0ff5a3dce8777696bbd58a04c309f"
+    },
+    {
+      "path": "rlinf/workers/sft/fsdp_cfg_worker.py",
+      "upstream_sha256": "0f07c1a8066944f7295647ecd84e2f971529a8ec6db7260fd9ed51d828ee5d72",
+      "patched_sha256": "e09318f9cc8c48be499a8d935c5eceb3cc640344515e4f9639b36be6f92053d1"
+    },
+    {
+      "path": "examples/offline_rl/advantage_labeling/recap/process/compute_returns.py",
+      "upstream_sha256": "db83d7296ad41b25bb914b743d42729bb2e4e664a735ede644c474b36a6151cf",
+      "patched_sha256": "125dd4c6ec79527a8fb89a526757547ef451fd5472c3b814dbf3b6dc5fa54f6a"
+    },
+    {
+      "path": "rlinf/models/embodiment/openpi_cfg/openpi_cfg_action_model.py",
+      "upstream_sha256": "41312d95e0279a877c62ec6abc1256e5b0a166e1c9caf597ae6dd6ed8aedbc49",
+      "patched_sha256": "e8cdcfff35650e86a9a0523d35027fa71dce66578ac6e93c11139822fc147a2f"
+    }
+  ]
+}

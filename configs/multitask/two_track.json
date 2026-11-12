@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "status": "planning_only",
+  "launchable": false,
+  "protocol": "docs/multitask-critic.md",
+  "common": {
+    "source_lock": "bootstrap/sources.lock.json",
+    "initialization_protocol": "configs/multitask/phase0.json",
+    "compatibility_manifest": "bootstrap/patches/recap-robotwin.json",
+    "evaluation_backend": null,
+    "frozen_data_manifest": null,
+    "development_subset_manifest": null,
+    "formal_data_ready": false,
+    "method_selection_uses": "development_only",
+    "evaluation_returns_to_training": false,
+    "collect_during_offline_training": false
+  },
+  "method": {
+    "host": "2x48GB RTX 4090",
+    "task_document": "docs/method-2gpu.md",
+    "output_root": ".runtime/runs/method",
+    "task_count_range": [
+      2,
+      3
+    ],
+    "tasks": null,
+    "budgets": null,
+    "adapter_location": null,
+    "trainable_parameter_scope": null,
+    "stages": [
+      "M0",
+      "M1",
+      "M2",
+      "M3",
+      "M4"
+    ],
+    "warmup_controls": {
+      "W0": "SFT then critic with frozen representation",
+      "W1": "simultaneous SFT/value; stop value gradients at shared representation",
+      "W2": "simultaneous SFT/value; shared representation receives value gradients"
+    },
+    "actor_label_factorial": {
+      "actors": [
+        "W1",
+        "W2"
+      ],
+      "label_sources": [
+        "C_W1",
+        "C_W2"
+      ]
+    }
+  },
+  "prerequisite": {
+    "host": "8x48GB RTX 5880; runtime not verified",
+    "task_document": "docs/prerequisite-8gpu.md",
+    "output_root": ".runtime/runs/prerequisite",
+    "remote_launch_requested": false,
+    "initial_task_candidates_from": "configs/multitask/phase0.json",
+    "budgets": null,
+    "stages": [
+      "P0",
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5"
+    ]
+  },
+  "handoffs": [
+    "common_start",
+    "problem_evidence",
+    "candidate_confirmation"
+  ]
+}

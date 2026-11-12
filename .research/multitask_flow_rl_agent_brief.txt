@@ -1,0 +1,80 @@
+多任务 Flow-Matching RL Proposal：研究梳理与 Agent 评审稿
+更新日期：2026-11-11（Asia/Shanghai）
+状态：研究问题与候选方法均待验证；本稿不是已完成实验或已确认创新。
+
+一、给评审 Agent 的任务
+
+请先审阅本稿和参考文献，判断研究问题是否成立、能否被反驳、与现有方法有何实质区别；再提出最小诊断实验和可能的方法。请不要把候选假设写成实验结论。此任务是研究审阅，不隐含修改服务器训练、运行实验或改写既有结果的授权。
+
+二、研究背景和目标
+
+导师希望研究 flow matching 的 RL，而不是仅比较若干工程组合。现有起点是 motus-robotics/pi0.5_robotwin2：已完成 RoboTwin 2.0 多任务 SFT 的 flow-matching VLA；实验框架 RLinf。研究目标是在保持一个共享多任务策略的情况下，探索 SFT / RL / SFT+RL 后训练能否提升 action expert 的多任务表现、保留已有能力，并比较数据与计算效率。
+
+主要考虑固定离线经验：多个任务的 instruction、图像观测、机器人状态、实际执行动作、后续观测及已有成功/失败或奖励标签。是否存在足够的可复用轨迹、相同场景、可验证跨目标标签和可用算力，须审计。训练不新增交互，评估 rollout 不回流训练。E7 在线 Flow-SDE PPO 可作独立背景，不能和离线实验按同一数据预算直接比较。
+
+三、目前已经观察到什么（历史汇报快照，非实时结果）
+
+来源：桌面 RL/20261110汇报.pdf，第 8–12 页；E4/E7/E9 细节以原始日志、配置和评估脚本再次核实。不能由本节推断机理或可重复性。
+
+1. E7：在线 Flow-SDE+PPO，五任务共享策略在每任务 20 个固定开发场景上，原始 47/100，第 100 轮 38/100。原始 47 个成功场景保留 15，新增 23。一个训练种子；共享每轮 5 次更新、单任务每轮 1 次，预算并非完全匹配。该结果不能证明离线方法退化或梯度冲突。
+2. E9：离线 RECAP 适配，按铃和叠积木各 20 个开发场景：原始 SFT 15/40；不更新参数、仅加 positive 条件 12/40；RECAP 适配 20 步 16/40；RECAP 适配+0.5 成功 BC 20 步 13/40；成功 BC 20 步 15/40。固定弱价值/advantage 标签，64 条轨迹、其中 28 条成功轨迹作 BC。一个训练种子、小规模重复开发场景；数字不是独立测试结论，条件提示与实现细节待核验。
+3. M2：5 任务 200 条终局样本，160 训练、40 验证；冻结 π0.5 特征的线性成功头，无指令 36/40，有指令 37/40。说明该终局验证分布可以被分类，并未证明跨指令任务区分、过程质量或 value 已经可靠。
+
+四、需要从现象提出的核心研究问题
+
+建议研究问题：已有多任务 SFT flow policy 接入 advantage-based RL 条件时，任务条件、价值信号与 action expert 的条件响应是否一致？哪些环节使 RL 的局部改进无法稳定转化为多任务共享策略的改进？
+
+已有普通 SFT policy 表达 π(a|o,q,l)；RECAP-style 适配希望表达 π(a|o,q,l,I)，其中 I 是相对 advantage 条件。π*0.6 在多任务预训练期间就使用 advantage conditioning；我们普通 π0.5 不一定经历此训练。E9 零更新提示变化可能说明条件输入影响动作，但也可能来自 token 插入、位置/长度变化、采样或场景噪声，不能推断模型理解或误解 advantage。
+
+需要避免：把共享训练性能下降直接归因于梯度冲突；把终局匹配当作 value；把 TD/MC loss 良好当作真实策略提升；把固定 BC 重放、任务均衡或共享 VLM 简单称为创新。
+
+五、竞争性假设（不预设哪项正确）
+
+H1 条件接入：新的 advantage 条件改变了冻结 VLM 表征或 expert 的 flow velocity，但普通 SFT expert 尚未形成预期的正负条件响应；任务之间响应不同。
+H2 价值与标签：共享 V(o,q,l) 的数据行为回报估计、分布偏移、尺度、截断或任务条件不足，导致 advantage 条件不可靠。
+H3 数据覆盖与策略更新：失败数据缺少可用恢复/改善行为，或者少量动作回归、训练预算、采样与正条件曝光不足以支持改进；即使给出更可靠标签也难以改善。
+H4 共享干扰：相同训练策略下，单任务可以改进而共享训练退化；但梯度余弦仅为诊断，须匹配每任务数据、总计算量/更新次数及模型容量后检验。
+这些假设可同时成立；E9 的结果不能决定哪一个为真。
+
+六、最小机理诊断（建议，不代表已启动实验）
+
+A. 无参数更新的条件响应：同一轨迹观测、instruction、robot state 和固定 action 噪声种子，比较无条件、positive、negative，以及 token 数量/位置相近的中性文本。检查 VLM 输入与特征、各 flow timestep velocity、生成动作与闭环评价。配对场景、控制随机性并记录 instruction 生效方式；加入中性提示以辨别仅插入文本的影响。训练前不应预设 positive 一定优于 negative。
+
+B. 训练后条件可控性：相同预算下检查 positive/negative 两分支是否被实际调用、是否影响速度场与最终动作、positive 是否在独立任务条件的闭环评测上更好；用已训练条件对照，不把动作输出不同当作成功改善。
+
+C. 标签和任务条件：复核 critic 输入是否包含 instruction 和可用机器人本体状态 q，奖励与 chunk/时间对齐、真实终止与截断、任务归一化、各任务 positive 比例。比较现有 critic 标签、轨迹结果构造的粗标签、任务内打乱标签等；轨迹终局结果不是逐动作 advantage 真值。MC return 来自数据行为后续，不是真正任意目标策略价值。仅将有效且可验证的反事实目标用于评估；不能因任务不同强制相同初态的 V 不同。
+
+D. 在现有数据不足时，先做分析与小规模明确标记的诊断评估；新增 simulator 分支/同态多次 rollout 是评价成本，不能作为固定离线训练数据回流。评估场景独立于训练、验证与旧开发集；报告种子、轨迹量、前向/反向 GPU 时间与评价成本。
+
+七、候选最小方法（只有诊断支持 H2 才推进）
+
+冻结 SFT π0.5 的观测+instruction 表征，机器人状态直接加入，训练 task-conditioned value head；在真实轨迹回报 L_value 之外，加入 L_goal/contrast 辅助监督，以可验证任务完成标签构造同一状态下不同 instruction 的正/负匹配。L_critic=L_value+λL_goal。完成判断仅是辅助，不是 reward 或任意 Q，不能把替换指令后的原轨迹回报照搬。多目标可同时成立；相同初始状态两个目标均可能可行，不能制造假负样本。
+
+冻结 critic 后构造 RECAP-style advantage 条件，用同一离线数据训练共享 flow-matching action expert；可用成功示范 flow loss 作单独对照。普通 RECAP adaptation 是主要 baseline，不应称为严格原版。明确 policy 条件 token 接法、训练参数、value/advantage 生成方法，避免把零更新新提示当作已训练条件策略。
+
+如 H1 为主要问题，优先探索 advantage 条件与 SFT flow policy 的适配；如 H3 为主，优先数据覆盖与更新检查；如 H4 为主，比较任务均衡、固定重放与参数隔离。不要同时叠加新 reward、RLT、GRPO 和 adapter。
+
+八、对照与否定条件
+
+最低对照：原始 SFT；成功 BC；共享 RECAP-style；相同 RECAP+目标对比 critic；额外检查普通 value warmup 与目标对比效果，保持标签和骨干/容量及成本可比。若声称跨任务优势，再做单任务/共享匹配预算；若声称保留能力，报告逐任务及配对场景保留、丢失和新增，并在多训练种子、新测试场景复核。零更新的 positive/negative/中性提示对照独立报告。
+
+若中性提示与 advantage 提示产生相同程度扰动，不能声称理解了 RL 条件；若提供更可靠标签仍无收益，应检查动作覆盖与条件策略；若 critic 目标区分改善但 value 排序或策略没有改善，则不支持辅助监督解决 RL；若单任务也同等退化，不能将问题归因于多任务干扰；若固定 BC/任务均衡已解释收益，则复杂机制无充分必要性。
+
+九、相关工作和 novelty 红线
+
+RECAP https://arxiv.org/abs/2511.14759 ：多任务离线预训练、独立较小 VLM value、advantage conditioning、下游任务专项迭代；普通 π0.5 适配不是完整复现。
+Dissecting Advantage-Guided Post-Training https://arxiv.org/abs/2609.28161 ：已拆解 advantage 构造、校准和 policy 提取；不能声称首次研究这些选择。
+CounterAlign https://arxiv.org/abs/2608.21740 ：反事实 instruction/action 匹配、reward、IQL critic 和加权 flow matching；instruction 对比→critic→离线 RL 不是空白。
+PRTS https://arxiv.org/abs/2604.27472 ：language-conditioned 对比目标可达性，多正样本和共享表征；不能声称首次用 instruction 对比训练 value 表征。
+Generalist Improvement https://arxiv.org/abs/2611.06905 ：共享多任务通用策略的在线改进；本设定为固定离线后训练，设定差异本身不自动构成创新。
+Low-Rank Structure of VLA RL https://arxiv.org/abs/2609.34599 ：flow VLA 的 timestep modules 与 RL 更新、任务关系；不能声称首次定位该模块。
+ARFM https://arxiv.org/abs/2509.04063 ：offline advantage 和 flow 损失的自适应权衡；不能声称首次 advantage-weighted flow。
+RLT https://arxiv.org/abs/2604.23073 ：特征压缩+在线轻量 actor–critic；是可选效率基线，不作为预设核心创新。
+
+十、请评审 Agent 输出
+
+1. 用一段话判断主问题是否是可证伪的研究问题，指出最大反例或概念混淆。
+2. 根据 E9 证据，区分 prompt token 扰动、advantage 条件未习得、critic 错误、数据覆盖和任务共享；不要将任何一个当成已证事实。
+3. 与 RECAP、Dissecting、CounterAlign、PRTS、generalist improvement 给出具体对比，说明尚能主张什么，禁止未经全面检索宣称首次。
+4. 推荐一个最小诊断序列，给出对应的决策/否定条件、数据/成本及该如何避免训练测试泄漏。
+5. 仅在诊断结果成立时提出一个最小可实现方法，说明目标、具体更新、训练/部署依赖和强对照；若现阶段无实质 novelty，请直说并提出转向方案。

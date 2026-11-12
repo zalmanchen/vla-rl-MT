@@ -1,0 +1,47 @@
+defaults:
+  - model/recap_value_model@advantage.model
+  - _self_
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  searchpath:
+    - file://${oc.env:REPO_PATH}/examples/offline_rl/config
+
+advantage:
+  value_checkpoint: ${oc.env:PROJECT_ROOT}/.runtime/runs/recap-pilot-value/checkpoints/global_step_500/actor
+  batch_size: 8
+  flush_interval: 32
+  num_dataloader_workers_per_gpu: 2
+  prefetch_factor: 2
+  discount_next_value: true
+  positive_quantile: 0.3
+  tag: pilot
+  returns_tag: pilot
+  model:
+    tokenizer_path: ${oc.env:PROJECT_ROOT}/models/gemma-3-270m
+    siglip_path: ${oc.env:PROJECT_ROOT}/models/siglip2-so400m-patch14-224
+    gemma3_path: ${oc.env:PROJECT_ROOT}/models/gemma-3-270m
+
+data:
+  robot_type: robotwin
+  model_type: pi05
+  train_data_paths:
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/sft-train
+      robot_type: robotwin
+      type: sft
+      weight: 1.0
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/rollout-train
+      robot_type: robotwin
+      type: rollout
+      weight: 1.0
+  advantage_lookahead_step: 32
+  gamma: 1.0
+  return_min: -1200.0
+  return_max: 0.0
+
+distributed:
+  enabled: false
+  backend: nccl
+  timeout: 3600

@@ -8,6 +8,8 @@
 /.model/
 /.data/
 /.cache/
+# Local downloaded page, unrelated to this project.
+/index.html
 
 # Local credentials and agent state
 /.aws/

@@ -1,0 +1,45 @@
+# Self-trained initialization, not the unpublished 48.8% checkpoint.
+# Inherit RLinf's LIBERO SFT runner/optimizer, selecting its pi0.5 LIBERO model.
+# Overrides merged into generated primary configs by prepare_recap_official.py configs.
+defaults:
+- model/pi0_5@actor.model
+- hybrid_engines/fsdp@actor.fsdp_config
+- _self_
+- override hydra/job_logging: stdout
+hydra:
+  searchpath:
+  - file://${oc.env:REPO_PATH}/examples/sft/config
+  - file://${oc.env:EMBODIED_PATH}/config
+cluster:
+  component_placement:
+    actor,env,rollout: 0-1
+runner:
+  logger:
+    log_path: ${oc.env:PROJECT_ROOT}/.runtime/runs/recap-official
+    experiment_name: fewshot-sft
+  save_interval: 30000
+data:
+  train_data_paths: ${oc.env:PROJECT_ROOT}/.runtime/recap-official/data/libero10_task0_sft
+  num_workers: 4
+actor:
+  micro_batch_size: 4
+  model:
+    precision: null
+    model_type: openpi
+    model_path: ${oc.env:PROJECT_ROOT}/models/pi05_base_openpi
+    openpi:
+      task: sft
+      config_name: pi05_libero
+      train_expert_only: false
+      embed_dtype: bf16
+      discrete_state_input: false
+    openpi_data:
+      norm_stats_path: ${oc.env:PROJECT_ROOT}/.runtime/recap-official/assets/physical-intelligence/libero/norm_stats.json
+  fsdp_config:
+    sharding_strategy: no_shard
+    gradient_checkpointing: true
+    gradient_checkpointing_use_reentrant: false
+    mixed_precision:
+      param_dtype: null
+      reduce_dtype: null
+      buffer_dtype: null

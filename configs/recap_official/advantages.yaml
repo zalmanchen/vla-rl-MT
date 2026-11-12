@@ -1,0 +1,19 @@
+# Overrides merged into generated primary configs by prepare_recap_official.py configs.
+advantage:
+  value_checkpoint: ???
+  tag: self-fewshot-v1
+  returns_tag: self-fewshot-v1
+  model:
+    siglip_path: ${oc.env:PROJECT_ROOT}/models/siglip2-so400m-patch14-224
+    gemma3_path: ${oc.env:PROJECT_ROOT}/models/gemma-3-270m
+    tokenizer_path: ${oc.env:PROJECT_ROOT}/models/gemma-3-270m
+data:
+  train_data_paths:
+  - dataset_path: ${oc.env:PROJECT_ROOT}/.runtime/recap-official/data/libero10_task0_sft
+    type: sft
+    weight: 1.0
+    robot_type: libero
+  - dataset_path: ${oc.env:PROJECT_ROOT}/.runtime/recap-official/data/libero10_task0_train
+    type: rollout
+    weight: 1.0
+    robot_type: libero

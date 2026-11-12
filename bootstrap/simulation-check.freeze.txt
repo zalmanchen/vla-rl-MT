@@ -1,0 +1,14 @@
+certifi==2026.10.23
+charset-normalizer==3.5.2
+idna==3.20
+lxml==6.1.3
+networkx==3.6.1
+numpy==1.26.4
+opencv-python==4.11.0.86
+pillow==13.0.0
+pyperclip==1.11.0
+requests==2.34.2
+sapien==3.0.1
+setuptools==80.9.0
+transforms3d==0.4.2
+urllib3==2.8.0

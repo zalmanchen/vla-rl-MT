@@ -1,5 +1,6 @@
 """Verify every selected download against its Hugging Face content ETag."""
 
+import argparse
 import concurrent.futures
 import fnmatch
 import hashlib
@@ -40,12 +41,17 @@ def verify(job):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--include-randomized", action="store_true")
+    args = parser.parse_args()
     jobs = []
-    for rel in [
+    roots = [
         "models/pi0.5_robotwin2",
         "datasets/RoboTwin2.0",
-        "datasets/RoboTwin2.0-randomized",
-    ]:
+    ]
+    if args.include_randomized:
+        roots.append("datasets/RoboTwin2.0-randomized")
+    for rel in roots:
         base = ROOT / rel
         manifest = json.loads((base / "download-manifest.json").read_text())
         for item in manifest["files"]:
@@ -56,7 +62,7 @@ if __name__ == "__main__":
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(verify, jobs))
     output = ROOT / ".runtime/validation"
-    output.mkdir(exist_ok=True)
+    output.mkdir(parents=True, exist_ok=True)
     (output / "downloads.json").write_text(
         json.dumps(
             {

@@ -1,8 +1,13 @@
+import argparse
 import concurrent.futures
 import fnmatch
 import json
+import os
 import pathlib
 import time
+
+os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
+os.environ.setdefault("HF_HUB_DOWNLOAD_TIMEOUT", "120")
 
 from huggingface_hub import hf_hub_download
 
@@ -47,7 +52,7 @@ def download(repo, kind, dest, patterns):
                 print("downloaded", repo, name, flush=True)
                 return result
             except Exception as exc:
-                print("retry", name, attempt + 1, str(exc)[:200], flush=True)
+                print("retry", name, attempt + 1, type(exc).__name__, flush=True)
                 if attempt == 7:
                     raise
                 time.sleep(min(30 * (attempt + 1), 120))
@@ -60,6 +65,9 @@ def download(repo, kind, dest, patterns):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--only", choices=["all", "model", "dataset"], default="all")
+    args = parser.parse_args()
     jobs = [
         (
             "motus-robotics/pi0.5_robotwin2",
@@ -80,6 +88,8 @@ if __name__ == "__main__":
             ],
         ),
     ]
+    if args.only != "all":
+        jobs = [job for job in jobs if job[1] == args.only]
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
         futures = [pool.submit(download, *j) for j in jobs]
         for f in futures:

@@ -1,0 +1,15 @@
+# model_path must be the self-trained few-shot checkpoint in CFG-compatible layout,
+# bundled with the same physical-intelligence/libero/norm_stats.json as SFT.
+# Overrides merged into generated primary configs by prepare_recap_official.py configs.
+data:
+  advantage_tag: self-fewshot-v1
+  train_data_paths:
+  - dataset_path: ${oc.env:PROJECT_ROOT}/.runtime/recap-official/data/libero10_task0_sft
+    type: sft
+    weight: 1.0
+  - dataset_path: ${oc.env:PROJECT_ROOT}/.runtime/recap-official/data/libero10_task0_train
+    type: rollout
+    weight: 1.0
+actor:
+  model:
+    model_path: ???

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "scope": "Public RLinf workflow, self-trained initialization; not the unreleased 48.8% to 66.5% run",
+  "sft": {
+    "steps": 1000,
+    "checkpoint_selection": "Fixed step 1000, declared before evaluation; original few-shot budget was not published",
+    "scheduler_steps": 30000,
+    "warmup_steps": 1000,
+    "global_batch_size": 128,
+    "micro_batch_size": 4
+  },
+  "value": {
+    "steps": 18000,
+    "checkpoint_selection": "Fixed step 18000; a finite local protocol choice, not an assertion of the published stopping rule",
+    "scheduler_steps": 8000,
+    "warmup_steps": 500,
+    "global_batch_size": 256,
+    "micro_batch_size": 8
+  },
+  "policy": {
+    "steps": 30000,
+    "checkpoint_selection": "Final step in the public CFG template",
+    "scheduler_steps": 30000,
+    "warmup_steps": 5000,
+    "global_batch_size": 512,
+    "micro_batch_size": 2
+  },
+  "evaluation": {
+    "seeds": [
+      0,
+      1
+    ],
+    "envs_per_seed": 10,
+    "rollout_epochs": 5,
+    "episodes_per_policy": 100,
+    "task_ids": [
+      0
+    ],
+    "max_episode_steps": 520,
+    "action_chunk": 10,
+    "solver_steps": 5,
+    "ordered_reset_states": true,
+    "guidance_scale": 1.0,
+    "selection": "No checkpoint selection on final environment evaluation",
+    "policy_rng": "Pinned rollout worker does not explicitly seed policy noise; seeds here identify the environment. Preserve upstream behavior; no bitwise paired-noise claim.",
+    "reset_state_reuse": "Each seed traverses the 50 official states once. The two seeds reuse the same pool; pinned is_eval skips duplicate completions within a seed.",
+    "official_init_states_per_task": 50
+  },
+  "data": {
+    "mixture_weights": [
+      1.0,
+      1.0
+    ],
+    "sft_tasks": "All 10 released tasks, 30 episodes; do not reinterpret SFT task_index 0 as evaluation Task 0",
+    "rollout_behavior": "Authors' released 4096 episodes, not collected by this self-trained initialization",
+    "critic_validation": "Held-out 64 episodes; never used for policy training or final success rate",
+    "sampling_semantics": "Raw weights [1,1] with upstream balance enabled; probabilities are proportional to dataset frame counts, not a 50/50 dataset mixture."
+  },
+  "hardware": {
+    "gpus": 2,
+    "fsdp": "Public no_shard backend, selective BF16; full policy parameters trainable",
+    "checkpoint_io": "Save final checkpoint per stage to bound disk use; optimizer/scheduler state retained",
+    "backend_conversion": "Native SFT vs legacy CFG: upstream erf/tanh GELU and RoPE floating-point implementations differ. Diagnose without production patches; compare unchanged CFG unconditional vs unchanged CFG positive, native evaluation separately. No original-output equivalence claim.",
+    "dataloader_workers": {
+      "value_train_per_rank": 8,
+      "value_eval_per_rank": 4,
+      "advantage_per_gpu": 12,
+      "policy_per_rank": 8,
+      "sft_per_rank": 4
+    }
+  }
+}

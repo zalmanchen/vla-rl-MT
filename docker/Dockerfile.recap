@@ -1,0 +1,23 @@
+# Snapshot payload is prepared by bootstrap/build_recap_image.py.
+# BASE_IMAGE is bound to a digest by the preparation script.
+ARG BASE_IMAGE=nvidia/cuda:12.8.1-base-ubuntu22.04@sha256:e869de8a68e95272e51c4c7071b1d39941aaab707f9bc051a99062a3791448b1
+FROM ${BASE_IMAGE}
+ARG DEBIAN_FRONTEND=noninteractive
+RUN rm -f /etc/apt/sources.list.d/cuda*.list \
+    && apt-get update && apt-get install -y --no-install-recommends \
+      build-essential git pkg-config ca-certificates ffmpeg libegl1 libgl1 libglib2.0-0 libgomp1 \
+      libosmesa6 libvulkan1 libsm6 libxext6 libxrender1 \
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+COPY payload/ /
+RUN ldconfig
+RUN /cloud/vla-rl-MT/.runtime/venv-recap-official/bin/python \
+    /cloud/vla-rl-MT/docker/restore_console_scripts.py
+ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility,graphics \
+    NVIDIA_VISIBLE_DEVICES=all \
+    PYTHONDONTWRITEBYTECODE=1 \
+    TOKENIZERS_PARALLELISM=false \
+    MUJOCO_GL=egl \
+    PYOPENGL_PLATFORM=egl
+WORKDIR /cloud/vla-rl-MT
+ENTRYPOINT ["/cloud/vla-rl-MT/docker/entrypoint.sh"]
+CMD ["bash"]

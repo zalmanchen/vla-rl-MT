@@ -1,0 +1,26 @@
+# The same environment/inference budget as native eval; policy format differs.
+runner:
+  logger:
+    log_path: ${oc.env:PROJECT_ROOT}/.runtime/runs/recap-official
+    experiment_name: cfg-eval
+env:
+  eval:
+    task_id_filter: [0]
+    use_ordered_reset_state_ids: true
+    total_num_envs: 10
+    rollout_epoch: 5
+    seed: 0
+    video_cfg:
+      save_video: false
+rollout:
+  model:
+    model_path: ???
+    model_type: cfg_model
+    num_action_chunks: 10
+    openpi:
+      task: eval
+      config_name: pi05_libero
+      discrete_state_input: false
+      train_expert_only: false
+      guidance_type: positive
+      cfgrl_guidance_scale: 1.0

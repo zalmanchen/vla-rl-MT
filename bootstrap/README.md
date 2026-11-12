@@ -1,52 +1,34 @@
-# RLinf / RoboTwin / π0.5 环境
+# 环境与资源准备
 
-项目目录：`/storage/p1/cx/vla-rl-MT`。安装与下载入口集中在本目录。
+本目录负责安装、固定版本下载、数据准备和验收。当前多任务主线使用 `audit_multitask.py` 和 `../scripts/evaluate_multitask.py`，见[多任务协议](../docs/multitask-critic.md)。保留的 LIBERO RECAP 参考使用 `prepare_recap_official.py`、`recap-official.lock.json` 和独立的 `env_recap_official.sh`，范围见[既有实验摘要](../docs/previous-experiments.md)。`../scripts/recap.py` 保留两任务 pilot；`env.sh` 同时用于当前 Motus P0 与 RoboTwin 工程路径。
 
-## 使用
+| 用途 | 入口 |
+| --- | --- |
+| 已验证环境快照与 Docker 镜像打包 | `build_recap_image.py`；使用见 [Docker 说明](../docs/docker.md) |
+| 官方 LIBERO 数据／原始源码／配置准备 | `prepare_recap_official.py`、`recap-official*.lock.json` |
+| 原生 SFT → CFG 的官方键转换／数值核对 | `export_recap_cfg.py`、`check_recap_formats.py` |
+| 工程 smoke 的独立完整 episode 子集 | `prepare_recap_smoke.py`，不得用作正式数据 |
+| 官方 LIBERO 环境变量／真实仿真测试 | `env_recap_official.sh`、`check_libero.py` |
+| 安装主环境与上游源码 | `install.sh`、`prepare_sources.py` |
+| 只读核验固定源码及缓存压缩包 | `prepare_sources.py --verify-only`；RLinf `e1a82eb`＋记录补丁、RoboTwin `dca9ec6`，不下载、不应用补丁；可用 `--source` 选择单个来源 |
+| PyTorch wheel 分块续传及官方 SHA-256 校验 | `download_wheel.py` |
+| 环境变量 | `source bootstrap/env.sh`（在项目根目录） |
+| 模型与基础数据下载 | `download.py`、`download_recap_models.py` |
+| Clean 数据与资产分块续传 | `download_dataset_ranges.py` |
+| SigLIP 分块续传 | `resume_siglip_ranges.py` |
+| 可选 Randomized 数据 | `download_randomized.py` |
+| 解压与内容校验 | `extract_assets.py`、`verify_downloads.py` |
+| 工具／文件清单检查 | `check_recap_prerequisites.py` |
+| 实际验收 | `smoke_render.py` → `smoke_model.py` → `smoke_episode.py` |
+| 等待已有安装下载后完成基础验收 | `finish_recap_setup.py` |
+| 记录并应用 RoboTwin 兼容补丁 | `patches/`、`apply_recap_patch.py` |
+| 原生 HDF5／自主轨迹转 LeRobot | `prepare_recap_data.py` |
+| 固定策略的有界自主采集 | `collect_recap_rollouts.py` |
+| 零更新 CFG 输入与动作核验 | `check_recap_policy.py` |
+| 配对开发场景评估与视频 | `evaluate_recap.py` |
 
-在项目根目录执行：
+同一资源目录只运行一个下载器。分块下载日志在 `.runtime/logs/recap-data-ranges.log`，验收状态在 `.runtime/bootstrap/recap-preparation.json`。
 
-```bash
-source bootstrap/env.sh
-python bootstrap/smoke_model.py
-python bootstrap/smoke_episode.py
-```
+版本锁：`sources.lock.json` 为上游源码，`downloads.lock.json` 为策略／数据，`recap-models.lock.json` 为 critic 骨干，`environment.freeze.txt` 为主环境，`tools.freeze.txt` 为下载工具，`simulation-check.freeze.txt` 为已通过 root 渲染测试的独立诊断环境。`source-audit.json` 是历史审计记录，不能替代本次运行验收。
 
-`smoke_episode.py` 使用 RLinf 的原生 π0.5 加载器和动作变换，在 RoboTwin `handover_block` 上运行单个 ALOHA-AgileX 双臂 episode，种子 100000，任务默认步数上限。结果和视频位于 `.runtime/validation/`。该脚本只做集成验收，不是正式成功率评测；RL训练与Ray/FSDP链路由 `experiments/` 中的入口运行。
-
-该机器上 SAPIEN 的 OIDN 报 invalid handle，验收入口将去噪器设为 none，保留 ray-tracing 渲染。此设置只用于该入口；调用其他入口时需明确应用同样的兼容处理。规划器使用 mplib；未安装可选 cuRobo / PyTorch3D，不启用点云观测。
-
-## 目录与固定版本
-
-- `third_party/RLinf/`：从官方 GitHub 下载并核对过的完整源码。
-- `third_party/RoboTwin/`：固定提交的完整源码；`assets/` 已解压。
-- `bootstrap/sources.lock.json`：源码提交、来源与压缩包 SHA-256。
-- `.runtime/venv-rlinf/`：Python 3.11.15、PyTorch 2.7.1+cu128、OpenPI、RoboTwin 依赖。
-- `bootstrap/environment.freeze.txt`：实际环境固定版本。选择匹配 OpenPI/LeRobot 的依赖组合；CUDA GPU 运算需通过验收。
-- `models/pi0.5_robotwin2/`：`motus-robotics/pi0.5_robotwin2`，修订 `effc6e1a99bd4d0edf9447e8ba313def67649cfe`。包括权重及训练归一化统计，不下载 optimizer.pt。
-- `datasets/RoboTwin2.0/`：官方数据修订 `3dc3b798668feb99ac61cc9086d84cbcc3d79186`，50 任务 Clean 压缩包与三份仿真资产。
-- `datasets/RoboTwin2.0-clean/`：解压的 Clean 示范，保留压缩包内部目录。
-- `datasets/RoboTwin2.0-randomized/`：50 任务 `aloha-agilex_randomized_500.zip` 压缩包；尚未批量解压。
-
-每个下载目录包含 `download-manifest.json` 和 `DOWNLOAD_COMPLETE`。`bootstrap/verify_downloads.py` 检查全部选中文件的内容哈希是否匹配 Hugging Face ETag，并输出 `.runtime/validation/downloads.json`。
-
-当前下载是原始 RoboTwin HDF5 数据，原始文件仍为HDF5；E4等阶段另外生成自己的数据清单与划分；灵巧手 embodiment 尚未配置。基础模型为 14 维 ALOHA 双臂关节/夹爪策略。
-
-## Git 管理
-
-仅项目根目录有 Git 元数据；上游采用固定版本源码快照，未创建嵌套仓库。`third_party/`、`.runtime/`、`models/`、`datasets/` 通过根目录 `.gitignore` 排除，避免将资产和环境加入 Git。源码来源及验收入口由 `bootstrap/` 记录。后续上游修改应导出为单独补丁并记录到本项目，或明确迁移到单一 RLinf fork；当前上游原文件未修改，核对记录见 `bootstrap/source-audit.json`；适配通过 `experiments/` 中的运行时扩展实现。
-
-## 复核
-
-```bash
-uv pip check --python .runtime/venv-rlinf/bin/python
-.runtime/venv-tools/bin/python bootstrap/verify_downloads.py
-```
-
-日志均在 `.runtime/logs/`。下载工具依赖独立的 `.runtime/venv-tools`。下载入口使用 Hugging Face 镜像和固定 revision，并保留缓存以便续传。`bootstrap/downloads.lock.json` 保存文件清单；`download.py` 准备模型、Clean 数据与资产，`download_randomized.py` 准备 Randomized 数据。
-
-`bash bootstrap/install.sh` 可按源码锁和环境锁重新准备 Python 依赖；系统需预装 CUDA 12.8 工具链、NVIDIA 驱动、Vulkan loader、ffmpeg 和基础图形库。本机已安装并验证这些系统依赖。该脚本不会自动下载或解压数据。
-
-## 本机验收结果
-
-已完成模型加载和 handover_block 单次 800 步闭环，动作有效；该次任务 `success=false`。关闭 OIDN 后运行结束，输出视频 25 帧。依赖检查 323 个包全部兼容。Clean 为 2,500 条、Randomized 为 25,000 条 HDF5 示范。完整性校验状态查看 `.runtime/validation/downloads.json`（完成后生成）或 `.runtime/logs/verify-downloads.log`；本机安装状态记录在 `.runtime/validation/setup-status.json`。
+详细步骤见 [安装与下载](../docs/setup.md)、[仿真验收](../docs/simulation.md)。旧 PACE／E5 等实验记录与归档脚本已移出仓库正文；现有实验只保留一份摘要。

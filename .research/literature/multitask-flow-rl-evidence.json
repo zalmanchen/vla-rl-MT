@@ -1,0 +1,488 @@
+{
+  "updated_date_beijing": "2026-11-11",
+  "scope": "Incremental, targeted review for fixed-data multi-task flow-VLA post-training; not exhaustive novelty search",
+  "sources": [
+    {
+      "id": "recap",
+      "title": "RECAP / pi*0.6",
+      "url": "https://arxiv.org/html/2511.14759v2",
+      "version": "2511.14759v2",
+      "read_depth": "full_text",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "离线多任务预训练已包含 advantage conditioning；下游结合自主数据与纠正迭代。"
+      ],
+      "limits": [
+        "普通 SFT pi0.5 起点的短预算适配不是原论文完整复现。"
+      ],
+      "implication_for_proposal": "条件预训练起点是必须匹配或明确标记的因素。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "dissecting",
+      "title": "Dissecting Advantage-Guided Post-Training",
+      "url": "https://arxiv.org/html/2609.28161v1",
+      "version": "2609.28161v1",
+      "read_depth": "full_text",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "拆分 advantage 构造、校准、利用；实测加权与筛选；明确讨论后训练接入 RECAP 的起点差异。"
+      ],
+      "limits": [
+        "阶段性离线指标不是任意场景下的因果证明；不直接解决条件接入。",
+        "其 intervention／progress 排序是筛查指标；人为接管前后或视觉匹配并非精确同物理状态的行动反事实。"
+      ],
+      "implication_for_proposal": "通用 advantage 诊断已存在；应检验条件接入与共享任务的交互。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "counteralign",
+      "title": "CounterAlign",
+      "url": "https://arxiv.org/html/2608.21740v1",
+      "version": "2608.21740v1",
+      "read_depth": "full_text",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "指令与动作重标注，判别器 reward，IQL critic，advantage-weighted FM；部分重标注样本作为未标注而非强负例。"
+      ],
+      "limits": [
+        "学习 reward 的设定与保留真实环境 reward 不同；不能随意挪用其反事实标签。"
+      ],
+      "implication_for_proposal": "目标对比加 critic 再离线 RL 已有先例，必须有更窄且验证过的机制。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "prts",
+      "title": "PRTS",
+      "url": "https://arxiv.org/html/2604.27472v1",
+      "version": "2604.27472v1",
+      "read_depth": "full_text",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "预训练中联合语言目标对比、多个正例及时间加权，在共享 VLM 中学习可达性相关表征。"
+      ],
+      "limits": [
+        "静态完成分类不等价于该目标；不能将对比相似度直接当作任意策略 value。"
+      ],
+      "implication_for_proposal": "不能以 instruction 对比训练 value 表征本身作为创新。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "generalist",
+      "title": "Reinforcement Learning Enables Scaling Generalist Robot Policy Improvement",
+      "url": "https://arxiv.org/html/2611.06905v1",
+      "version": "2611.06905v1",
+      "read_depth": "full_text",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "比较成功筛选、critic 引导动作排序与策略提取，研究任务规模、泛化和资源；critic 使用 pi0.5 prefix、本体状态和动作。"
+      ],
+      "limits": [
+        "主实验有持续交互；不能把最终结果作为固定数据公平对照。",
+        "MolmoSpaces 的任务规模同时涉及物体与场景，论文另做两轴对照；不能把本机随机种子数称为技能数。其 distributional critic 负结果是特定在线 BoN 消融，非所有离线分类 critic 的否定。"
+      ],
+      "implication_for_proposal": "多任务共同改善与复用策略特征 critic 已有直接先例。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "lwd",
+      "title": "Learning while Deploying",
+      "url": "https://arxiv.org/html/2605.00416v1",
+      "version": "2605.00416v1",
+      "read_depth": "full_text",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "集群离线到在线通用策略改善；包含从参考策略出发的八任务 RECAP 适配对照。"
+      ],
+      "limits": [
+        "原始数据量及交互规模不同，不能照搬训练步数或成绩。"
+      ],
+      "implication_for_proposal": "普通 SFT 起点加共享 RECAP 已有工作。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "lowrank",
+      "title": "The Low-Rank Structure of VLA Reinforcement Learning",
+      "url": "https://arxiv.org/html/2609.34599v1",
+      "version": "2609.34599v1",
+      "read_depth": "selected_sections",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "研究 timestep modules 的低秩更新；离散 timestep BC 也出现类似局部低秩结构。"
+      ],
+      "limits": [
+        "低秩本身不能证明 RL 独有的学习机制。"
+      ],
+      "implication_for_proposal": "定位时间模块或观察 velocity 差异不自动构成 flow 专属创新。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "arfm",
+      "title": "Balancing Signal and Variance: Adaptive Offline RL Post-Training for VLA Flow Models (ARFM)",
+      "url": "https://arxiv.org/html/2509.04063v1",
+      "version": "2509.04063v1",
+      "read_depth": "selected_sections",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "critic-free advantage signal，batch softmax 加权 FM，二分求自适应温度；包含 LIBERO 多任务与持续学习实验。"
+      ],
+      "limits": [
+        "解析温度依赖 advantage／loss 分布和批量近似假设；其 dense reward 与大预算全参设置不同于本机稀疏回报、expert-only pilot。",
+        "正文式与算法伪码的权重写法须对照作者实现核验，尚未独立实现或复现。"
+      ],
+      "implication_for_proposal": "加权 FM 和自适应温度已有直接 VLA 前例；当前先用同标签、固定温度强对照，避免同时更换奖励与权重规则。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced",
+      "sections_read": [
+        "advantage estimation",
+        "method and assumptions",
+        "experiments",
+        "data and code appendices"
+      ]
+    },
+    {
+      "id": "rlt",
+      "title": "RL Token",
+      "url": "https://arxiv.org/html/2604.23073v2",
+      "version": "2604.23073v2",
+      "read_depth": "selected_sections",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "冻结 VLA 上学习可重建特征的 RL token，再冻结表示；在线 TD3 式 actor-critic 直接细化参考动作 chunk，并惩罚偏离。"
+      ],
+      "limits": [
+        "非 residual action 参数化；实验还含关键阶段的人类交接、稀疏结果标注及可选干预，不能只计算轻量网络的成本。",
+        "四个任务的实验不自动证明一个共享策略在多任务共同更新下获得同等收益。"
+      ],
+      "implication_for_proposal": "可作为另一条在线效率路线；不能将它当作固定数据下 action expert 改善的直接对照。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced",
+      "sections_read": [
+        "RL token construction",
+        "actor-critic objectives",
+        "system and critical-phase protocol"
+      ]
+    },
+    {
+      "id": "vam",
+      "title": "Value as Memory",
+      "url": "https://arxiv.org/html/2610.22368v1",
+      "version": "2610.22368v1",
+      "read_depth": "selected_sections",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "通过历史 value 预测提供进度记忆，结合离线 warmup 与在线改善。"
+      ],
+      "limits": [
+        "包含记忆输入和在线数据；不是同一固定离线设定。"
+      ],
+      "implication_for_proposal": "缺少历史造成的状态混淆应列为 critic 错误的替代解释。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "physical_rsi",
+      "title": "Compounding Physical RSI",
+      "url": "https://arxiv.org/html/2611.06654v1",
+      "version": "2611.06654v1",
+      "read_depth": "selected_sections",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "提出阶段失败诊断、经验修复与能力保持的迭代框架。"
+      ],
+      "limits": [
+        "迭代执行证据与经验库构建不同于全程冻结数据；作者报告并非本地复核。"
+      ],
+      "implication_for_proposal": "失败定位加保持的组合已被研究；不可将这一叙事直接当贡献。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "mopd",
+      "title": "VLA-MOPD",
+      "url": "https://arxiv.org/html/2611.12286v1",
+      "version": "2611.12286v1",
+      "read_depth": "selected_sections",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "任务专家在学生访问观测和内部 ODE 状态上提供 flow-step 监督，含参考策略保持项及 endpoint 对照。"
+      ],
+      "limits": [
+        "需要专家及学生交互；本轮未核验全部预算与消融；不是固定离线无教师方案。"
+      ],
+      "implication_for_proposal": "多专家合并、flow-step 匹配及参考保持均有近邻工作，不能作为空白方向。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "scalarization",
+      "title": "In Defense of the Unitary Scalarization",
+      "url": "https://arxiv.org/html/2201.04122v4",
+      "version": "2201.04122v4",
+      "read_depth": "selected_sections",
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "在其多任务监督与 RL 设置中，调优的普通加和与正则化可匹配复杂多任务优化器。"
+      ],
+      "limits": [
+        "非现代 VLA 的直接证据；不能据此宣布所有梯度方法无效。"
+      ],
+      "implication_for_proposal": "共享干扰研究必须包含调优普通更新、正则化和计算成本。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "popart",
+      "title": "Multi-task Deep Reinforcement Learning with PopArt",
+      "url": "https://arxiv.org/html/1809.04474v1",
+      "version": "1809.04474v1",
+      "read_depth": "selected_sections",
+      "paper_claims": [
+        "任务回报尺度、稀疏性和策略能力会改变共享更新的相对贡献，采用 PopArt 处理。"
+      ],
+      "limits": [
+        "Atari/DeepMind Lab 在线 actor-critic，不是固定数据现代 VLA 的直接结果。"
+      ],
+      "implication_for_proposal": "按任务归一化或平衡更新不是新机制；作为经典简单对照。",
+      "verified_date_beijing": "2026-11-11",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "contrastive_rl",
+      "title": "Contrastive Learning as Goal-Conditioned Reinforcement Learning",
+      "url": "https://arxiv.org/html/2206.07568v1",
+      "version": "2206.07568v1",
+      "read_depth": "selected_sections",
+      "paper_claims": [
+        "在特定目标奖励和未来状态采样定义下，将动作条件对比表征联系到 goal-conditioned value。"
+      ],
+      "limits": [
+        "不是任意静态 instruction 匹配 loss 的 value 正确性证明。"
+      ],
+      "implication_for_proposal": "目标对比的估计对象与采样分布必须写明，不能只借理论名称。",
+      "verified_date_beijing": "2026-11-11",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "fql",
+      "title": "Flow Q-Learning",
+      "url": "https://proceedings.mlr.press/v267/park25f.html",
+      "version": "ICML 2025",
+      "read_depth": "selected_sections",
+      "paper_claims": [
+        "BC flow 单独学习行为；另一噪声到动作的一步策略通过 Q 最大化和同噪声 flow 蒸馏正则训练，避免对多步 ODE 反传。"
+      ],
+      "limits": [
+        "训练仍需 ODE 蒸馏采样；不是对既有大 VLA action expert 的原位条件适配，也未在原文验证真实机器人。"
+      ],
+      "implication_for_proposal": "若转向一步提取，需交代新增策略、蒸馏和 critic 成本；单纯一步 Q 引导不构成新方法。",
+      "verified_date_beijing": "2026-11-11",
+      "evidence_status": "primary source read; authors claims, not independently reproduced",
+      "algorithm_url": "https://arxiv.org/html/2502.02538v2",
+      "sections_read": [
+        "section 3 and algorithm 1",
+        "appendix A limitations"
+      ]
+    },
+    {
+      "id": "dfql",
+      "title": "Direct Flow Q-Learning",
+      "url": "https://proceedings.mlr.press/v306/cao26f.html",
+      "version": "ICML 2026",
+      "read_depth": "selected_paper_sections_and_official_actor_code",
+      "paper_claims": [
+        "终点 Q 梯度作用于各步 velocity 的 surrogate；保留多步采样，无需多步 BPTT 或一步蒸馏。"
+      ],
+      "limits": [
+        "官方初始发布侧重 state-based OGBench；不是多任务 VLA 已验证方案。",
+        "逐步 dense BC 也增加训练计算；多步采样与 alpha 敏感性仍在，论文也讨论 action chunk 变体。",
+        "附录方向对齐讨论的是 velocity 函数空间的渐近扰动，不直接保证有限步共享神经网络参数更新后的 Q 单调改善。"
+      ],
+      "implication_for_proposal": "逐 flow 步 Q 引导已有直接工作；若改用 Q-gradient，应首先证明相较离线标签加权的必要性与可信 Q 的覆盖。",
+      "verified_date_beijing": "2026-11-11",
+      "evidence_status": "primary source read; authors claims, not independently reproduced",
+      "retrieval_note": "浏览工具未能解析 PMLR 的 octet-stream PDF；直接下载官方文件并在隔离工具环境提取文本，主训练环境未改动。",
+      "code_url": "https://github.com/2012060/Direct-Flow-Q-Learning/blob/main/agents/dfql.py",
+      "sections_read": [
+        "PMLR PDF sections 2.2, 3.1-3.3",
+        "appendix A.1-A.2 and B; opening of C",
+        "official actor_loss and sample_actions"
+      ],
+      "pdf_url": "https://raw.githubusercontent.com/mlresearch/v306/main/assets/cao26f/cao26f.pdf",
+      "pdf_sha256": "3e6cfbca11f6c79e685bb558569d8e8cc895bbc45925b427c3a519500ef3cd54",
+      "local_analysis": {
+        "status": "analytic illustration, not a novelty claim or a refutation of the stated functional-space result",
+        "setup": "K=2, dt=1/2, w=(1/2,1), Q(a)=a, v_theta(t0)=3*theta, v_theta(t1)=-2*theta; omit BC to isolate the RL term",
+        "result": "da_terminal/dtheta=1/2; surrogate descent gives dtheta/deta=-1/4; terminal Q change=-eta/8. Sharing theta across times prevents independently applying the functional velocity perturbations.",
+        "implication": "Do not transfer a function-space alignment statement to a finite neural update without checking parameter coupling; this toy does not establish a practical failure or a multi-task mechanism."
+      }
+    },
+    {
+      "id": "vlac",
+      "title": "A Vision-Language-Action-Critic Model for Robotic Real-World Reinforcement Learning",
+      "url": "https://arxiv.org/html/2509.15937v1",
+      "version": "2509.15937v1",
+      "read_depth": "selected_sections",
+      "sections_read": [
+        "abstract",
+        "sections 1, 3.1 and 3.1.1"
+      ],
+      "paper_claims": [
+        "联合动作、语言和过程进度监督；图像对与目标预测进度差和完成信号，含语义错配、回退等训练样本，接入在线真实机器人 RL。"
+      ],
+      "limits": [
+        "其 critic 主要是过程 reward 模型；不等价于固定参考策略的 MC value 或动作 advantage。",
+        "大规模异质数据及在线／人工干预预算不同，尚未核验所有消融。",
+        "进度监督依赖成功高效轨迹的时间顺序近似；本机失败轨迹不能未经验证按时间单调赋进度。"
+      ],
+      "implication_for_proposal": "辅助语言／目标监督改善具身 critic 已有近邻；需坚持奖励模型、完成分类与策略价值的区分。",
+      "verified_date_beijing": "2026-11-11",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "newt",
+      "title": "Learning Massively Multitask World Models for Continuous Control (MMBench / Newt)",
+      "url": "https://www.nicklashansen.com/NewtWM/newt.pdf",
+      "version": "author-hosted preprint, accessed 2026-11-11 Beijing",
+      "read_depth": "selected_sections",
+      "sections_read": [
+        "abstract",
+        "benchmark sections 2.2 and 2.3"
+      ],
+      "paper_claims": [
+        "200 个训练任务的共享在线 world-model RL；提供语言、示范和可选图像，明确覆盖同观察空间下的不同目标。"
+      ],
+      "limits": [
+        "非固定离线 flow-VLA 后训练；本轮未审核完整算法与结果，不能把平均任务分数转述为每任务共同改善。"
+      ],
+      "implication_for_proposal": "多任务 RL 可改善并非空白问题；小型机制测试应优先采用同场景多目标与控制观察信息的协议。",
+      "verified_date_beijing": "2026-11-11",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    },
+    {
+      "id": "time_limits",
+      "title": "Time Limits in Reinforcement Learning",
+      "url": "https://proceedings.mlr.press/v80/pardo18a.html",
+      "version": "ICML 2018",
+      "read_depth": "selected_sections",
+      "sections_read": [
+        "abstract",
+        "PDF section 2 time-awareness"
+      ],
+      "verified_date_beijing": "2026-11-11",
+      "paper_claims": [
+        "区分任务固有的有限时域终止与训练用外部截断；前者需要表示剩余时间，后者的 partial episode 应考虑 bootstrap。"
+      ],
+      "limits": [
+        "不是本机 critic 失配的直接因果证据；增加时钟也可能只拟合超时轨迹，而不能改善行为排序或成功率。"
+      ],
+      "implication_for_proposal": "先明确 task limit 的目标语义并做时间信息基线；不能将其产生的状态混淆归为语言目标表示错误。",
+      "evidence_status": "primary source read; authors claims, not independently reproduced"
+    }
+  ],
+  "research_gates": [
+    "Establish a usable official RLinf baseline before interpreting degradation",
+    "Separate label quality from extraction method with a crossed comparison",
+    "Do not infer data coverage failure from all learners failing",
+    "Require observed single-task improvement before a shared-interference claim",
+    "Require shared trainable parameters for goal auxiliary loss to influence value",
+    "Retain BC, weighted FM, value warmup and equal-cost controls"
+  ],
+  "implementation_findings": [
+    {
+      "finding": "RLinf example trains positive-only conditioning",
+      "scope": "pinned source and project config, not proof about historical E9"
+    },
+    {
+      "finding": "LeRobot one-element bool outcome requires scalar extraction in compute_returns",
+      "scope": "reproduced with regression test; implementation compatibility, not a research contribution"
+    },
+    {
+      "finding": "ALOHA discrete-state guidance must tokenize state through same normalization pipeline",
+      "scope": "input compatibility; runtime verification in progress"
+    },
+    {
+      "finding": "Official critic initializes the SigLIP-to-Gemma projection (1152 to 640), value expert and value head from scratch while loading vision/text backbones separately",
+      "source": "third_party/RLinf/rlinf/models/embodiment/value_model/recap/value_expert.py:100",
+      "scope": "confirmed from pinned code; distinguish multimodal/value initialization from advantage-condition initialization; no performance conclusion"
+    }
+  ],
+  "next_questions": [
+    "Does additional return-only warmup fix the randomly initialized multimodal/value interface before any auxiliary goal loss is needed?",
+    "Does a return-only critic on frozen pi0.5 prefix features explain gains attributed to goal contrast?",
+    "Is the condition-versus-weighted-extraction gap reproducible at matched labels and positive exposure?",
+    "Can a task-conditioned value distinguish actionable quality when observations omit history/proprioception?"
+  ],
+  "analysis_notes": [
+    {
+      "kind": "local_code_derivation",
+      "source": "rlinf/models/embodiment/openpi_cfg/openpi_cfg_action_model.py::compute_cfg_routing_masks",
+      "statement": "Positive-only routing trains no-guide on a negative-enriched distribution: positive fraction p*rho/(p*rho+1-rho). Post-training no-guide degradation is not by itself forgetting.",
+      "implication": "Separate input adaptation, within-task guidance-branch coupling and between-task interference."
+    },
+    {
+      "kind": "experimental_identifiability",
+      "statement": "Conditional binary labels versus continuous advantage weights also changes label information resolution. Use the same binary-positive subset for the primary extraction comparison; keep continuous weighting as a separate strong baseline."
+    },
+    {
+      "kind": "local_data_audit",
+      "statement": "Local v1 rollout collection reused instance-specific demo instructions across simulator scenes. It was invalidated and recollected as v2 with source-verified task-level instructions. This is an implementation finding, not a mechanism claim."
+    },
+    {
+      "kind": "estimand_constraint",
+      "statement": "Same-goal wording changes can change the reference policy, so behavioral value need not be paraphrase-invariant; define goal, wording and reference policy before testing semantic consistency."
+    }
+  ],
+  "current_data_eligibility": {
+    "dataset": "datasets/lerobot/recap-pilot-v2",
+    "status": "pipeline pilot only; no causal mechanism established",
+    "full_simulator_snapshots_available": false,
+    "same_scene_multiple_goal_annotations": "not established",
+    "observed_fields": "Clean HDF5 contains images, robot state/action/EE poses and camera metadata; recorded rollouts contain robot state, executed targets and JPEG images, not complete simulator state",
+    "consequences": [
+      "Exact same-state branching requires validated replay or new full-state capture, including task flags and remaining horizon.",
+      "Click-bell and stacking scenes have distinct objects; cross-task goal classification can exploit scene identity.",
+      "Do not treat this pool as a validated source of same-scene counterfactual advantage labels."
+    ]
+  },
+  "review_batch_2": {
+    "scope": "Deepen ARFM, RLT and FQL; add VLAC and MMBench/Newt. No new algorithm implementation implied.",
+    "key_revision": "Separate task exposure after label routing, categorical-mode metrics versus expected-value errors, and chunked behavior reference from instantaneous state policy."
+  },
+  "local_pilot_label_diagnostics": {
+    "run": ".runtime/runs/recap-pilot-v2-20261111",
+    "source": "label-breakdown.json; archived official advantage sidecars",
+    "rollout_positive_frames": 1069,
+    "rollout_total_frames": 4230,
+    "all_8_last_chunks_positive": true,
+    "failed_last_chunk_positive_frames": 192,
+    "failed_episodes": 6,
+    "status": "descriptive observation; no causal attribution",
+    "next_control": "known task limit and elapsed-time critic input; never remaining recorded episode length"
+  },
+  "local_execution_evidence": {
+    "run": ".runtime/runs/recap-pilot-v2-20261111",
+    "readiness": "readiness.json",
+    "scope": "official four-stage execution and paired development evaluation, not paper performance reproduction",
+    "value_steps": 500,
+    "policy_steps": 500,
+    "development_evaluation": {
+      "base_no_guide": {
+        "successes": 0,
+        "episodes": 4
+      },
+      "base_positive": {
+        "successes": 2,
+        "episodes": 4
+      },
+      "trained_positive": {
+        "successes": 1,
+        "episodes": 4
+      }
+    },
+    "claim": "No demonstrated post-training gain in this small pilot; hypotheses remain unseparated."
+  },
+  "base_model_audit": {
+    "verified_date_beijing": "2026-11-11",
+    "actor_model_card": "https://huggingface.co/motus-robotics/pi0.5_robotwin2",
+    "rlinf_recipe": "https://rlinf.readthedocs.io/en/latest/rst_source/examples/embodied/recap.html",
+    "actor_identity": "RoboTwin-50 multitask SFT pi0.5; domain choice matches, deployed baseline strength not yet established",
+    "missing_evidence": "Paired closed-loop RLinf native versus CFG no-guide evaluation; existing action parity uses one observation",
+    "critic_initialization": "separate pretrained SigLIP2 and Gemma3 backbones, fresh cross-modal projection and value expert/head",
+    "decision": "Keep actor checkpoint while diagnosing protocol. Conditional change gates are recorded in the plan; no new training run was launched for this audit."
+  }
+}

@@ -1,0 +1,211 @@
+--- a/rlinf/data/datasets/recap/value_dataset.py
++++ b/rlinf/data/datasets/recap/value_dataset.py
+@@ -41,7 +41,11 @@
+ from torch.utils.data import Dataset
+ 
+ from rlinf.data.storage.lerobot import episode_boundaries
+-from rlinf.models.embodiment.openpi.policies import franka_policy, libero_policy
++from rlinf.models.embodiment.openpi.policies import (
++    aloha_policy,
++    franka_policy,
++    libero_policy,
++)
+ 
+ from .common import BaseDataLoaderImpl, ReCapMixtureDataset
+ from .utils import (
+@@ -59,6 +63,15 @@
+ }
+ 
+ _REPACK_KEYS = {
++    "robotwin": {
++        "images": {
++            "cam_high": "observation.images.cam_high",
++            "cam_left_wrist": "observation.images.cam_left_wrist",
++            "cam_right_wrist": "observation.images.cam_right_wrist",
++        },
++        "state": "observation.state",
++        "prompt": "prompt",
++    },
+     "libero": {
+         "observation/image": "image",
+         "observation/wrist_image": "wrist_image",
+@@ -320,7 +333,9 @@
+             )
+         transforms_list.append(_openpi_transforms.RepackTransform(repack_keys))
+ 
+-        if robot in ("libero", "libero_v2"):
++        if robot == "robotwin":
++            transforms_list.append(aloha_policy.AlohaInputs(adapt_to_pi=True))
++        elif robot in ("libero", "libero_v2"):
+             transforms_list.append(
+                 libero_policy.LiberoInputs(model_type=model_type_enum)
+             )
+--- a/rlinf/models/embodiment/value_model/recap/checkpoint_utils.py
++++ b/rlinf/models/embodiment/value_model/recap/checkpoint_utils.py
+@@ -152,6 +152,7 @@
+     import openpi.transforms as _openpi_transforms
+ 
+     from rlinf.models.embodiment.openpi.policies import (
++        aloha_policy,
+         franka_policy,
+         libero_policy,
+     )
+@@ -165,7 +166,23 @@
+ 
+     input_transforms = []
+ 
+-    if env_type == "libero":
++    if env_type == "robotwin":
++        input_transforms.append(
++            _openpi_transforms.RepackTransform(
++                {
++                    "images": {
++                        "cam_high": "observation.images.cam_high",
++                        "cam_left_wrist": "observation.images.cam_left_wrist",
++                        "cam_right_wrist": "observation.images.cam_right_wrist",
++                    },
++                    "state": "observation.state",
++                    "prompt": "prompt",
++                }
++            )
++        )
++        input_transforms.append(aloha_policy.AlohaInputs(adapt_to_pi=True))
++        input_transforms.append(_openpi_transforms.InjectDefaultPrompt(default_prompt))
++    elif env_type == "libero":
+         input_transforms.append(_openpi_transforms.InjectDefaultPrompt(default_prompt))
+         input_transforms.append(libero_policy.LiberoInputs(model_type=model_type_enum))
+ 
+--- a/examples/offline_rl/advantage_labeling/recap/process/compute_advantages.py
++++ b/examples/offline_rl/advantage_labeling/recap/process/compute_advantages.py
+@@ -88,6 +88,13 @@
+ 
+ # Maps LeRobot dataset keys to value model observation format
+ KEY_MAPPINGS = {
++    "robotwin": {
++        "observation.images.cam_high": "observation.images.cam_high",
++        "observation.images.cam_left_wrist": "observation.images.cam_left_wrist",
++        "observation.images.cam_right_wrist": "observation.images.cam_right_wrist",
++        "observation.state": "observation.state",
++        "task": "prompt",
++    },
+     "franka": {
+         # Multi-cam format (front_cam + wrist_cam)
+         "observation.images.front_cam": "observation/images/front_cam",
+--- a/rlinf/models/embodiment/openpi_cfg/__init__.py
++++ b/rlinf/models/embodiment/openpi_cfg/__init__.py
+@@ -32,7 +32,11 @@
+     )
+ 
+     config_name = getattr(cfg.openpi, "config_name", None)
+-    actor_train_config = get_openpi_config(config_name)
++    actor_train_config = get_openpi_config(
++        config_name,
++        model_path=str(cfg.model_path),
++        data_kwargs=cfg.get("openpi_data", None),
++    )
+     actor_model_config = actor_train_config.model
+     actor_model_config = OpenPi0Config(**actor_model_config.__dict__)
+     override_config_kwargs = cfg.openpi
+@@ -56,16 +60,22 @@
+ 
+     if os.path.exists(full_weights_path):
+         model_state_dict = torch.load(full_weights_path, map_location="cpu")
+-        model.load_state_dict(model_state_dict, strict=False)
++        model.load_state_dict(model_state_dict, strict=True)
+     elif os.path.exists(actor_full_weights_path):
+         model_state_dict = torch.load(actor_full_weights_path, map_location="cpu")
+-        model.load_state_dict(model_state_dict, strict=False)
++        model.load_state_dict(model_state_dict, strict=True)
+     else:
+         weight_paths = sorted(glob.glob(os.path.join(checkpoint_dir, "*.safetensors")))
+         if not weight_paths:
+             weight_paths = [os.path.join(checkpoint_dir, "model.safetensors")]
+         for weight_path in weight_paths:
+-            safetensors.torch.load_model(model, weight_path, strict=False)
++            missing, unexpected = safetensors.torch.load_model(
++                model, weight_path, strict=False
++            )
++            if missing or unexpected:
++                raise ValueError(
++                    f"CFG checkpoint mismatch: missing={missing[:8]}, unexpected={unexpected[:8]}"
++                )
+ 
+     model.paligemma_with_expert.to_bfloat16_for_selected_params("bfloat16")
+     data_config = actor_train_config.data.create(
+@@ -73,7 +83,9 @@
+     )
+     if data_config.asset_id is None:
+         raise ValueError("Asset id is required to load norm stats.")
+-    norm_stats = _checkpoints.load_norm_stats(checkpoint_dir, data_config.asset_id)
++    norm_stats = data_config.norm_stats
++    if norm_stats is None:
++        norm_stats = _checkpoints.load_norm_stats(checkpoint_dir, data_config.asset_id)
+ 
+     repack_transforms = transforms.Group()
+     default_prompt = None
+--- a/rlinf/workers/sft/fsdp_cfg_worker.py
++++ b/rlinf/workers/sft/fsdp_cfg_worker.py
+@@ -20,6 +20,7 @@
+ 
+ from __future__ import annotations
+ 
++import dataclasses
+ import os
+ from pathlib import Path
+ from typing import Any
+@@ -161,7 +162,17 @@
+             model_path=self.cfg.actor.model.model_path,
+             batch_size=self.cfg.actor.micro_batch_size * self._world_size,
+             repo_id=first_path,
+-        )
++            data_kwargs=self.cfg.actor.model.get("openpi_data", None),
++        )
++        model_overrides = {
++            key: openpi_cfg[key]
++            for key in ("action_horizon", "max_token_len", "discrete_state_input")
++            if key in openpi_cfg
++        }
++        if model_overrides:
++            config = dataclasses.replace(
++                config, model=dataclasses.replace(config.model, **model_overrides)
++            )
+         data_config = config.data.create(config.assets_dirs, config.model)
+ 
+         model_transforms = self._build_model_transforms(data_config)
+--- a/examples/offline_rl/advantage_labeling/recap/process/compute_returns.py
++++ b/examples/offline_rl/advantage_labeling/recap/process/compute_returns.py
+@@ -164,7 +164,14 @@
+         if dataset_type == "sft":
+             is_success = True
+         else:
+-            is_success = bool(is_success_col[ep_end - 1])
++            success_value = is_success_col[ep_end - 1]
++            if isinstance(success_value, (list, tuple, np.ndarray)):
++                if len(success_value) != 1:
++                    raise ValueError(
++                        "is_success must be a scalar or a one-element array"
++                    )
++                success_value = success_value[0]
++            is_success = bool(success_value)
+ 
+         ep_returns, ep_rewards = compute_returns_for_episode(
+             episode_length=ep_length,
+--- a/rlinf/models/embodiment/openpi_cfg/openpi_cfg_action_model.py
++++ b/rlinf/models/embodiment/openpi_cfg/openpi_cfg_action_model.py
+@@ -293,12 +293,12 @@
+             if first_process:
+                 sample["prompt"] = obs["prompt"][i]
+                 positive_guidance_prompt = obs["positive_guidance_prompt"][i]
+-                positive_guidance_dict = self._tokenize_transform(
+-                    {"prompt": positive_guidance_prompt}
++                positive_guidance_dict = self._input_transform(
++                    {**sample, "prompt": positive_guidance_prompt}
+                 )
+                 negative_guidance_prompt = obs["negative_guidance_prompt"][i]
+-                negative_guidance_dict = self._tokenize_transform(
+-                    {"prompt": negative_guidance_prompt}
++                negative_guidance_dict = self._input_transform(
++                    {**sample, "prompt": negative_guidance_prompt}
+                 )
+             else:
+                 sample["prompt"] = "xxxx"

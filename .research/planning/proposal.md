@@ -1,4 +1,8 @@
-# 多技能 VLA 后训练：实验与论文规划
+# 多技能 VLA 后训练：历史实验与论文规划
+
+> 历史研究草稿，不是当前运行计划；旧实验链接不再维护。当前任务见[共同协议](../../docs/multitask-critic.md)，既有实验统一见[摘要](../../docs/previous-experiments.md)。
+
+当前收敛计划见 [固定离线 RECAP 诊断计划](recap-offline-proposal.md)，文献证据见 [增量调研账本](../literature/multitask-flow-rl-evidence.json)。以下保留 2026-11-06 的历史规划，不代表当前机器配置或已授权运行队列。
 
 版本：2026-11-06 15:50（北京时间）。状态：研究计划，新增实验尚未启动；已有 πRL 队列继续运行。
 

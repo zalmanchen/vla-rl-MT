@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "scope": "P0 capability calibration of existing multi-task SFT; no training, not final testing",
+  "model": {
+    "repo": "motus-robotics/pi0.5_robotwin2",
+    "revision": "effc6e1a99bd4d0edf9447e8ba313def67649cfe",
+    "path": "models/pi0.5_robotwin2",
+    "weights": "model.safetensors",
+    "sha256": "de8e03a445f3e0af417a9d61a903d342fca5b6a5b4fdc6f20445e14ad25692eb",
+    "norm_stats": "models/pi0.5_robotwin2/assets/pi0.5_clean_randomize_joint_training/norm_stats.json",
+    "norm_stats_sha256": "1dce5ceb9a98eaa6ae587795e0e8977dc3ce046a7ba0a5ec07858ea896ed1adb"
+  },
+  "runtime": {
+    "rlinf_revision": "e1a82ebf0c1af69da6ab9b1519f5f3692fe33566",
+    "source": "third_party/RLinf",
+    "compatibility_manifest": "bootstrap/patches/recap-robotwin.json",
+    "compatibility_sha256": "7236078fd049bb13403ecc9069dfdb39b3c5cc17d0443de5f28f85548e6893cc",
+    "python": ".runtime/venv-rlinf/bin/python",
+    "model_action_horizon": 32,
+    "execute_prefix": 32,
+    "action_dim": 14,
+    "solver_steps": 10,
+    "discrete_state_input": true,
+    "adapt_to_pi": true,
+    "delta_joint_actions": true,
+    "cameras": [
+      "head_camera",
+      "left_camera",
+      "right_camera"
+    ],
+    "environment_action_dtype": "float32",
+    "environment_variant": "demo_clean"
+  },
+  "evaluation": {
+    "backends": [
+      "native",
+      "cfg"
+    ],
+    "guidance": "no_guide",
+    "episodes_per_task": 20,
+    "seed_file": "third_party/RLinf/rlinf/envs/sim/robotwin/seeds/train_seeds.json",
+    "seed_file_sha256": "55b25866308d4e7da486282982ead4d5857b53fd977f659b216045f1950b45e2",
+    "seed_indices": [
+      300,
+      320
+    ],
+    "reserved_final_seed_indices": [
+      500,
+      550
+    ],
+    "noise_seed_base": 700000,
+    "rollouts_return_to_training": false,
+    "scene_distribution": "official planner-solvable seed pool; overlap with Motus pretraining unknown",
+    "task_selection": "Five existing candidates fixed before calibration. Report every task; capability bands are descriptive, not a final-test selection rule."
+  },
+  "tasks": [
+    {
+      "name": "adjust_bottle",
+      "instruction_template": "Pick up the bottle and keep it head-up using the {arm} arm.",
+      "objects": [
+        "bottle"
+      ],
+      "checker": "third_party/RoboTwin/envs/adjust_bottle.py",
+      "checker_sha256": "fc9288b497d588588d495540a7f42f18b5d50832f8b0169356b64925e26b0830",
+      "instruction_source": "third_party/RoboTwin/description/task_instruction/adjust_bottle.json",
+      "instruction_source_sha256": "fa82a82a7c64498407896ab171bf731eddd679bd2189b827404a8feb3ffb237b"
+    },
+    {
+      "name": "click_bell",
+      "instruction_template": "Press the top center of the bell.",
+      "objects": [
+        "bell"
+      ],
+      "checker": "third_party/RoboTwin/envs/click_bell.py",
+      "checker_sha256": "1e52d81f06593dc981a2e8b14014c74e58924bde9eec47819a2d319ee8542006",
+      "instruction_source": "third_party/RoboTwin/description/task_instruction/click_bell.json",
+      "instruction_source_sha256": "226f74cb0691ab1954cf77ac1a7672afb1d709525f22e5dbe17f8ed3ae247f39"
+    },
+    {
+      "name": "place_container_plate",
+      "instruction_template": "Place the container onto the plate.",
+      "objects": [
+        "container",
+        "plate"
+      ],
+      "checker": "third_party/RoboTwin/envs/place_container_plate.py",
+      "checker_sha256": "39618012d97fd810318a113546ef9a5ae5fca7342848dbb6b5fb8260aa378736",
+      "instruction_source": "third_party/RoboTwin/description/task_instruction/place_container_plate.json",
+      "instruction_source_sha256": "77af29299c38e4604398f52930ed0be76d8f82e00fffe2d0926146abcb3d227c"
+    },
+    {
+      "name": "place_empty_cup",
+      "instruction_template": "Place the empty cup on the coaster.",
+      "objects": [
+        "cup",
+        "coaster"
+      ],
+      "checker": "third_party/RoboTwin/envs/place_empty_cup.py",
+      "checker_sha256": "88e97587f67f21f5ddc1a7715e35b8c445c28c9bdc8df777462bd2d20bc86e15",
+      "instruction_source": "third_party/RoboTwin/description/task_instruction/place_empty_cup.json",
+      "instruction_source_sha256": "95de3567883298db94e311e4c363f5474a9a7545dcbd55751b273f4e0523d86e"
+    },
+    {
+      "name": "stack_blocks_two",
+      "instruction_template": "Stack the green block on top of the red block.",
+      "objects": [
+        "block1",
+        "block2"
+      ],
+      "checker": "third_party/RoboTwin/envs/stack_blocks_two.py",
+      "checker_sha256": "781fdf0f99ed2fde61243f2e6134c2f29ee17c851ce9e5a37506a91fbbcd51da",
+      "instruction_source": "third_party/RoboTwin/description/task_instruction/stack_blocks_two.json",
+      "instruction_source_sha256": "76cd955187082738dcf6d89484d9c2cef531fb4b69c9a47b3ce44634705b24fc"
+    }
+  ],
+  "critic_contract": {
+    "baseline_inputs": [
+      "images",
+      "instruction"
+    ],
+    "proprioception_used": false,
+    "backbone": "separate RECAP SigLIP2/Gemma3, not pi0.5 features",
+    "source_file": "third_party/RLinf/rlinf/models/embodiment/value_model/recap/modeling_critic.py",
+    "source_sha256": "7a8d38c9d39c6c36795099c16f2439bca1e0de154dca67caf7178b1bf0b589e5"
+  },
+  "gates": {
+    "critic_training": "Not authorized by this P0 launcher; first audit task/outcome coverage and episode/scene splits.",
+    "contrastive_auxiliary": "No verified same-state multi-goal pairs in current pool; do not run.",
+    "policy_training": "Only after critic and advantage diagnostics; same init/data/update/threshold rules across critics."
+  }
+}

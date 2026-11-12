@@ -1,0 +1,22 @@
+# Stage 1: official return calculation on episode-separated LeRobot datasets.
+defaults:
+  - recap_compute_returns
+  - _self_
+
+hydra:
+  searchpath:
+    - file://${oc.env:REPO_PATH}/examples/offline_rl/config
+
+data:
+  train_data_paths:
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/sft-train
+      type: sft
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/sft-val
+      type: sft
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/rollout-train
+      type: rollout
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/rollout-val
+      type: rollout
+  gamma: 1.0
+  tag: pilot
+  num_workers: 8

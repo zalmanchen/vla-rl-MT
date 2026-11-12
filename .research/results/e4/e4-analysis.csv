@@ -1,6 +1,0 @@
-task,episodes,original,success_replay,single_task_rl,multi_task_rl
-adjust_bottle,20,9,8,9,7
-click_bell,20,8,5,8,9
-stack_blocks_two,20,7,3,4,3
-place_empty_cup,20,9,3,4,3
-place_container_plate,20,14,6,4,7

@@ -1,0 +1,103 @@
+defaults:
+  - model/recap_value_model@actor.model
+  - hybrid_engines/fsdp@actor.fsdp_config
+  - _self_
+  - override hydra/job_logging: stdout
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  searchpath:
+    - file://${oc.env:REPO_PATH}/examples/offline_rl/config
+
+cluster:
+  num_nodes: 1
+  component_placement:
+    actor,env,rollout: ${oc.env:RECAP_GPU,1}
+
+runner:
+  task_type: sft
+  logger:
+    project_name: rlinf
+    logger_backends: [tensorboard]
+    log_path: ${oc.env:PROJECT_ROOT}/.runtime/runs
+    experiment_name: recap-pilot-value
+  max_epochs: -1
+  max_steps: 500
+  val_check_interval: 100
+  save_interval: 100
+
+data:
+  tag: pilot
+  train_data_paths:
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/sft-train
+      type: sft
+      weight: 1.0
+      robot_type: robotwin
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/rollout-train
+      type: rollout
+      weight: 1.0
+      robot_type: robotwin
+  eval_data_paths:
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/sft-val
+      max_samples: null
+      robot_type: robotwin
+    - dataset_path: ${oc.env:PROJECT_ROOT}/datasets/lerobot/recap-pilot-v2/rollout-val
+      max_samples: null
+      robot_type: robotwin
+  train_num_workers: 2
+  eval_num_workers: 1
+  prefetch_factor: 2
+  do_augment: false
+  gamma: 1.0
+  normalize_to_minus_one_zero: true
+  balance_weights: true
+  seed: 42
+  action_horizon: 32
+  action_dim: 32
+  robot_type: robotwin
+  model_type: pi05
+  return_min: -1200.0
+  return_max: 0.0
+
+actor:
+  group_name: ActorGroup
+  training_backend: fsdp
+  seed: 0
+  micro_batch_size: 2
+  global_batch_size: 16
+  model:
+    siglip_path: ${oc.env:PROJECT_ROOT}/models/siglip2-so400m-patch14-224
+    gemma3_path: ${oc.env:PROJECT_ROOT}/models/gemma-3-270m
+    tokenizer_path: ${oc.env:PROJECT_ROOT}/models/gemma-3-270m
+    freeze_vlm: false
+    freeze_vision_encoder: false
+    action_horizon: 32
+    action_dim: 32
+  optim:
+    lr: 5.0e-5
+    value_lr: 1.0e-4
+    adam_beta1: 0.9
+    adam_beta2: 0.95
+    adam_eps: 1.0e-8
+    weight_decay: 1.0e-10
+    clip_grad: 1.0
+    lr_scheduler: constant
+    lr_warmup_steps: 20
+    total_training_steps: ${runner.max_steps}
+  fsdp_config:
+    sharding_strategy: no_shard
+    use_orig_params: true
+    gradient_checkpointing: true
+    mixed_precision:
+      param_dtype: bf16
+      reduce_dtype: bf16
+      buffer_dtype: bf16
+
+algorithm:
+  adv_type: gae
+reward:
+  use_reward_model: false
+critic:
+  use_critic_model: false

@@ -47,12 +47,12 @@ def main():
     def fetch(bounds):
         if not hasattr(thread_local, "session"):
             thread_local.session = requests.Session()
-            thread_local.session.trust_env = False
+            thread_local.session.trust_env = True
         start, end = bounds
         for attempt in range(8):
             try:
                 host = "https://hf-mirror.com"
-                thread_local.session.trust_env = attempt >= 5
+                thread_local.session.trust_env = True
                 url = f"{host}/google/siglip2-so400m-patch14-224/resolve/{REVISION}/model.safetensors?download=true"
                 with thread_local.session.get(url, headers={"Range": f"bytes={start}-{end-1}"}, timeout=(20, 60), stream=True) as response:
                     response.raise_for_status()

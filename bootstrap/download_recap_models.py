@@ -28,6 +28,7 @@ def digest(path):
 
 
 def main():
+    (ROOT / ".runtime/bootstrap").mkdir(parents=True, exist_ok=True)
     token = get_token()
     for p in [ROOT / ".runtime/cache/huggingface/token", Path.home() / ".cache/huggingface/token"]:
         if token is None and p.exists():
