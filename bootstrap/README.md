@@ -5,6 +5,7 @@
 | 用途 | 入口 |
 | --- | --- |
 | 新服务器的RoboTwin 2.0普通SFT→RECAP | [总YAML与shell说明](../docs/sft-to-recap.md)，使用主`env.sh`，与独立LIBERO环境分开 |
+| 本机真正逐控制步数据及64条成功索引 | `prepare_sft_recap_data.py`；固定192次训练＋24次critic验证尝试，保留真实最终观测；详见[两卡队列](../docs/method-2gpu.md#第一批执行顺序) |
 | 已验证环境快照与 Docker 镜像打包 | `build_recap_image.py`；使用见 [Docker 说明](../docs/docker.md) |
 | 官方 LIBERO 数据／原始源码／配置准备 | `prepare_recap_official.py`、`recap-official*.lock.json` |
 | 原生 SFT → CFG 的官方键转换／数值核对 | `export_recap_cfg.py`、`check_recap_formats.py` |

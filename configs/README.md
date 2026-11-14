@@ -9,6 +9,8 @@
 
 两种服务器的任务见[两卡方法线](../docs/method-2gpu.md)、[八卡前置线](../docs/prerequisite-8gpu.md)。跨服务器启动见[RoboTwin 2.0 SFT→RECAP](../docs/sft-to-recap.md)。总YAML是可组合的开发入口，不等于正式数据／预算已经锁定；候选方法另立协议，不复制训练器。
 
+本机逐控制步数据准备见[sft_recap_data.json](multitask/sft_recap_data.json)，复用原Motus固定行为策略、两个任务和216条预定尝试。它与旧chunk边界母池分开；`bootstrap/prepare_sft_recap_data.py`封存索引／采集，`scripts/run_sft_recap_data.py`先真实小测再采完整池，不启动actor训练。
+
 M4 用 `bootstrap/prepare_method_m4.py` 生成作业表，分别复用 `value_head.yaml` 和 `joint_value.yaml`，由扩展模块选择模型／worker。候选层最多一个；所有策略从同一 W1 初始化，只更新 131,072 个 adapter 参数。它借用官方条件路由与训练循环，属于 RECAP-style 适配；不能替代官方 openpi_cfg／完整动作专家基线。
 
 [动作专家 follow-up](multitask/method_m4_expert.json) 用同一入口的 `policy|eval --expert`：BC／C1 weighted／C2 weighted × 两个更新范围，共6组，仍为128步。保留原 native 计算精度，同一 FP32MasterAdamW；adapter-only 参考计算并丢弃专家梯度，排除专家参数更新，以匹配前向路径。所有范围、实际优化参数、采样、梯度及保存恢复需真实审计，不能只切一个冻结开关。

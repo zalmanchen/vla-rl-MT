@@ -19,6 +19,7 @@ python scripts/run.py recap-returns --config configs/robotwin_pilot/returns.yaml
 | 作用 | 工具 |
 | --- | --- |
 | RoboTwin 2.0 SFT→RECAP | `run_sft_recap.sh`／`sft_recap.py`，见[跨服务器说明](../docs/sft-to-recap.md) |
+| 本机逐控制步数据小测→完整采集 | `run_sft_recap_data.py`持有GPU0／1作业，复用官方policy／仿真；只采数据，不启动actor训练 |
 | P0模型能力与状态检查 | `evaluate_multitask.py` |
 | 注册方法模型／worker，复用官方训练循环 | `train_method_value.py`、`train_method_joint.py` |
 | 显式GPU0／1作业表与Ray生命周期 | `run_method_jobs.py`、`run_method_joint_pair.py` |
