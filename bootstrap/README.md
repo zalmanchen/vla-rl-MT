@@ -1,9 +1,10 @@
 # 环境与资源准备
 
-本目录负责安装、固定版本下载、数据准备和验收。当前多任务主线使用 `audit_multitask.py` 和 `../scripts/evaluate_multitask.py`，见[多任务协议](../docs/multitask-critic.md)。保留的 LIBERO RECAP 参考使用 `prepare_recap_official.py`、`recap-official.lock.json` 和独立的 `env_recap_official.sh`，范围见[既有实验摘要](../docs/previous-experiments.md)。`../scripts/recap.py` 保留两任务 pilot；`env.sh` 同时用于当前 Motus P0 与 RoboTwin 工程路径。
+本目录负责安装、固定版本下载、数据准备和验收。当前普通基线见[RoboTwin 2.0 SFT→RECAP](../docs/sft-to-recap.md)；P0使用`audit_multitask.py`和`../scripts/evaluate_multitask.py`，共同控制见[多任务协议](../docs/multitask-critic.md)。保留的 LIBERO RECAP 参考使用 `prepare_recap_official.py`、`recap-official.lock.json` 和独立的 `env_recap_official.sh`，范围见[既有实验摘要](../docs/previous-experiments.md)。`../scripts/recap.py` 保留两任务 pilot；`env.sh` 同时用于当前 Motus P0 与 RoboTwin 工程路径。
 
 | 用途 | 入口 |
 | --- | --- |
+| 新服务器的RoboTwin 2.0普通SFT→RECAP | [总YAML与shell说明](../docs/sft-to-recap.md)，使用主`env.sh`，与独立LIBERO环境分开 |
 | 已验证环境快照与 Docker 镜像打包 | `build_recap_image.py`；使用见 [Docker 说明](../docs/docker.md) |
 | 官方 LIBERO 数据／原始源码／配置准备 | `prepare_recap_official.py`、`recap-official*.lock.json` |
 | 原生 SFT → CFG 的官方键转换／数值核对 | `export_recap_cfg.py`、`check_recap_formats.py` |
@@ -23,6 +24,11 @@
 | 等待已有安装下载后完成基础验收 | `finish_recap_setup.py` |
 | 记录并应用 RoboTwin 兼容补丁 | `patches/`、`apply_recap_patch.py` |
 | 原生 HDF5／自主轨迹转 LeRobot | `prepare_recap_data.py` |
+| M1 固定开发场景采集／冻结 | `prepare_method_m1.py`，包含真正的最后动作后观测与实际 chunk 边界 |
+| M1 数据独立核验／冻结 prefix 特征 | `cache_method_m1.py`；支持全局／图像与 prompt 分组读出、同前向形状控制和旧特征精确核对；不训练 actor，不直接生成逐帧 SFT 数据 |
+| M1 二值回报派生缓存 | `prepare_method_binary.py`；核验父池／缓存，只派生成功标签与终局 chunk 奖励，输入特征和旧数据保持不变 |
+| 冻结 W1 的有界层特征 | `cache_method_layers.py`；最多四层 prefix、同一 final norm／池化，最后层需精确重现原读出 |
+| 方法线作业／评测计划 | `prepare_method_m4.py`；从锁定协议生成 head、固定标签 policy 和零更新／训练后评测队列，不直接启动作业 |
 | 固定策略的有界自主采集 | `collect_recap_rollouts.py` |
 | 零更新 CFG 输入与动作核验 | `check_recap_policy.py` |
 | 配对开发场景评估与视频 | `evaluate_recap.py` |

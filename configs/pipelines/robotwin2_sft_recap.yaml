@@ -1,0 +1,193 @@
+# Public RLinf RECAP algorithm on RoboTwin 2.0, starting from pinned Motus SFT.
+# These are bounded DEVELOPMENT budgets, not published reproduction budgets.
+# Edit paths/budgets here; the launcher freezes a private copy for each run.
+schema_version: 1
+workflow:
+  project_root: ${oc.env:PROJECT_ROOT}
+  run_dir: ${workflow.project_root}/.runtime/runs/sft-recap-dev-seed0
+  gpu_ids: [0, 1]  # Physical RLinf device ranks; --gpus overrides this list.
+  seed: 0
+  python: ${workflow.project_root}/.runtime/venv-rlinf/bin/python
+  base_model: ${workflow.project_root}/models/pi0.5_robotwin2
+  base_weights: ${workflow.base_model}/model.safetensors
+  base_sha256: de8e03a445f3e0af417a9d61a903d342fca5b6a5b4fdc6f20445e14ad25692eb
+  norm_stats: ${workflow.base_model}/assets/pi0.5_clean_randomize_joint_training/norm_stats.json
+  norm_sha256: 1dce5ceb9a98eaa6ae587795e0e8977dc3ce046a7ba0a5ec07858ea896ed1adb
+  siglip: ${workflow.project_root}/models/siglip2-so400m-patch14-224
+  gemma: ${workflow.project_root}/models/gemma-3-270m
+  # One merged multi-task, success-only LeRobot v2.1 repository for SFT.
+  # Every repo also needs meta/post_training_provenance.json; see the guide.
+  datasets:
+    sft: ${workflow.project_root}/datasets/lerobot/sft-recap-v1/sft-train
+    rollout: ${workflow.project_root}/datasets/lerobot/sft-recap-v1/rollout-train
+    validation: ${workflow.project_root}/datasets/lerobot/sft-recap-v1/rollout-val
+  tasks: [adjust_bottle, click_bell]
+  budgets:
+    sft_steps: 128
+    value_steps: 128
+    policy_steps: 128
+  batch_size: 32  # Must divide by micro_batch_size * number of GPUs.
+  micro_batch_size: 1
+  warmup_steps: 16
+  workers: 2
+  bridge_max_action_delta: 0.03  # Engineering guard, not numerical equivalence.
+  # Public DynamicReturn: -1 per step, success terminal 0, failure terminal -300.
+  # This is separate from our binary-terminal mechanism studies.
+  gamma: 1.0
+  failure_reward: -300.0
+  return_min: -1000.0  # Shared fixed scale; preflight rejects clipping.
+  return_max: 0.0
+  min_free_gib: 100
+  estimated_peak_additional_gib: 250
+  # All three checkpoints include official optimizer state for handoff/resume.
+  # Only the final step of each stage is saved. No archival copies are made.
+  evaluation:
+    protocol: ${workflow.project_root}/configs/multitask/phase0.json
+    seed_indices: [300, 304]  # Development only; [500,550) stays held out.
+    noise_seed_base: 710000
+
+stages:
+  sft:
+    template: examples/sft/config/robotwin_adjust_bottle_sft_openpi.yaml
+    overrides:
+      defaults:
+        - model/pi0_5@actor.model
+        - hybrid_engines/openpi_fsdp@actor.fsdp_config
+        - _self_
+        - override hydra/job_logging: stdout
+      hydra:
+        searchpath:
+          - file://${oc.env:REPO_PATH}/examples/sft/config
+          - file://${oc.env:EMBODIED_PATH}/config
+      data:
+        train_data_paths: ${workflow.run_dir}/data/sft
+        num_workers: ${workflow.workers}
+      actor:
+        model:
+          precision: null
+          model_path: ${workflow.base_model}
+          num_action_chunks: 32
+          num_steps: 10
+          action_dim: 14
+          openpi:
+            config_name: pi05_aloha_robotwin_h32
+            task: sft
+            action_horizon: 32
+            action_chunk: 32
+            action_env_dim: 14
+            model_action_dim: 32
+            discrete_state_input: true
+            train_expert_only: false
+            embed_dtype: bf16
+            torch_compile: false
+          openpi_data:
+            norm_stats_path: ${workflow.run_dir}/assets/norm_stats.json
+            adapt_to_pi: true
+            extra_delta_transform: true
+        optim:
+          lr: 2.5e-5
+          min_lr: 2.5e-6
+          lr_scheduler: openpi_cosine
+        fsdp_config:
+          sharding_strategy: no_shard
+          use_orig_params: true
+          gradient_checkpointing: true
+          gradient_checkpointing_use_reentrant: false
+          mixed_precision:
+            param_dtype: null
+            reduce_dtype: null
+            buffer_dtype: null
+  returns:
+    template: examples/offline_rl/config/recap_compute_returns.yaml
+    overrides:
+      data:
+        gamma: ${workflow.gamma}
+        failure_reward: ${workflow.failure_reward}
+        num_workers: ${workflow.workers}
+  value:
+    template: examples/offline_rl/config/recap_value_model_sft.yaml
+    overrides:
+      data:
+        train_num_workers: ${workflow.workers}
+        eval_num_workers: 1
+        prefetch_factor: 2
+        do_augment: false
+        gamma: ${workflow.gamma}
+        action_horizon: 32
+        action_dim: 32
+        robot_type: robotwin
+        model_type: pi05
+        normalize_to_minus_one_zero: true
+        return_min: ${workflow.return_min}
+        return_max: ${workflow.return_max}
+      actor:
+        model:
+          siglip_path: ${workflow.siglip}
+          gemma3_path: ${workflow.gemma}
+          tokenizer_path: ${workflow.gemma}
+          freeze_vlm: false
+          freeze_vision_encoder: false
+          action_horizon: 32
+          action_dim: 32
+        fsdp_config:
+          sharding_strategy: no_shard
+          use_orig_params: true
+          gradient_checkpointing: true
+  advantages:
+    template: examples/offline_rl/config/recap_compute_advantages.yaml
+    overrides:
+      defaults:
+        - model/recap_value_model@advantage.model
+        - _self_
+      advantage:
+        batch_size: 8
+        flush_interval: 32
+        num_dataloader_workers_per_gpu: ${workflow.workers}
+        discount_next_value: true
+        positive_quantile: 0.3
+        model:
+          tokenizer_path: ${workflow.gemma}
+          siglip_path: ${workflow.siglip}
+          gemma3_path: ${workflow.gemma}
+      data:
+        robot_type: robotwin
+        model_type: pi05
+        advantage_lookahead_step: 32
+        gamma: ${workflow.gamma}
+        return_min: ${workflow.return_min}
+        return_max: ${workflow.return_max}
+      distributed:
+        enabled: false  # Labeling uses the first selected GPU; Ray trains on all.
+  policy:
+    template: examples/offline_rl/config/cfg_rl_openpi.yaml
+    overrides:
+      data:
+        num_workers: ${workflow.workers}
+        balance_dataset_weights: true
+      actor:
+        model:
+          model_path: ${workflow.run_dir}/cfg-initial
+          num_action_chunks: 32
+          action_dim: 14
+          num_steps: 10
+          openpi:
+            config_name: pi05_aloha_robotwin_h32
+            action_horizon: 32
+            action_chunk: 32
+            action_env_dim: 14
+            num_images_in_input: 3
+            discrete_state_input: true
+            max_token_len: 200
+            train_expert_only: false
+            guidance_type: positive
+            cfgrl_guidance_scale: 1.0
+            positive_only_conditional: true
+            unconditional_prob: 0.1
+          openpi_data:
+            norm_stats_path: ${workflow.run_dir}/assets/norm_stats.json
+            adapt_to_pi: true
+            extra_delta_transform: true
+        fsdp_config:
+          sharding_strategy: no_shard
+          use_orig_params: false
+          gradient_checkpointing: true

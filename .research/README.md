@@ -5,6 +5,7 @@
 | 入口 | 内容 |
 | --- | --- |
 | [研究账本](literature/multitask-flow-rl-evidence.json) | 一手来源、阅读深度、近邻方法与证据边界 |
+| [大模型多任务更新调研](literature/llm-multitask-updates.json) | PCGrad扩展成本、GRPO／MT-GRPO／DAPO／GSPO／EPPO与flow-VLA适用边界，以及尚未启动的冲突干预方案 |
 | [评审输入](multitask_flow_rl_agent_brief.txt) | 原始研究问题与审阅要求 |
 | [离线诊断分析](planning/recap-offline-proposal.md) | 已有原因拆解与研究分析，执行顺序以当前双线协议为准 |
 | `literature/`、`planning/` | 保留调研和想法；旧稿不是已确认结论或运行队列 |

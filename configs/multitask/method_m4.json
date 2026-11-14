@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scope": "Four authorized tasks: bounded layer readout, W0, native RECAP-style bridge, label-controlled policy updates; development only",
+  "pool": ".runtime/datasets/method-m1-v1",
+  "pool_manifest_sha256": "b8c3c1f04e389caef7ba80d5dd762afe36abe8047e83a402e83f21188c56bbf3",
+  "w1_checkpoint": ".runtime/runs/method/m2-joint-v1/w1-seed0/checkpoints/global_step_128/actor/addon.pt",
+  "w2_checkpoint": ".runtime/runs/method/m2-joint-v1/w2-seed0/checkpoints/global_step_128/actor/addon.pt",
+  "binary_row_cache": ".runtime/datasets/method-m1-binary-v1/features-instruction.pt",
+  "layers": [
+    4,
+    9,
+    14,
+    18
+  ],
+  "head_seeds": [
+    0,
+    1,
+    2
+  ],
+  "head_steps": 128,
+  "head_global_batch": 4,
+  "head_micro_batch": 2,
+  "head_loss_scale": 0.1,
+  "head_lr": 0.0003,
+  "head_sampler_seed_offset": 202,
+  "layer_selection": "Lowest mean episode/task-balanced validation MSE across three head seeds; promote at most one nonfinal layer only if it beats final in at least two of three seeds. Use seed0 for both policy label sources, never the best head seed. Selection is exploratory on fixed development validation.",
+  "reward": "unchanged terminal binary MC, gamma=1; no clock",
+  "actor_steps": 128,
+  "actor_global_batch": 4,
+  "actor_micro_batch": 2,
+  "actor_lr": 0.0003,
+  "actor_seed": 0,
+  "actor_trainable": "prefix adapter only; pinned VLM/action expert and critic snapshots frozen",
+  "guidance": "official positive_only_conditional routing, unconditional_prob=0.1, guidance scale=1",
+  "policy_groups": [
+    "bc",
+    "bc_positive",
+    "c1_cond",
+    "c2_cond",
+    "shuffle_cond",
+    "c1_weighted",
+    "c2_weighted"
+  ],
+  "weighted_control": "binary weight equals the matched positive-conditional routing mask; batch-denominator reduction, same positive exposure/noise as corresponding conditional group",
+  "evaluation": "all existing 12 fixed val scenes/task, original noise seeds, dev only; never returns to training",
+  "parent_checkpoint_sha256": {
+    "w1": "47f19497b052dcea6edfa8d5a196e028ddcc29e836ed8d43841f572a512b69d0",
+    "w2": "6fe85ea043f8524c9cbf9ec81f23c4304be794b386090f6e7ffcfd62a15743f8"
+  },
+  "binary_row_cache_sha256": "274f030dcb1b982dc07508e0a945df8df5ee7b73efb9a0377bf14a1ccf138518",
+  "label_sources": {
+    "w1": {
+      "path": ".runtime/runs/method/m2-joint-v1/actor-w1-v2/value-label-audit.json",
+      "sha256": "133a6832a7048841f74ed6571648378dbdf3c893196442b850692a74fed7796e"
+    },
+    "w2": {
+      "path": ".runtime/runs/method/m2-joint-v1/actor-w2-v2/value-label-audit.json",
+      "sha256": "965b847f322259e0403c8bbf9a4cca6c6cdba69954e6358d504c38fc40032221"
+    }
+  },
+  "shuffle": "Within train task and scheduled (draw-count, dropout-eligible-count) strata; preserves dataset and actual positive/conditional exposure; labels fixed once, no val shuffling"
+}

@@ -1,0 +1,27 @@
+{
+  "scope": "Two bounded native successful-BC traces, after path audit; no new critic/reward/data",
+  "parent_protocol": "configs/multitask/method_m4_expert.json",
+  "parent_protocol_sha256": "219ccf2bc900e26e5f007403cb1fc01f6da0988b714de3ea022863659c0b06e4",
+  "training_steps": 128,
+  "evaluation_steps": [
+    32,
+    64,
+    128
+  ],
+  "expert_lrs": [
+    1e-05,
+    1e-06
+  ],
+  "adapter_lr": 0.0003,
+  "micro_batch": 2,
+  "global_batch": 4,
+  "seed": 0,
+  "update_scope": "expert_adapter",
+  "mode": "bc",
+  "checkpoint": "32/64 evaluation-only atomic expert+adapter exports;128 full official DCP and optimizer; no intermediate optimizer duplication",
+  "reference_replay": "LR1e-5 final tensors must exactly match previous expert_adapter-bc at128 before reusing that24-scene endpoint",
+  "rollout_budget": "Five new points x24 scenes=120, plus24 old endpoint rollouts reused only after exact tensor replay; W1 zero-update cohort reused separately",
+  "selection": "Report every declared point, no validation-best checkpoint; one training seed, development only",
+  "data_rule": "Original frozen pool, successful train episodes only; original val scenes/noise, no training return",
+  "path_gate": "All three native FP32 joint/cache reports meet locked limits; independent CFG math diagnosis recorded separately. This remains a native adaptation."
+}

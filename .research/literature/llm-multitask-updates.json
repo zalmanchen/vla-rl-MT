@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "reviewed_utc_date": "2026-11-14",
+  "scope": "Targeted primary-source review of scalable LLM multi-task policy updates and implications for the pinned Motus/RLinf RoboTwin study; not an exhaustive novelty search or a launched experiment",
+  "decisions": {
+    "pcgrad_role": "Completed two-task directional intervention and engineering reference; do not promote to the default large-task method without evidence of benefit",
+    "grpo_role": "Candidate advantage estimator and clipped online policy objective, orthogonal to task-gradient combination; not an automatic multi-task conflict solution",
+    "current_pipeline": "Frozen offline data, shared critic labels and native weighted FM. FM loss is not an action log probability; do not relabel this as GRPO",
+    "priority": "First verify functional interference through controlled removal of the other task loss and actual post-update losses, then closed-loop replication. Investigate sampling or update constraints only when their proposed mediator is present",
+    "online_boundary": "GRPO interaction/likelihood qualification is a separate online branch. Old offline datasets lack same-initial-condition rollout groups and validated behavior log probabilities. No new rollouts or training launched by this review"
+  },
+  "papers": [
+    {
+      "name": "PCGrad",
+      "url": "https://arxiv.org/html/2001.06782v4",
+      "reading_scope": "Method and task-gradient projection; used by completed local implementation",
+      "mechanism": "Collect per-task gradients and project negatively aligned directions before combination",
+      "scaling": "Naive dense all-task storage O(TP), pairwise surgery O(T^2 P); sampled task subsets, sharding and approximations change the practical cost. T denotes tasks present in the update, not necessarily every task in the dataset",
+      "local_limit": "Completed local norm-matched variant gives no robust closed-loop gain. Raw projection properties are not guarantees after group clipping, learning rates and AdamW"
+    },
+    {
+      "name": "GRPO / DeepSeekMath",
+      "url": "https://arxiv.org/html/2402.03300v3",
+      "reading_scope": "Section4.1, outcome-supervision group-relative baseline and clipped policy objective",
+      "mechanism": "Generate multiple responses for the same prompt; replace learned value baseline with within-group reward comparisons",
+      "borrow": "A critic-free baseline with verifiable outcomes can test dependence on learned value estimates",
+      "limit": "Still needs reward and appropriate behavior-policy rollouts and likelihood ratios; reward-relative advantage is zero for equal-reward groups. Same prompt corresponds to same task/instruction and controlled initial condition, not arbitrary different tasks"
+    },
+    {
+      "name": "DAPO",
+      "url": "https://arxiv.org/html/2503.14476v1",
+      "reading_scope": "Sections3.1-3.3 and dynamic-sampling analysis",
+      "mechanism": "Asymmetric clipping, filter equal-outcome groups and resample, token-level loss aggregation",
+      "borrow": "Track zero-advantage filtering, effective task exposure, clipping fraction and normalization denominators",
+      "limit": "Resampling costs additional interaction and may change task proportions; language token-length recipes cannot be assumed correct for action dimensions/chunks"
+    },
+    {
+      "name": "Dr. GRPO",
+      "url": "https://arxiv.org/html/2503.20783v1",
+      "reading_scope": "Section3 and normalization-bias discussion",
+      "mechanism": "Remove response-length and reward-standard-deviation normalization terms to address the analyzed optimization biases",
+      "borrow": "Audit whether normalization changes effective sample/task weighting independently of gradient direction",
+      "limit": "LLM optimization-bias analysis is not direct evidence about this native masked-FM implementation"
+    },
+    {
+      "name": "MT-GRPO",
+      "url": "https://arxiv.org/html/2602.05547v3",
+      "reading_scope": "Sections2,4,5 and AppendixD.2/D.4/D.5; objective equivalence and proofs not independently verified",
+      "mechanism": "Improvement-aware task weights and acceptance-aware ratio-preserving sampling after zero-advantage filtering",
+      "borrow": "Separate intended task weights from realized post-filtering sample proportions. Counterfactual ablation should separate reweighting and ratio preservation",
+      "scaling": "Task-level scalars and one weighted actor backward avoid storing full per-task parameter gradients; sampling can still add substantial rollout cost",
+      "limit": "Reasoning benchmarks with3B/7B models and3/9-task settings do not establish continuous-control benefits. Preserved batch counts are not equal gradient magnitudes. Our completed gradient study already matches256 effective draws/task, so filtering imbalance cannot simply be asserted as its cause"
+    },
+    {
+      "name": "GSPO",
+      "url": "https://arxiv.org/html/2507.18071v1",
+      "reading_scope": "Sequence-level ratio/clipping design and reported MoE stability motivation",
+      "mechanism": "Sequence-level importance weighting and clipping rather than token-level ratios",
+      "borrow": "Align reward unit, policy-ratio unit and update aggregation; log clipping and distribution drift by task",
+      "limit": "Not a task-conflict solver. A language response is not automatically equivalent to a denoising path, robot action chunk or environment trajectory; definitions must be derived and tested"
+    },
+    {
+      "name": "EPPO",
+      "url": "https://arxiv.org/html/2607.07178v1",
+      "reading_scope": "Sections4-5, task entropy tracking and clipping; authors explicitly distinguish entropy from learning progress",
+      "mechanism": "Adapt per-task clipping from relative entropy pace and constrain destabilizing trends",
+      "borrow": "Look for task-dependent update pace and drift before introducing per-task update constraints",
+      "limit": "Agentic LLM results are not VLA proof; continuous-action marginal entropy is not token entropy or injected diffusion noise entropy. Current FM objective has no PPO clipping ratio"
+    },
+    {
+      "name": "piRL",
+      "url": "https://arxiv.org/html/2510.25889v3",
+      "reading_scope": "Flow-SDE/Flow-Noise likelihood construction, algorithm comparison and AppendixF.1/Table9",
+      "mechanism": "Stochastic flow sampling supports online policy optimization for pi0/pi0.5",
+      "reported_comparison": "Table9 reports pi0.5 LIBERO average77.1 SFT,91.5 GRPO,97.9 PPO within the paper's setup; not local Motus/RoboTwin results or proof PPO always wins",
+      "borrow": "Use pinned official RLinf probability/sampling infrastructure if opening an online branch, with matched model/sampler/data budgets",
+      "limit": "Online exploration, policy family and likelihood paths differ from current fixed offline weighted-FM experiment"
+    },
+    {
+      "name": "ARFM",
+      "url": "https://arxiv.org/html/2509.04063v1",
+      "reading_scope": "Adaptive weighted-FM signal/variance design",
+      "mechanism": "Adapt RL weighting strength in an offline flow-matching objective",
+      "borrow": "A closer comparator for offline FM than directly transplanting token-based GRPO. Monitor weight concentration and effective sample size",
+      "limit": "Does not by itself establish multi-task interference or instruction-aware updates; adaptive weighting is already prior work"
+    },
+    {
+      "name": "Generalist robot policy improvement",
+      "url": "https://arxiv.org/html/2611.06905v1",
+      "reading_scope": "Abstract/introduction and experimental taxonomy; detailed new ablations not re-audited in this review",
+      "mechanism": "Studies online generalist improvement across task diversity with value estimation, policy extraction and resource allocation controls",
+      "borrow": "Scale trained-task diversity and untrained-task retention separately; compare learning and extraction recipes",
+      "limit": "Multi-task improvement and critic-guided extraction are established research directions, not novelty of this project; its online evidence is not a fixed-offline-budget result"
+    }
+  ],
+  "local_scale_calculation": {
+    "trainable_expert_plus_adapter_parameters": 430229536,
+    "dense_fp32_gradient_gib_per_task": 1.6027299165725708,
+    "dense_fp32_gradient_gib_for50_simultaneous_tasks": 80.13649582862854,
+    "scope": "Arithmetic estimate for this unsharded implementation only; excludes model/optimizer/activations and does not claim50 tasks must all appear in each minibatch"
+  },
+  "local_code_review": {
+    "rlinf_pin": "e1a82ebf0c1af69da6ab9b1519f5f3692fe33566",
+    "grpo_advantage": "third_party/RLinf/rlinf/algorithms/advantages.py:89",
+    "pi05_flow_sde": "third_party/RLinf/examples/embodiment/config/model/pi0_5.yaml",
+    "libero_pi05_grpo": "third_party/RLinf/examples/embodiment/config/libero_spatial_grpo_openpi_pi05.yaml",
+    "robotwin_pi05_ppo": "third_party/RLinf/examples/embodiment/config/robotwin_adjust_bottle_ppo_openpi_pi05.yaml",
+    "status": "Relevant components exist in the pinned source. A matched Motus/RoboTwin multi-task GRPO recipe is not yet qualified; no source or training config changed"
+  },
+  "proposed_tests": [
+    {
+      "name": "Matched other-task loss removal",
+      "host": "local2GPU",
+      "status": "proposed_not_launched",
+      "design": "Clone one common model/optimizer state and matched2A+2B data/noise. Compare A-only, B-only and joint by zeroing the other loss while retaining parameter groups and the common denominator; repeat fixed batches and seeds. Add common actual-parameter-step-norm diagnostic, report output drift separately; use a fixed nonzero probe learning rate",
+      "measure": "Actual before/after train losses and held-out successful-trajectory FM error by task, separately from first-order estimates and closed-loop success",
+      "interpretation": "Off-diagonal held-out surrogate loss increase alongside own-task improvement is functional interference for that surrogate. It is not yet proof of lower robot success",
+      "followup": "Only if an effect repeats, compare short matched task-only/joint trajectories and paired closed-loop outcomes. Existing successful-BC task-mixing study is not this fixed-critic loss-removal intervention"
+    },
+    {
+      "name": "Effective supervision and update budget",
+      "host": "local2GPU",
+      "status": "proposed_conditional_on_audit",
+      "design": "Track requested/retained/masked/clipped supervision, physical action timesteps, instruction coverage and reference-policy output drift by task. Intervene on one verified imbalance: post-filter task quotas, bounded task loss weights, or reference-velocity/action distillation",
+      "controls": "Same frozen data and effective update budget, plus a simpler smaller-global-update control. Frozen-flow velocity/action distillation is not exact KL. Equal task exposure and equal gradient norms are different interventions",
+      "stop_rule": "Do not repeat balancing when the proposed mediator is already matched or no measurable interference exists"
+    },
+    {
+      "name": "GRPO feasibility before training",
+      "host": "local2GPU; online branch requires separate frozen protocol",
+      "status": "proposed_not_launched",
+      "design": "First qualify the stochastic flow sampler and unmodified-policy logprob ratios, action/chunk masks and reset grouping. Then use the same frozen actor and sampler on8 training initial conditions/task,4 independent policy-noise rollouts/condition,2 tasks:64 episodes. Never group different instructions/initial conditions as if they were the same prompt",
+      "measure": "Binary success distribution, equal-outcome group fraction, retained groups/task, rollout/reset time and likelihood consistency; no parameter updates",
+      "analytic_sanity_check": "For independent binary outcomes with same success probability p and group size G, informative group probability is1-p^G-(1-p)^G; e.g. G4,p.1 gives.3438 and p.5 gives.875. Real correlated rollouts must be measured",
+      "followup": "If viable, compare Flow-SDE PPO and GRPO on matched initial policy/sampler/interactions and online success-replay baseline. Add ratio-preserving task sampling only if filtering imbalance is observed. Count discarded rollouts in costs"
+    },
+    {
+      "name": "Scale and retention confirmation",
+      "host": "8GPU5880_planning_only",
+      "status": "not_connected_not_launched",
+      "design": "Predefine4-6 training tasks and untrained-task anchors,3 actor seeds, common interaction/update budgets and final checkpoints. Confirm only a candidate supported by local evidence; no dense50-task PCGrad buffers",
+      "measure": "Mean/worst-task performance, per-task gains and losses, retention, effective exposure and total compute/interaction costs"
+    }
+  ],
+  "novelty_boundary": "Task reweighting, ratio-preserving sampling, entropy-adaptive clipping, gradient surgery, parameter routing and offline adaptive weighted FM are prior mechanisms. A credible contribution requires a demonstrated VLA-specific failure, a discriminating intervention and generalization/retention evidence; none is established by this review",
+  "sft_rl_handoff_followup": {
+    "reviewed_date_beijing": "2026-11-14",
+    "scope": "Abstract-level primary-source follow-up; algorithms and proofs not fully audited",
+    "user_goal": "Coordinate multi-task SFT and RL to reduce harmful interference and improve SFT-to-RL warm start; not choose one regime",
+    "sources": [
+      {
+        "name": "ReFT",
+        "url": "https://aclanthology.org/2024.acl-long.410/",
+        "relevance": "SFT warmup followed by PPO is an established pipeline; not novelty"
+      },
+      {
+        "name": "PRISM",
+        "url": "https://arxiv.org/abs/2601.07224v2",
+        "relevance": "Data allocation across SFT and RL using training dynamics is prior work on LLM agents"
+      },
+      {
+        "name": "SFT-to-RL plasticity handoff",
+        "url": "https://arxiv.org/abs/2606.09932v1",
+        "relevance": "Studies excessive SFT and impaired later RL learnability in language models; a stronger SFT endpoint is not sufficient evidence of better RL preparation"
+      },
+      {
+        "name": "Unified training",
+        "url": "https://arxiv.org/abs/2610.40564v1",
+        "relevance": "Combining static and model-generated data under a unified training objective is prior work; does not validate the proposed VLA mechanism"
+      }
+    ],
+    "experiment_boundary": "Stage-factorial ordinary/coordinatedSFT x ordinary/coordinatedRL; critic preparation initially fixed and separately ablated with same actor. Standard post-SFT critic fitting is retained,not replaced by random-criticRL. Separate starting actor performance,critic readiness,RL curves,total preparation costs and capability retention. No new experiments launched."
+  }
+}

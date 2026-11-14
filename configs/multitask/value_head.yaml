@@ -1,0 +1,68 @@
+defaults:
+  - hybrid_engines/fsdp@actor.fsdp_config
+  - _self_
+  - override hydra/job_logging: stdout
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  searchpath:
+    - file://${oc.env:REPO_PATH}/examples/offline_rl/config
+cluster:
+  num_nodes: 1
+  component_placement:
+    actor,env,rollout: ${oc.env:M1_GPU,0}
+runner:
+  task_type: sft
+  max_epochs: -1
+  max_steps: 500
+  val_check_interval: 100
+  save_interval: 500
+  logger:
+    log_path: ${oc.env:PROJECT_ROOT}/.runtime/runs/method/m1-value-v1
+    project_name: multitask-value-development
+    experiment_name: ${data.condition}-seed${actor.seed}
+    logger_backends: [tensorboard]
+data:
+  feature_path: ???
+  pool_manifest_sha256: ???
+  condition: instruction
+  readout: global_mean
+  target_scheme: recap_time_cost
+  train_data_paths: [frozen-prefix-features]
+actor:
+  group_name: M1-${data.condition}-${actor.seed}
+  training_backend: fsdp
+  seed: 0
+  micro_batch_size: 32
+  global_batch_size: 32
+  model:
+    model_type: mt_prefix_value
+    model_path: ${data.feature_path}
+    precision: fp32
+    is_lora: false
+    init_seed: ${actor.seed}
+    feature_width: 2048
+    hidden_width: 128
+  optim:
+    lr: 0.0003
+    value_lr: 0.0003
+    adam_beta1: 0.9
+    adam_beta2: 0.95
+    adam_eps: 1.0e-8
+    weight_decay: 0.0
+    clip_grad: 1.0
+    lr_scheduler: constant
+    lr_warmup_steps: 0
+    total_training_steps: ${runner.max_steps}
+    min_lr: 0.0
+  fsdp_config:
+    sharding_strategy: no_shard
+    use_orig_params: false
+    gradient_checkpointing: false
+algorithm:
+  adv_type: gae
+reward:
+  use_reward_model: false
+critic:
+  use_critic_model: false

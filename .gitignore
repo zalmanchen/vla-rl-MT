@@ -46,6 +46,9 @@ dist/
 *.zip
 *.tar
 *.tar.gz
+*.tar.zst
+*.arrow
+*.parquet
 *.mp4
 
 # Downloaded papers, extracted full texts and screenshots; citations stay tracked

@@ -25,9 +25,13 @@ def main():
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--norm-stats", type=Path, required=True)
+    parser.add_argument("--config-name", default="pi05_libero")
+    parser.add_argument("--reference-weights", type=Path,
+                        help="Native safetensors architecture reference; default: LIBERO base")
     args = parser.parse_args()
     import torch
     from rlinf.models.embodiment.openpi.checkpoint import (
+        _convert_official_openpi_keys,
         _normalize_state_dict,
         resolve_full_weights,
     )
@@ -51,15 +55,21 @@ def main():
     args.output.mkdir(parents=True, exist_ok=False)
     native = _normalize_state_dict(torch.load(source, map_location="cpu", weights_only=True, mmap=True))
     root = Path(__file__).resolve().parents[1]
-    with safe_open(root / "models/pi05_base_openpi/model.safetensors", framework="pt", device="cpu") as base:
-        expected = {key: tuple(base.get_slice(key).get_shape()) for key in base.keys()}
+    reference = args.reference_weights or root / "models/pi05_base_openpi/model.safetensors"
+    with safe_open(reference, framework="pt", device="cpu") as base:
+        # Motus ships OpenPI PyTorch keys; native SFT saves RLinf Pi0 keys.
+        # Run the official converter on meta tensors to compare architecture
+        # without loading another full model or confusing the two layouts.
+        shapes = {key: torch.empty(tuple(base.get_slice(key).get_shape()), device="meta") for key in base.keys()}
+    shapes = _convert_official_openpi_keys(_normalize_state_dict(shapes), reference)
+    expected = {key: tuple(value.shape) for key, value in shapes.items()}
     if set(native) != set(expected) or any(tuple(native[key].shape) != shape for key, shape in expected.items()):
-        raise ValueError("SFT checkpoint is not the complete expected LIBERO Pi0.5 architecture")
+        raise ValueError("SFT checkpoint is not the complete expected native Pi0.5 architecture")
 
     mapped = new_to_old_state_dict(native)
     embedding = "paligemma_with_expert.paligemma.model.language_model.embed_tokens.weight"
     mapped[embedding] = mapped["paligemma_with_expert.paligemma.lm_head.weight"]
-    cfg = OpenPi0Config(**get_openpi_config("pi05_libero").model.__dict__)
+    cfg = OpenPi0Config(**get_openpi_config(args.config_name).model.__dict__)
     with torch.device("meta"):
         target = OpenPi0ForCFGActionPrediction(cfg).state_dict()
     if set(target) - set(mapped) != {ACTION_EXPERT_LM_HEAD} or set(mapped) - set(target):
@@ -79,7 +89,8 @@ def main():
     temporary = path.with_suffix(".pt.tmp")
     torch.save(mapped, temporary)
     temporary.replace(path)
-    stats = args.output / "physical-intelligence/libero/norm_stats.json"
+    environment = "robotwin" if "robotwin" in args.config_name else "libero"
+    stats = args.output / f"physical-intelligence/{environment}/norm_stats.json"
     stats.parent.mkdir(parents=True)
     shutil.copy2(args.norm_stats, stats)
     report = {"status": "passed", "source": str(source), "source_sha256": digest(source),
@@ -87,6 +98,7 @@ def main():
               "native_policy_tensors": len(native), "cfg_tensors": len(mapped),
               "round_trip": "all native tensors bitwise identical", "embedding_alias": embedding,
               "unused_zero_head": ACTION_EXPERT_LM_HEAD,
+              "config_name": args.config_name, "reference_weights": str(reference),
               "scope": "official format conversion; requires separate numerical inference parity validation"}
     (args.output / "conversion.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2), flush=True)

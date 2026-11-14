@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "scope": "Development-only goal intervention, no training or new reward",
+  "parent_protocol": "configs/multitask/phase0.json",
+  "seed_indices": [350, 354],
+  "noise_seed_base": 951000,
+  "policies": ["base", "w1", "w2"],
+  "families": {
+    "pick_dual_bottles": {
+      "left": ["Pick up only the left bottle and hold it in front of you; leave the right bottle on the table.", "Lift the bottle on the left towards the front, keeping the right bottle on the table."],
+      "right": ["Pick up only the right bottle and hold it in front of you; leave the left bottle on the table.", "Lift the bottle on the right towards the front, keeping the left bottle on the table."],
+      "both": ["Pick up both bottles and hold them in front of you."]
+    },
+    "stack_blocks_two": {
+      "green_on_red": ["Stack the green block on top of the red block.", "Place the green cube on the red cube."],
+      "red_on_green": ["Stack the red block on top of the green block.", "Place the red cube on the green cube."]
+    }
+  },
+  "checker": "Canonical stock predicates; single-bottle goal additionally requires unselected bottle functional point z<=0.84. Stack reverse swaps top/bottom roles only.",
+  "expert_budget": 20,
+  "policy_budget_maximum": 108,
+  "gate": "Per scene all declared expert goals must succeed, all initial predicates false, canonical checker equivalent and observed initialization identical; retain failed scenes and skip their policy tests, no replacement",
+  "interpretation": "Alternative goals may be outside SFT instruction support. Base failure prevents a forgetting conclusion. Equal initial actions may be legitimate; closed-loop goal checkers are primary. Same observed initialization is not a full simulator state restore.",
+  "evaluation_returns_to_training": false,
+  "final_test_used": false
+}

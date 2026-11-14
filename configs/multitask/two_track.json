@@ -3,6 +3,8 @@
   "status": "planning_only",
   "launchable": false,
   "protocol": "docs/multitask-critic.md",
+  "research_objective": "Coordinate multi-task SFT and RL post-training of an existing shared VLA: reduce harmful task interference within both stages and improve SFT-to-RL warm start,learning efficiency and capability retention under matched budgets.",
+  "current_experiment_design": "docs/experiment-guide.md#研究目标与后续整体设计",
   "common": {
     "source_lock": "bootstrap/sources.lock.json",
     "initialization_protocol": "configs/multitask/phase0.json",
@@ -23,10 +25,16 @@
       2,
       3
     ],
-    "tasks": null,
-    "budgets": null,
-    "adapter_location": null,
-    "trainable_parameter_scope": null,
+    "tasks": [
+      "adjust_bottle",
+      "click_bell"
+    ],
+    "budgets": {
+      "bounded_development_protocol": "configs/multitask/method_m2.json",
+      "formal": null
+    },
+    "adapter_location": "Shared residual adapter on native VLM prefix tokens; engineering path verified by M0",
+    "trainable_parameter_scope": "Initial M2 probe: adapter and value head; original VLM and action expert frozen",
     "stages": [
       "M0",
       "M1",
@@ -48,7 +56,74 @@
         "C_W1",
         "C_W2"
       ]
-    }
+    },
+    "engineering_probe": "configs/multitask/method_m0.json",
+    "value_development_protocol": "configs/multitask/method_m1.json",
+    "value_head_training_config": "configs/multitask/value_head.yaml",
+    "readout_development_protocol": "configs/multitask/method_m1_readout.json",
+    "next_development_experiments": {
+      "status": "handoff_task_sheets_ready_planning_only_no_new_jobs",
+      "protocol": "docs/experiment-guide.md#sft到rl的交接与最小实验",
+      "first": "Local first-wave:freeze2task views(32success/task,192mixed pool),ordinarySFT->RECAP development interface and curves,actual trainable feature scope,then define one concrete coordination candidate beforeA-D. Proposed seed0 SFT128+policyRL128 is an engineering budget,not formal reproduction;critic budget and exact protocol sealed after smoke. Old9kept weights are references only unless protocol exactly matches.",
+      "then": "Local deliverA-D stage attribution and minimal ablations after candidate defined;remote independently starts environment/4train+2anchor formaldata and3seed baselines,then separate SFT/RL single-vs-joint influence matrices. Remote confirms the local candidateA-D and retention after evidence. No SSH,notification or launch performed by planning index.",
+      "finally": "Select one evidence-supported mechanism and run an intervention plus matched alternatives; require predicted intermediate changes and closed-loop recovery, then confirm tasks/scenes/actor seeds. Negative results remain valid.",
+      "readout_attribution": "Layer choice, compression, shared-gradient routing and policy extraction are separate factors. Preserve original C_W1/C_W2 snapshots; compare new frozen-feature heads with identically trained references.",
+      "instruction_diagnostic": "Deferred by user: I0 planner failure does not gate ordinary per-task baseline/evaluation. I1, semantic reward and W3 warm-up held pending causal diagnosis.",
+      "diagnostic_policy": "M1 is completed diagnostic work; head fit, probability constraints and elapsed-time baselines do not replace or gate the bounded shared-gradient method experiment",
+      "initial_value_supervision": "Keep existing binary targets and MSE fixed across controls; no explicit clock; original RECAP reward baseline remains separate",
+      "completed_protocol": "configs/multitask/critic_signal.json",
+      "deferred_branches": [
+        "I0_goal_pair_planner",
+        "I1_goal_intervention",
+        "R0_semantic_action_reward",
+        "W3_joint_warmup",
+        "new_layer_loss_adapter_sweeps",
+        "signal_actor_replication_and_terminal_matched_shuffle"
+      ],
+      "causal_chain": [
+        "frozen_data_and_task_sampling",
+        "value_error_scale_calibration",
+        "advantage_and_actual_action_supervision",
+        "shared_policy_update",
+        "per_task_closed_loop_outcomes"
+      ],
+      "primary_initialization": "Pinned original Motus multi-task SFT, zero addon action effect verified under matching inference flags; W1 is a separate already-continued-SFT reference",
+      "last_completed_summary": "Completed mean/task-norm-balance/PCGrad x3 paired actor seeds,128 updates each,216 fixed development rollouts and full audits. No robust gain over matched ordinary updates; all queues ended and GPU0/1 free. Fixed shared critic seed0,64 selected draws/task cycled four times,512 effective draws,2A+2B. Prior sparse-label17/24 is not a matched comparator.",
+      "last_completed_protocol": "configs/multitask/policy_gradients.json"
+    },
+    "completed_scope": [
+      "M0 engineering probe",
+      "M1 initial frozen-feature real-return diagnostic",
+      "M1 grouped readout with matched-shape controls, twelve heads",
+      "M1 terminal-binary targets on unchanged grouped features, six heads",
+      "M2 real-chunk gradient/mask/reload checks and official worker smoke",
+      "M2 matched W1/W2 128 updates and final checkpoints; original driver timer failure separately audited",
+      "M2 pre-RL actor evaluation: original four scenes/task plus separately reported complete fixed development cohort; value/label diagnostics",
+      "Full W0 pure-SFT actor bitwise identical to W1 after 128 updates, matched sequential final-layer critic",
+      "Four frozen prefix depths x three head seeds; sole layer14 candidate",
+      "Native policy bridge, real worker smoke and official DCP resume parity",
+      "Nine fixed-label/BC policy controls, 128 adapter-only updates each; all 240 new development rollouts and final audits complete",
+      "Six matched expert-update-scope controls:128 updates and 144 development rollouts, original snapshots unchanged",
+      "Expert DCP/export/native-action parity and fixed successful-action train/val FM diagnostic",
+      "Native FP32 joint/cache numerical checks and independent CFG math diagnosis; production backends unchanged",
+      "Two bounded successful-BC LR traces at32/64/128,120 new development rollouts and exact old final-tensor replay; stable BC improvement not established",
+      "Original behavior/action/replay and true-float32 roundtrip audits; immutable192-episode new training pool",
+      "Nested4-vs12-success BC coverage control: two128-step traces, all6 points and144 new development rollouts; larger data did not rescue regression",
+      "Four128-step strict task/instruction/outcome/exposure/chunk-length label controls and96 new dev rollouts; audits complete; no real-label advantage established",
+      "Original-Motus single/mixed-task BC:3x128 steps,6 fixed64/128 evaluations plus24 fresh baseline scenes,168 total dev rollouts, audits complete; no extra joint penalty established",
+      "BC replica seeds1/2,12 shared/independent/capacity-control frozen-feature heads and5 exposure-matched signal actors;168 dev rollouts and all audits complete",
+      "Fixed shared critic mean/norm-balance/PCGrad x3 actor seeds,9x128 steps and216 development rollouts; exact native replay and full audits complete,no robust gradient-intervention gain"
+    ],
+    "binary_development_protocol": "configs/multitask/method_m1_binary.json",
+    "joint_development_protocol": "configs/multitask/method_m2.json",
+    "joint_training_config": "configs/multitask/joint_value.yaml",
+    "label_update_development_protocol": "configs/multitask/method_m4.json",
+    "expert_update_scope_protocol": "configs/multitask/method_m4_expert.json",
+    "native_path_diagnostic_protocol": "configs/multitask/native_path_check.json",
+    "bc_stability_protocol": "configs/multitask/bc_stability.json",
+    "data_coverage_development_protocol": "configs/multitask/data_coverage.json",
+    "policy_gradient_development_protocol": "configs/multitask/policy_gradients.json",
+    "current_dispatch": "docs/method-2gpu.md"
   },
   "prerequisite": {
     "host": "8x48GB RTX 5880; runtime not verified",
@@ -64,7 +139,9 @@
       "P3",
       "P4",
       "P5"
-    ]
+    ],
+    "current_priority": "First environment and calibration,4train-task candidates plus2unupdated measurable anchors,formal data,and3seed original/SFT-only/Motus-directRECAP/ordinarySFT->RECAP references. Next per-stage single-vs-joint matrices;then local candidateA-D and scaling/retention. No remote connection or launch.",
+    "current_dispatch": "docs/prerequisite-8gpu.md"
   },
   "handoffs": [
     "common_start",

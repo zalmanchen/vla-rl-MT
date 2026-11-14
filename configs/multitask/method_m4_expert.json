@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "scope": "Bounded M4 update-scope follow-up, development only; same frozen W1, pool, labels and native FM as adapter-only references",
+  "base_protocol": "configs/multitask/method_m4.json",
+  "base_protocol_sha256": "ede353114319ac3f26499b17447cb00987687cbbcac439111767947dfe2518ae",
+  "policy_groups": ["bc", "c1_weighted", "c2_weighted"],
+  "update_scopes": ["adapter_only", "expert_adapter"],
+  "scope_control": "Repeat adapter-only references with identical FP32MasterAdamW, expert FSDP views and expert requires_grad=True. Controls discard expert gradients and exclude expert from optimizer; unchanged expert weights verified by digest. This matches native BF16 forward paths. Conditional updates deferred.",
+  "actor_steps": 128,
+  "actor_global_batch": 4,
+  "actor_micro_batch": 2,
+  "actor_seed": 0,
+  "adapter_lr": 0.0003,
+  "expert_lr": 0.00001,
+  "optimizer": "Pinned RLinf FP32MasterAdamW, native parameter/compute dtypes preserved; official lr_multipliers for expert modules",
+  "clipping": "adapter and action expert clipped separately at1.0; old adapter clipping retained",
+  "trainable": "Native expert1 attention, MLP, adaptive norms, final norm, action input/output and flow-time MLP, plus original prefix adapter",
+  "frozen": "Original vision/prefix language expert0, embedding, critic head and label snapshots",
+  "checkpoint": "Original DCP optimizer/scheduler/RNG checkpoint plus exported expert/addon; omit duplicate full_weights for disk budget",
+  "evaluation": "Original12 development scenes/task, original noise, no return to training or final test",
+  "interpretation": "Additional expert LR/scope are explicit. Same native backend, sampling, masks, prompt routing and128 updates as M4; not official openpi_cfg full-policy reproduction. No automatic layer/loss/budget search."
+}

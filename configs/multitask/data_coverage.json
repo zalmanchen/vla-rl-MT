@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "scope": "Bounded data-coverage development experiment; original frozen Motus behavior; W1 BC update, no critic/reward changes",
+  "initialization_protocol": "configs/multitask/phase0.json",
+  "parent_training_protocol": "configs/multitask/bc_stability.json",
+  "parent_training_sha256": "d6d375bb7090e3e35ad9d2357262870a201457ca7aa3fa5149eec4742f6dd82a",
+  "tasks": [
+    "adjust_bottle",
+    "click_bell"
+  ],
+  "splits": {
+    "train": [
+      200,
+      296
+    ]
+  },
+  "noise_seed_base": 931000,
+  "behavior_backend": "native",
+  "gamma": 1.0,
+  "failure_reward": -300.0,
+  "return_scale": 1200.0,
+  "reward_note": "Legacy trajectory metadata retained by unchanged collector; successful BC does not use rewards/returns",
+  "evaluation_returns_to_training": false,
+  "final_test_used": false,
+  "actor_training": false,
+  "coverage": {
+    "small_successes_per_task": 4,
+    "large_successes_per_task": 12,
+    "selection": "First successful episodes by predeclared seed_index; small is exact prefix of large; all192 attempts retained; no extra collection if insufficient",
+    "validation_source": ".runtime/datasets/method-m1-v1",
+    "validation_manifest_sha256": "b8c3c1f04e389caef7ba80d5dd762afe36abe8047e83a402e83f21188c56bbf3",
+    "steps": 128,
+    "evaluation_steps": [
+      32,
+      64,
+      128
+    ],
+    "adapter_lr": 0.0003,
+    "expert_lr": 1e-06,
+    "seed": 0,
+    "micro_batch": 2,
+    "global_batch": 4,
+    "update_scope": "expert_adapter",
+    "mode": "bc",
+    "closed_loop_budget": 144,
+    "sampling": "Same uniform task/episode/decision rule and draw seed; per-draw FM noise/time identical; audit actual task exposure. Larger trajectory coverage and lower reuse are the intentional treatment.",
+    "fit_noise": "Stable episode/decision mapping across both data views; original validation noise indices preserved",
+    "scope_limit": "New collection pool and old fixed development validation; no independent final test. Training-size comparison includes different scene/behavior coverage, not a pure diversity mechanism proof."
+  }
+}

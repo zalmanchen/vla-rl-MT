@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "scope": "Bounded M2 development mechanism experiment; one training seed, not final performance evidence",
+  "training_config": "configs/multitask/joint_value.yaml",
+  "pool": ".runtime/datasets/method-m1-v1",
+  "pool_manifest_sha256": "b8c3c1f04e389caef7ba80d5dd762afe36abe8047e83a402e83f21188c56bbf3",
+  "tasks": ["adjust_bottle", "click_bell"],
+  "seed": 0,
+  "training_steps": 128,
+  "micro_batch_size": 2,
+  "global_batch_size": 4,
+  "learning_rate": 0.0003,
+  "value_weight": 0.1,
+  "loss": "Physical executed-action masked native flow MSE + 0.1 * unbounded binary MC value MSE",
+  "readout": "vision_prompt_concat",
+  "adapter_rank": 32,
+  "head_hidden_width": 63,
+  "trainable": "shared prefix residual adapter and value head only; original VLM/action expert frozen",
+  "live_features": true,
+  "clock_input": false,
+  "sft_sampling": "uniform task / successful train episode / decision",
+  "value_sampling": "uniform task / train episode / decision, success and failure",
+  "flow_rng": "explicit index-specific torch generator; normal noise and inverse-CDF Beta(1.5,1) time",
+  "padding": "Hold last executed physical action before ALOHA/delta/normalization transforms; loss excludes unexecuted timesteps and nonphysical dimensions. Native suffix attention still sees the padded context.",
+  "checkpoint_rule": "Fixed final update; no validation checkpoint selection",
+  "controls": {
+    "w1": "success SFT + value head; value encoding detached from shared adapter",
+    "w2": "same inputs/initialization/noise/schedule; value gradient enters shared adapter",
+    "w0": "Pure SFT update parity is an engineering control; complete sequential-head reference is reported separately when run"
+  },
+  "actor_evaluation": {
+    "backend": "native",
+    "split": "val",
+    "seed_indices": [140, 144],
+    "episodes_per_task": 4,
+    "variants": ["base", "w1", "w2"],
+    "noise": "unchanged per-scene M1 behavior noise seed",
+    "selection": "First four declared validation scenes per task, fixed before training; development only",
+    "rollouts_return_to_training": false,
+    "final_test_used": false
+  },
+  "interpretation": "First test whether the gradient intervention is real and preserves pre-RL action ability. Critic loss improvement alone does not establish improved RL signals or policy; M4 label-controlled policy updates and larger confirmation remain required."
+}

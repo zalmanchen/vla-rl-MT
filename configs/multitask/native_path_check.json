@@ -1,0 +1,33 @@
+{
+  "scope": "Native training/cache consistency diagnostic, not policy improvement",
+  "base_protocol": "configs/multitask/method_m4.json",
+  "case_rule": "First canonical decision per task x train/val x failure/success;8 fixed cases, no selection by numerical output",
+  "noise_seed": 3000000,
+  "flow_times": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "euler_steps": 10,
+  "precisions": [
+    "native_bf16",
+    "fp32"
+  ],
+  "fp32_max_abs": 0.0001,
+  "fp32_relative_rmse": 0.0001,
+  "bf16_rule": "Report errors without a post-hoc acceptance threshold",
+  "variants": {
+    "w1": {
+      "path": ".runtime/runs/method/m2-joint-v1/w1-seed0/checkpoints/global_step_128/actor/addon.pt",
+      "sha256": "47f19497b052dcea6edfa8d5a196e028ddcc29e836ed8d43841f572a512b69d0"
+    },
+    "adapter_bc": {
+      "path": ".runtime/runs/method/m4-expert-policy-v1/adapter_only-bc/checkpoints/global_step_128/actor/addon.pt",
+      "sha256": "bb25646ce3a6f006bdea8b756de4183daa04fee9b4e19cd6062778c22f285678"
+    },
+    "expert_bc": {
+      "path": ".runtime/runs/method/m4-expert-policy-v1/expert_adapter-bc/checkpoints/global_step_128/actor/addon.pt",
+      "sha256": "9115387f8bfa7ed13cc6d5fd98346315cc364387004a1f26609b7a4967f95f24"
+    }
+  }
+}
