@@ -1,49 +1,13 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>多任务 VLA 的训练与后训练｜论文笔记汇报</title>
-
-
-
-<body>
-  <div class="page">
-    <header class="hero" id="top">
-      <p class="eyebrow">论文笔记汇报</p>
-      <h1>多任务 VLA 的训练与后训练</h1>
-      <p class="deck">同一个 VLA 在多种操作任务上联合训练时，如何复用已有技能并维持各任务的成功率？</p>
-    </header>
-
-    <div class="layout">
-      <nav aria-label="讲稿目录">
-        <p class="nav-title">目录</p>
-        <ol>
-          <li><a href="#overview">汇报总览</a></li>
-          <li><a href="#critic">PRTS · 可达性表征</a></li>
-          <li><a href="#evaluation">RynnValue · 奖励信号</a></li>
-          <li><a href="#isolation">DyGRO-VLA · 策略更新</a></li>
-          <li><a href="#discussion">多任务开放问题</a></li>
-        </ol>
-        <span class="print-link"><button type="button" onclick="window.print()">打印 / 保存为 PDF</button></span>
-      </nav>
-
-      <main>
-        <section id="overview" aria-labelledby="overview-title">
-          <h2 id="overview-title">汇报总览</h2>
-          <p>以一套 VLA 在指定任务集合上联合训练为共同设定，三篇论文分别提供预训练表征、奖励信号和策略更新的参考。</p>
-          <dl class="compare">
-            <div>
-              <dt><a href="#critic">PRTS</a></dt>
-              <dd><strong>学什么表征。</strong>在多任务示范上用语言条件 CRL 学习目标可达性，为下游联合后训练提供预训练表征。</dd>
-            </div>
-            <div>
-              <dt><a href="#evaluation">RynnValue</a></dt>
-              <dd><strong>用什么奖励。</strong>由指令和观测预测剩余完成时间，再把潜势的变化用于塑形奖励。</dd>
-            </div>
-            <div>
-              <dt><a href="#isolation">DyGRO-VLA</a></dt>
-              <dd><strong>更新哪些参数。</strong>冻结共享基础策略，以在线多任务 RL 训练路由器和残差专家。</dd>
-            </div>
-          </dl>
-        </section>
+| 任务 | ST | MT | MT−ST |
+|---|---:|---:|---:|
+| adjust_bottle | 68% | 84% | +16 pp |
+| beat_block_hammer | 18% | 26% | +8 pp |
+| blocks_ranking_rgb | 0% | 1% | +1 pp |
+| blocks_ranking_size | 3% | 3% | 0 pp |
+| click_alarmclock | 71% | 81% | +10 pp |
+| click_bell | 11% | 53% | +42 pp |
+| dump_bin_bigbin | 9% | 36% | +27 pp |
+| grab_roller | 71% | 82% | +11 pp |
+| handover_block | 9% | 2% | −7 pp |
+| handover_mic | 35% | 30% | −5 pp |
+| 总计 | 295/1000 = 29.5% | 398/1000 = 39.8% | +10.3 pp |
